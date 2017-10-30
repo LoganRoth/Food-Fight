@@ -1,3 +1,4 @@
+#pragma once
 #include <stdlib.h>
 #include <iostream>
 #include <vector>
@@ -14,7 +15,6 @@
 #include <cppconn/prepared_statement.h>
 
 #include <..\scugog_project\src\deck.h>
-#include <..\scugog_project\src\card.h>
 
 using namespace std;
 

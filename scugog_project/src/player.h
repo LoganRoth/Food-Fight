@@ -6,6 +6,7 @@
 #include <vector>
 
 #include <..\scugog_project\src\deck.h>
+#include <..\scugog_project\src\graveyard.h>
 
 using namespace std;
 

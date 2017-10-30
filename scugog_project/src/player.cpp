@@ -1,8 +1,11 @@
+#pragma once
 #include <stdlib.h>
 #include <iostream>
 #include <random>
 
 #include <..\scugog_project\src\player.h>
+#include <..\scugog_project\src\graveyard.h>
+
 
 using namespace std;
 

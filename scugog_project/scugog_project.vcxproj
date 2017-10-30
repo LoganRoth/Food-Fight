@@ -119,6 +119,8 @@
   <ItemGroup>
     <ClCompile Include="src\card.cpp" />
     <ClCompile Include="src\deck.cpp" />
+    <ClCompile Include="src\environment.cpp" />
+    <ClCompile Include="src\graveyard.cpp" />
     <ClCompile Include="src\implementation.cpp" />
     <ClCompile Include="src\player.cpp" />
     <ClCompile Include="src\verify_connection.cpp" />
@@ -126,6 +128,8 @@
   <ItemGroup>
     <ClInclude Include="src\card.h" />
     <ClInclude Include="src\deck.h" />
+    <ClInclude Include="src\environment.h" />
+    <ClInclude Include="src\graveyard.h" />
     <ClInclude Include="src\player.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
