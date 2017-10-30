@@ -75,13 +75,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\Ryan\Documents\Source\Repos\boost_1_65_1;C:\Users\Ryan\Documents\Source\Repos\MySQL Connector C++ 1.1.9\include;..\scugogrepository;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Ryan\Documents\Source\Repos\SFML-2.4.2-windows-vc14-32-bit\SFML-2.4.2\include;C:\Users\Ryan\Documents\Source\Repos\boost_1_65_1;C:\Users\Ryan\Documents\Source\Repos\MySQL Connector C++ 1.1.9\include;..\scugogrepository;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\Users\Ryan\Documents\Source\Repos\MySQL Connector C++ 1.1.9\lib\opt;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>mysqlcppconn.lib;kernel32.lib;user32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\Ryan\Documents\Source\Repos\SFML-2.4.2-windows-vc14-32-bit\SFML-2.4.2\lib;C:\Users\Ryan\Documents\Source\Repos\MySQL Connector C++ 1.1.9\lib\opt;..\scugogrepository\scugog_project\dll;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-graphics.lib;sfml-window.lib;sfml-system.lib;mysqlcppconn.lib;kernel32.lib;user32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -124,7 +124,8 @@
     <ClCompile Include="src\graveyard.cpp" />
     <ClCompile Include="src\implementation.cpp" />
     <ClCompile Include="src\player.cpp" />
-    <ClCompile Include="src\verify_connection.cpp" />
+    <ClCompile Include="verifications\verify_connection.cpp" />
+    <ClCompile Include="verifications\verify_sfml.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\card.h" />

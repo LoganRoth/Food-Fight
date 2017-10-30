@@ -1,9 +1,4 @@
-﻿  verify_connection.cpp
-  player.cpp
-  implementation.cpp
-  graveyard.cpp
-  environment.cpp
-  deck.cpp
+﻿  deck.cpp
 c:\users\ryan\documents\source\repos\mysql connector c++ 1.1.9\include\cppconn\sqlstring.h(39): warning C4251: 'sql::SQLString::realStr': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'sql::SQLString'
   c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.11.25503\include\xstring(4079): note: see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
 c:\users\ryan\documents\source\repos\mysql connector c++ 1.1.9\include\cppconn\exception.h(61): warning C4251: 'sql::SQLException::sql_state': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'sql::SQLException'
@@ -18,6 +13,4 @@ c:\users\ryan\documents\source\repos\mysql connector c++ 1.1.9\include\mysql_con
   c:\users\ryan\documents\source\repos\mysql connector c++ 1.1.9\include\mysql_connection.h(181): note: see declaration of 'boost::scoped_ptr<sql::mysql::MySQL_ConnectionData>'
 c:\users\ryan\documents\source\repos\mysql connector c++ 1.1.9\include\mysql_driver.h(52): warning C4251: 'sql::mysql::MySQL_Driver::proxy': class 'boost::scoped_ptr<sql::mysql::NativeAPI::NativeDriverWrapper>' needs to have dll-interface to be used by clients of class 'sql::mysql::MySQL_Driver'
   c:\users\ryan\documents\source\repos\mysql connector c++ 1.1.9\include\mysql_driver.h(52): note: see declaration of 'boost::scoped_ptr<sql::mysql::NativeAPI::NativeDriverWrapper>'
-  card.cpp
-  Generating Code...
   scugog_project.vcxproj -> C:\Users\Ryan\Documents\Source\Repos\scugogrepository\scugog_project\Debug\scugog_project.exe
