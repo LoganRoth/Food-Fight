@@ -11,14 +11,17 @@ using namespace std;
 
 class Graveyard {
 public:
+	// Constructor
 	Graveyard();
 
-	void add_card_to_graveyard(Card);
+	// Other Functions
+	void add_card_to_graveyard(Card); // adds a single card to the graveyard vector
 
 private:
 	vector<Card> graveyard;
 };
 
+// Basic Exception Class
 class GraveyardException : public exception {
 public:
 	GraveyardException(const string& message);

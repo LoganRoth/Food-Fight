@@ -12,17 +12,21 @@ using namespace std;
 
 class Player {
 public:
+	// Constructor
 	Player(int deck_number, int player_number);
 
+	// Accessors
 	Deck get_deck();
 	int get_hp();
 	vector<Card> get_hand();
 
+	// Set Functions
 	void set_hp(int hitpoints);
 	void set_current_resources(int resources);
 
-	void draw_card();
-	void add_card_to_hand(Card card);
+	// Other Functions
+	void draw_card(); // draws a random card from whatever cards are still in the deck
+	void add_card_to_hand(Card card); // adds a card to the player's hand
 
 private:
 	int hitpoints;
@@ -33,6 +37,7 @@ private:
 	int player_number;
 };
 
+// Basic Exception Class
 class PlayerException : public exception {
 public:
 	PlayerException(const string& message);

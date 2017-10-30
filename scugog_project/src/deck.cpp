@@ -39,7 +39,11 @@ int Deck::get_size() {
 	return cards.size();
 }
 Card Deck::access_card(int index) {
-	return cards[index];
+	if (index >= get_size()) {
+		throw DeckException("Index is not allowed because it falls outside the size of the deck.");
+	} else {
+		return cards[index];
+	}
 }
 
 // Set Functions
@@ -48,9 +52,14 @@ void Deck::add_card_to_deck(Card card_value) {
 }
 
 Card Deck::pop_card(int index) {
-	Card requested_card = cards[index];
-	cards.erase(cards.begin() + index);
-	return requested_card;
+	if (index >= get_size()) {
+		throw DeckException("Index is not allowed because it falls outside the size of the deck.");
+	}
+	else {
+		Card requested_card = cards[index];
+		cards.erase(cards.begin() + index);
+		return requested_card;
+	}
 }
 
 void Deck::retrieve_cards() {

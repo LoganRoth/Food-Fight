@@ -1,0 +1,13 @@
+﻿  card.cpp
+src\card.cpp(5): fatal error C1083: Cannot open include file: '..\scugog_project\src\card.h': No such file or directory
+  deck.cpp
+src\deck.cpp(6): fatal error C1083: Cannot open include file: 'mysql_connection.h': No such file or directory
+  environment.cpp
+src\environment.cpp(7): fatal error C1083: Cannot open include file: '..\scugog_project\src\environment.h': No such file or directory
+  graveyard.cpp
+src\graveyard.cpp(6): fatal error C1083: Cannot open include file: '..\scugog_project\src\graveyard.h': No such file or directory
+  implementation.cpp
+src\implementation.cpp(2): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  player.cpp
+src\player.cpp(6): fatal error C1083: Cannot open include file: '..\scugog_project\src\player.h': No such file or directory
+  verify_connection.cpp

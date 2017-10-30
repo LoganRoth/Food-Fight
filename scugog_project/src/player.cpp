@@ -39,7 +39,7 @@ void Player::set_current_resources(int resources) {
 	current_resources = resources;
 }
 
-
+// Other Functions
 void Player::draw_card() {
 	int size = current_deck.get_size()-1;
 	random_device rd;
@@ -51,7 +51,6 @@ void Player::draw_card() {
 		add_card_to_hand(card_drew);
 	}
 }
-
 void Player::add_card_to_hand(Card card_value) {
 	hand.push_back(card_value);
 }

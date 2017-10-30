@@ -11,9 +11,15 @@ using namespace std;
 
 class Environment {
 public:
+	// Constructor
 	Environment(int number_of_players, vector<int> decks_chosen);
 
-	void end_game();
+	// Accessor
+	bool get_game_on();
+
+	// Other Functions
+	void turn();
+	void end_game();	// Ends game by setting game_on as false
 
 private:
 	int number_of_players;
@@ -22,9 +28,9 @@ private:
 	vector<Player> players;
 
 	bool game_on;
-
 };
 
+// Basic Exception Class
 class EnvironmentException : public exception {
 public:
 	EnvironmentException(const string& message);

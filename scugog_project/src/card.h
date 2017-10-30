@@ -8,9 +8,9 @@ using namespace std;
 
 class Card {
 public:
+	// Constructors
 	Card();
 	Card(int id, int attack, int defense, int power, int ability, int cost, string image, string description, string name);
-
 
 	// Accessors
 	int get_id();
@@ -40,10 +40,11 @@ private:
 	string description;
 	string name;
 
+	// Stream Overloading
 	friend ostream& operator<< (ostream& out, Card& card);
-
 };
 
+// Basic Exception Class
 class CardException : public exception {
 public:
 	CardException(const string& message);

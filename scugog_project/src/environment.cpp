@@ -28,6 +28,21 @@ Environment::Environment(int num_of_players, vector<int> decks_chosen) {
 	current_player = distr(eng);
 }
 
+// Accessors
+bool Environment::get_game_on() {
+	return game_on;
+}
+
+// Other Functions
+void Environment::turn() {
+	/*Player player = players[current_player];
+	bool player_turn = true;
+	player.draw_card();
+	while (player_turn) {
+		player_turn = false;
+	}*/
+
+}
 void Environment::end_game() {
 	game_on = false;
 }
