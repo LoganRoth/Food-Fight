@@ -76,8 +76,8 @@ void Deck::retrieve_cards() {
 		//guest
 		//guestUser
 		driver = get_driver_instance();
-		con = driver->connect("tcp://192.168.2.96:3306", "guest", "cisc320");
-		//con = driver->connect("tcp://142.114.243.19:3306", "guest", "cisc320");
+		//con = driver->connect("tcp://192.168.2.96:3306", "guest", "cisc320");
+		con = driver->connect("tcp://70.54.133.31:3306", "guest", "cisc320");
 		/* Connect to the MySQL test database */
 		con->setSchema("CISC320");
 
