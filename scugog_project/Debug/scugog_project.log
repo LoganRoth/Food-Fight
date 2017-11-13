@@ -1,1 +1,2 @@
-﻿LINK : fatal error LNK1561: entry point must be defined
+﻿  implementation.cpp
+  scugog_project.vcxproj -> C:\Users\Ryan\Documents\Source\Repos\scugogrepository\scugog_project\Debug\scugog_project.exe
