@@ -8,16 +8,16 @@ void ChooseDeck1::Show(sf::RenderWindow & renderWindow)
     
     sf::Texture texture, card;
     sf::Font font;
-    if (!font.loadFromFile("sansation.ttf")) {
+    if (!font.loadFromFile("../scugog_project_frontend/resources/fonts/sansation.ttf")) {
         return;
     }
     
-    if(texture.loadFromFile("bg.jpg") != true)
+    if(texture.loadFromFile("../scugog_project_frontend/resources/images/bg.jpg") != true)
     {
         return;
     }
     
-    if(card.loadFromFile("cardc.png") != true)
+    if(card.loadFromFile("../scugog_project_frontend/resources/images/cardc.png") != true)
     {
         return;
     }

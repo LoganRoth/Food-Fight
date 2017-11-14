@@ -8,11 +8,11 @@ void SplashScreen::Show(sf::RenderWindow & renderWindow)
     //sf::Image image;
     sf::Texture texture;
     sf::Font font;
-    if (!font.loadFromFile("sansation.ttf")) {
+    if (!font.loadFromFile("../scugog_project_frontend/resources/fonts/sansation.ttf")) {
         return;
     }
     
-    if(texture.loadFromFile("play.jpg") != true)
+    if(texture.loadFromFile("../scugog_project_frontend/resources/images/play.jpg") != true)
     {
        return;
     }

@@ -75,7 +75,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\SFML-2.4.2-windows-vc14-32-bit\SFML-2.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\scugog_project_frontend\resources;..\SFML-2.4.2-windows-vc14-32-bit\SFML-2.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -127,16 +127,16 @@
     <ClCompile Include="stdafx.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="bg.jpg" />
-    <Image Include="black.png" />
-    <Image Include="cardc.png" />
-    <Image Include="carrot.png" />
-    <Image Include="cute_image.jpg" />
-    <Image Include="farm.jpg" />
-    <Image Include="icon.png" />
-    <Image Include="mm.png" />
-    <Image Include="play.jpg" />
-    <Image Include="Splashscreen.png" />
+    <Image Include="resources\images\bg.jpg" />
+    <Image Include="resources\images\black.png" />
+    <Image Include="resources\images\cardc.png" />
+    <Image Include="resources\images\carrot.png" />
+    <Image Include="resources\images\cute_image.jpg" />
+    <Image Include="resources\images\farm.jpg" />
+    <Image Include="resources\images\icon.png" />
+    <Image Include="resources\images\mm.png" />
+    <Image Include="resources\images\play.jpg" />
+    <Image Include="resources\images\Splashscreen.png" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ChooseDeck1.h" />
@@ -148,8 +148,7 @@
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="gui-Info.plist" />
-    <None Include="nice_music.ogg" />
+    <None Include="resources\audio\nice_music.ogg" />
     <None Include="openal32.dll" />
     <None Include="sfml-audio-2.dll" />
     <None Include="sfml-graphics-2.dll" />
@@ -158,7 +157,7 @@
     <None Include="sfml-window-2.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Font Include="sansation.ttf" />
+    <Font Include="resources\fonts\sansation.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

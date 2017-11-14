@@ -1,9 +1,5 @@
-﻿  stdafx.cpp
-  SplashScreen.cpp
-  MainMenu.cpp
-  main.cpp
+﻿  SplashScreen.cpp
   Instructions.cpp
-  Game.cpp
   ChooseDeck2.cpp
   ChooseDeck1.cpp
   Generating Code...

@@ -41,34 +41,34 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="bg.jpg">
+    <Image Include="resources\images\bg.jpg">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="black.png">
+    <Image Include="resources\images\black.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="cardc.png">
+    <Image Include="resources\images\cardc.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="carrot.png">
+    <Image Include="resources\images\carrot.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="cute_image.jpg">
+    <Image Include="resources\images\cute_image.jpg">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="farm.jpg">
+    <Image Include="resources\images\farm.jpg">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="icon.png">
+    <Image Include="resources\images\icon.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="mm.png">
+    <Image Include="resources\images\mm.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="play.jpg">
+    <Image Include="resources\images\play.jpg">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="Splashscreen.png">
+    <Image Include="resources\images\Splashscreen.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
@@ -96,16 +96,15 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="gui-Info.plist" />
-    <None Include="nice_music.ogg" />
     <None Include="sfml-audio-2.dll" />
     <None Include="sfml-graphics-2.dll" />
     <None Include="sfml-system-2.dll" />
     <None Include="sfml-window-2.dll" />
     <None Include="sfml-network-2.dll" />
     <None Include="openal32.dll" />
+    <None Include="resources\audio\nice_music.ogg" />
   </ItemGroup>
   <ItemGroup>
-    <Font Include="sansation.ttf" />
+    <Font Include="resources\fonts\sansation.ttf" />
   </ItemGroup>
 </Project>

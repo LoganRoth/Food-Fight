@@ -6,7 +6,7 @@
 void Instructions::Show(sf::RenderWindow & renderWindow)
 {
     sf::Texture texture;
-    if(texture.loadFromFile("bg.jpg") != true)
+    if(texture.loadFromFile("../scugog_project_frontend/resources/images/bg.jpg") != true)
     {
         return;
     }
@@ -15,7 +15,7 @@ void Instructions::Show(sf::RenderWindow & renderWindow)
     renderWindow.draw(sprite);
     sf::Font font;
     
-    if (!font.loadFromFile("sansation.ttf")) {
+    if (!font.loadFromFile("../scugog_project_frontend/resources/fonts/sansation.ttf")) {
         return;
     }
     
