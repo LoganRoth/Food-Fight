@@ -6,19 +6,19 @@
 void Instructions::Show(sf::RenderWindow & renderWindow)
 {
     sf::Texture texture;
- /*   if(texture.loadFromFile(resourcePath() + "bg.jpg") != true)
+    if(texture.loadFromFile("bg.jpg") != true)
     {
         return;
-    }*/
+    }
     
     sf::Sprite sprite(texture);
     renderWindow.draw(sprite);
     sf::Font font;
     
-  /*  if (!font.loadFromFile(resourcePath() + "sansation.ttf")) {
+    if (!font.loadFromFile("sansation.ttf")) {
         return;
     }
-    */
+    
     sf::Text text2;
     text2.setFont(font);
     text2.setString("instructions");

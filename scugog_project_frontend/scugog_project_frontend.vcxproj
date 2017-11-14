@@ -144,7 +144,6 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="Instructions.h" />
     <ClInclude Include="MainMenu.h" />
-    <ClInclude Include="ResourcePath.h" />
     <ClInclude Include="SplashScreen.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
@@ -152,7 +151,6 @@
     <None Include="gui-Info.plist" />
     <None Include="nice_music.ogg" />
     <None Include="openal32.dll" />
-    <None Include="ResourcePath.mm" />
     <None Include="sfml-audio-2.dll" />
     <None Include="sfml-graphics-2.dll" />
     <None Include="sfml-network-2.dll" />

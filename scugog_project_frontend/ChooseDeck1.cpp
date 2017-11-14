@@ -8,19 +8,19 @@ void ChooseDeck1::Show(sf::RenderWindow & renderWindow)
     
     sf::Texture texture, card;
     sf::Font font;
-    //if (!font.loadFromFile(resourcePath() + "sansation.ttf")) {
-    //    return;
-    //}
-    //
-    //if(texture.loadFromFile(resourcePath() + "bg.jpg") != true)
-    //{
-    //    return;
-    //}
-    //
-    //if(card.loadFromFile(resourcePath() + "cardc.png") != true)
-    //{
-    //    return;
-    //}
+    if (!font.loadFromFile("sansation.ttf")) {
+        return;
+    }
+    
+    if(texture.loadFromFile("bg.jpg") != true)
+    {
+        return;
+    }
+    
+    if(card.loadFromFile("cardc.png") != true)
+    {
+        return;
+    }
    
     sf::Sprite cd1(card);
     sf::Sprite cd2(card);

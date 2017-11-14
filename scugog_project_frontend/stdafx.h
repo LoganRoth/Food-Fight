@@ -18,7 +18,6 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/Audio.hpp>
-#include "ResourcePath.h"
 #include <map>
 #include <iostream>
 #include <cassert>

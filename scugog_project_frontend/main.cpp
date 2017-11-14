@@ -15,7 +15,6 @@
 //
 
 #include "stdafx.h"
-#include "ResourcePath.h"
 #include "Game.h"
 
 int main(int argc, char ** argv)

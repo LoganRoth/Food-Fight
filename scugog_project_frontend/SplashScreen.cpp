@@ -8,14 +8,14 @@ void SplashScreen::Show(sf::RenderWindow & renderWindow)
     //sf::Image image;
     sf::Texture texture;
     sf::Font font;
-  /*  if (!font.loadFromFile(resourcePath() + "sansation.ttf")) {
+    if (!font.loadFromFile("sansation.ttf")) {
         return;
     }
     
-    if(texture.loadFromFile(resourcePath() + "play.jpg") != true)
+    if(texture.loadFromFile("play.jpg") != true)
     {
        return;
-    }*/
+    }
     
     sf::Text text;
     text.setFont(font);

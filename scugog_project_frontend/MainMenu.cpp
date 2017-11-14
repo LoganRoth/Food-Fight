@@ -5,7 +5,7 @@
 MainMenu::MenuResult MainMenu::Show(sf::RenderWindow& window)
 {
     sf::Texture texture;
-    //texture.loadFromFile(resourcePath() + "mm.png");
+    texture.loadFromFile("mm.png");
     sf::Sprite sprite(texture);
    
     //Setup clickable regions
