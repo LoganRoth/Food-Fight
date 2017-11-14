@@ -57,4 +57,20 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="mysqlcppconn.dll" />
+    <None Include="scugog_project.aps" />
+    <None Include="dll\mysqlcppconn.dll" />
+    <None Include="dll\openal32.dll" />
+    <None Include="dll\sfml-audio-2.dll" />
+    <None Include="dll\sfml-audio-d-2.dll" />
+    <None Include="dll\sfml-graphics-d-2.dll" />
+    <None Include="dll\sfml-network-2.dll" />
+    <None Include="dll\sfml-network-d-2.dll" />
+    <None Include="dll\sfml-system-d-2.dll" />
+    <None Include="dll\sfml-window-d-2.dll" />
+    <None Include="sfml-graphics-2.dll" />
+    <None Include="sfml-system-2.dll" />
+    <None Include="sfml-window-2.dll" />
+  </ItemGroup>
 </Project>

@@ -1,8 +1,10 @@
-﻿  main.cpp
-  Generating Code...
-  Skipping... (no relevant changes detected)
-  stdafx.cpp
+﻿  stdafx.cpp
   SplashScreen.cpp
   MainMenu.cpp
+  main.cpp
+  Instructions.cpp
   Game.cpp
+  ChooseDeck2.cpp
+  ChooseDeck1.cpp
+  Generating Code...
   scugog_project_frontend.vcxproj -> C:\Users\Ryan\Documents\Source\Repos\scugogrepository\scugog_project\Debug\scugog_project_frontend.exe

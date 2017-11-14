@@ -75,12 +75,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\Ryan\Documents\Source\Repos\SFML-2.4.2-windows-vc14-32-bit\SFML-2.4.2\include;C:\Users\Ryan\Documents\Source\Repos\boost_1_65_1;C:\Users\Ryan\Documents\Source\Repos\MySQL Connector C++ 1.1.9\include;..\scugogrepository;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\scugogrepository;..\SFML-2.4.2-windows-vc14-32-bit\SFML-2.4.2\include;C:\Users\Ryan\Documents\Source\Repos\boost_1_65_1;..\MySQL Connector C++ 1.1.9\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\Users\Ryan\Documents\Source\Repos\SFML-2.4.2-windows-vc14-32-bit\SFML-2.4.2\lib;C:\Users\Ryan\Documents\Source\Repos\MySQL Connector C++ 1.1.9\lib\opt;..\scugogrepository\scugog_project\dll;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\SFML-2.4.2-windows-vc14-32-bit\SFML-2.4.2\lib;..\MySQL Connector C++ 1.1.9\lib\opt;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfml-graphics.lib;sfml-window.lib;sfml-system.lib;mysqlcppconn.lib;kernel32.lib;user32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -133,6 +133,22 @@
     <ClInclude Include="src\environment.h" />
     <ClInclude Include="src\graveyard.h" />
     <ClInclude Include="src\player.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dll\mysqlcppconn.dll" />
+    <None Include="dll\openal32.dll" />
+    <None Include="dll\sfml-audio-2.dll" />
+    <None Include="dll\sfml-audio-d-2.dll" />
+    <None Include="sfml-graphics-2.dll" />
+    <None Include="dll\sfml-graphics-d-2.dll" />
+    <None Include="dll\sfml-network-2.dll" />
+    <None Include="dll\sfml-network-d-2.dll" />
+    <None Include="sfml-system-2.dll" />
+    <None Include="dll\sfml-system-d-2.dll" />
+    <None Include="sfml-window-2.dll" />
+    <None Include="dll\sfml-window-d-2.dll" />
+    <None Include="mysqlcppconn.dll" />
+    <None Include="scugog_project.aps" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
