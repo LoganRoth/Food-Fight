@@ -134,7 +134,6 @@
     <Image Include="resources\images\cute_image.jpg" />
     <Image Include="resources\images\farm.jpg" />
     <Image Include="resources\images\icon.png" />
-    <Image Include="resources\images\mm.png" />
     <Image Include="resources\images\play.jpg" />
     <Image Include="resources\images\Splashscreen.png" />
   </ItemGroup>

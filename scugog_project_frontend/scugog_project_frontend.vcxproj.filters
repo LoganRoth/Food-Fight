@@ -62,9 +62,6 @@
     <Image Include="resources\images\icon.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="resources\images\mm.png">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="resources\images\play.jpg">
       <Filter>Resource Files</Filter>
     </Image>

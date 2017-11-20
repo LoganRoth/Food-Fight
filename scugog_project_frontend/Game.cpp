@@ -20,7 +20,7 @@ void Game::Start(void)
     if(_gameState != Uninitialized)
         return;
     
-    _mainWindow.create(sf::VideoMode(1024,768,32),"The Game");
+    _mainWindow.create(sf::VideoMode(1920,1080,64),"The Game", sf::Style::Titlebar | sf::Style::Close);
     _gameState= Game::ShowingSplash;
     
     while(!IsExiting())

@@ -1,37 +1,43 @@
 #include "stdafx.h"
 #include "MainMenu.h"
+#include <iostream>
+
+using namespace std;
 
 
 MainMenu::MenuResult MainMenu::Show(sf::RenderWindow& window)
 {
+	sf::Vector2u WindowSize;
+	WindowSize = window.getSize();
     sf::Texture texture;
-    texture.loadFromFile("../scugog_project_frontend/resources/images/mm.png");
+    texture.loadFromFile("../scugog_project_frontend/resources/images/mm.jpg");
     sf::Sprite sprite(texture);
+	sf::Vector2u SpriteSize;
    
     //Setup clickable regions
     
     //Play menu item coordinates
     MenuItem playButton;
     playButton.rect.top= 1;
-    playButton.rect.height = 255;
+    playButton.rect.height = WindowSize.y/3;
     playButton.rect.left = 1;
-    playButton.rect.width = 1023;
+    playButton.rect.width = WindowSize.x;
     playButton.action = Play;
     
     //Play instructionButton item coordinates
     MenuItem instructionButton;
-    instructionButton.rect.top= 256;
-    instructionButton.rect.height = 255;
-    instructionButton.rect.left = 0;
-    instructionButton.rect.width = 1023;
+    instructionButton.rect.top= WindowSize.y/3;
+	instructionButton.rect.height = WindowSize.y/3;
+	instructionButton.rect.left = 1;
+	instructionButton.rect.width = WindowSize.x;
     instructionButton.action = Instruction;
     
     //Exit menu item coordinates
     MenuItem exitButton;
-    exitButton.rect.left = 0;
-    exitButton.rect.width = 1023;
-    exitButton.rect.top = 512;
-    exitButton.rect.height = 256;
+    exitButton.rect.left = 1;
+    exitButton.rect.width = WindowSize.x;
+    exitButton.rect.top = WindowSize.y / 3 * 2;
+    exitButton.rect.height = WindowSize.y /3;
     exitButton.action = Exit;
     
     _menuItems.push_back(playButton);
