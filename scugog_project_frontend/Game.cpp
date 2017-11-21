@@ -15,6 +15,7 @@
 #include "ChooseDeck2.h"
 
 
+
 void Game::Start(void)
 {
     if(_gameState != Uninitialized)
@@ -22,12 +23,8 @@ void Game::Start(void)
     
     _mainWindow.create(sf::VideoMode(1920,1080,64),"The Game", sf::Style::Titlebar | sf::Style::Close);
     _gameState= Game::ShowingSplash;
-    
-    while(!IsExiting())
-    {
-        GameLoop();
-    }
-    
+
+	GameLoop();
     _mainWindow.close();
 }
 
@@ -41,53 +38,57 @@ bool Game::IsExiting()
 
 void Game::GameLoop()
 {
-    switch(_gameState)
-    {
-        case Game::ShowingMenu:
-        {
-            ShowMenu();
-            break;
-        }
-        case Game::ShowingSplash:
-        {
-            ShowSplashScreen();
-            break;
-         }
-        case Game::ShowingInstructions:
-        {
-            ShowInstructions();
-            break;
-        }
-        case Game::ShowingCD1:
-        {
-            ShowCD1();
-            break;
-        }
-        case Game::ShowingCD2:
-        {
-            ShowCD2();
-            break;
-        }
-        case Game::Playing:
-        {
-            sf::Event currentEvent;
-            while(_mainWindow.pollEvent(currentEvent))
-            {
-                _mainWindow.clear(sf::Color(0,0,0));
-                //_gameObjectManager.DrawAll(_mainWindow);
-                _mainWindow.display();
-                    
-                    if(currentEvent.type == sf::Event::Closed) _gameState = Game::Exiting;
-                    
-                    if(currentEvent.type == sf::Event::KeyPressed)
-                    {
-                        if(currentEvent.key.code == sf::Keyboard::Key::Escape) ShowMenu();
-                    }
-                }
-                break;
-            }
-        }
-    
+	int deck1 = 3;
+	int deck2 = 3;
+	while (_gameState != Game::Exiting) {
+		switch (_gameState)
+		{
+			case Game::ShowingMenu:
+			{
+				ShowMenu();
+				break;
+			}
+			case Game::ShowingSplash:
+			{
+				ShowSplashScreen();
+				break;
+			}
+			case Game::ShowingInstructions:
+			{
+				ShowInstructions();
+				break;
+			}
+			case Game::ShowingCD1:
+			{
+				deck1 = ShowCD1();
+				if (deck1 == -1) {
+					_gameState = Game::Exiting;
+				}
+				else {
+					_gameState = Game::ShowingCD2;
+				}
+				break;
+			}
+			case Game::ShowingCD2:
+			{
+				deck2 = ShowCD2();
+				if (deck2 == -1) {
+					_gameState = Game::Exiting;
+				}
+				else {
+					_gameState = Game::Playing;
+				}
+				break;
+			}
+			case Game::Playing:
+			{
+				// TODO: Backend Integration
+				//Player p1(deck1, 1);
+				//Player p2(deck2, 2);
+				//PlayGame(p1, p2);
+			}
+		}
+	}
 }
 
 void Game::ShowSplashScreen()
@@ -123,19 +124,23 @@ void Game::ShowInstructions()
     _gameState = Game::ShowingMenu;
 }
 
-void Game::ShowCD1()
+int Game::ShowCD1()
 {
     ChooseDeck1 cd1;
-    cd1.Show(_mainWindow);
-    _gameState = Game::ShowingCD2;
+    int deckN = cd1.Show(_mainWindow);
+	return deckN;
 }
 
-void Game::ShowCD2()
+int Game::ShowCD2()
 {
     ChooseDeck2 cd2;
-    cd2.Show(_mainWindow);
-    _gameState = Game::Playing;
+    int deckN = cd2.Show(_mainWindow);
+	return deckN;
 }
+// TODO: This function will have the actual "playing o the game"
+//void PlayGame(Player p1, Player p2) {
+
+//}
 
 Game::GameState Game::_gameState = Uninitialized;
 sf::RenderWindow Game::_mainWindow;

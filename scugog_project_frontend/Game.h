@@ -18,13 +18,14 @@ public:
 private:
     static bool IsExiting();
     static void GameLoop();
+	//static void PlayGame(Player,Player);
     
     static void ShowSplashScreen();
     static void ShowMenu();
     //static void ChooseDeck();
     static void ShowInstructions();
-    static void ShowCD1();
-    static void ShowCD2();
+    static int ShowCD1();
+    static int ShowCD2();
     
     
     

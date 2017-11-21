@@ -2,6 +2,6 @@
 class ChooseDeck1
 {
 public:
-    void Show(sf::RenderWindow& window);
+    int Show(sf::RenderWindow& window);
 };
 
