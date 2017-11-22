@@ -123,6 +123,7 @@
     <ClCompile Include="Instructions.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="PlayGame.cpp" />
     <ClCompile Include="SplashScreen.cpp" />
     <ClCompile Include="stdafx.cpp" />
   </ItemGroup>
@@ -141,6 +142,7 @@
     <ClInclude Include="ChooseDeck1.h" />
     <ClInclude Include="ChooseDeck2.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="PlayGame.h" />
     <ClInclude Include="Instructions.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="SplashScreen.h" />

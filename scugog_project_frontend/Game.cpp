@@ -13,6 +13,8 @@
 #include "Instructions.h"
 #include "ChooseDeck1.h"
 #include "ChooseDeck2.h"
+#include "PlayGame.h"
+
 
 
 
@@ -82,10 +84,10 @@ void Game::GameLoop()
 			}
 			case Game::Playing:
 			{
-				// TODO: Backend Integration
-				//Player p1(deck1, 1);
-				//Player p2(deck2, 2);
-				//PlayGame(p1, p2);
+				// TODO: Backend Integration gives a "cannot open source file error"
+				Player p1(deck1, 1);
+				Player p2(deck2, 2);
+				ActivateGame(p1, p2);
 			}
 		}
 	}
@@ -137,10 +139,12 @@ int Game::ShowCD2()
     int deckN = cd2.Show(_mainWindow);
 	return deckN;
 }
-// TODO: This function will have the actual "playing o the game"
-//void PlayGame(Player p1, Player p2) {
-
-//}
+// TODO: This function will have the actual "playing of the game"
+void Game::ActivateGame(Player p1, Player p2) 
+{
+	PlayGame gm;
+	gm.Play(p1, p2, _mainWindow);
+}
 
 Game::GameState Game::_gameState = Uninitialized;
 sf::RenderWindow Game::_mainWindow;
