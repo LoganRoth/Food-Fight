@@ -12,6 +12,8 @@ using namespace std;
 
 class Player {
 public:
+	// Default Constructor
+	Player();
 	// Constructor
 	Player(int deck_number, int player_number);
 

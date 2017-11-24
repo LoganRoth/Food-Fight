@@ -42,8 +42,8 @@ void Game::GameLoop()
 {
 	int deck1 = 1;
 	int deck2 = 1;
-	vector<int> decks = { deck1, deck2 };
 	while (_gameState != Game::Exiting) {
+		vector<int> decks = { deck1, deck2 };
 		switch (_gameState)
 		{
 			case Game::ShowingMenu:
@@ -142,8 +142,10 @@ int Game::ShowCD2()
 // TODO: This function will have the actual "playing of the game"
 void Game::ActivateGame(Environment env) 
 {
-	PlayGame gm;
-	gm.Play(env, _mainWindow);
+	PlayGame gm(env);
+	gm.Play(_mainWindow);
+	// need to handle game exiting somehow
+	_gameState = Game::Exiting;
 }
 
 Game::GameState Game::_gameState = Uninitialized;

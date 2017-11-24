@@ -24,6 +24,7 @@ Card::Card(int id_value, int attack_value, int defense_value, int power_value, i
 	image = image_value;
 	description = description_value;
 	name = name_value;
+	//  I think we should add the sprites for the cards in here
 }
 
 

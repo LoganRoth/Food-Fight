@@ -13,11 +13,12 @@ class Environment {
 public:
 	// Constructor
 	Environment(int number_of_players, vector<int> decks_chosen);
-
+	Environment();
 	// Accessor
 	bool get_game_on();
 	Player Environment::get_current_player();
 	vector<Player> Environment::get_players();
+	vector<vector<Card>> getField();
 
 	// Other Functions
 	void change_turn();

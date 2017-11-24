@@ -8,5 +8,16 @@
 class PlayGame
 {
 public:
-	void Play(Environment env, sf::RenderWindow& window);
+	Environment env; // may need to make this private and add getters
+	int cardType;
+	int secondClickType;
+	PlayGame(Environment env);
+	PlayGame();
+	void Play(sf::RenderWindow& window);
+	bool inCard(sf::Sprite crd, float mpx, float mpy);
+	bool inText(sf::Text text, float mpx, float mpy);
+	void handleClicks(vector<sf::Sprite> clicks, vector<Card> cardClicks);
+	//Environment getEnvironment();
+//private:
+	//Environment env;
 };

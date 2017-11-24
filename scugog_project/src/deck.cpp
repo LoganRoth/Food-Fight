@@ -70,18 +70,15 @@ void Deck::retrieve_cards() {
 		sql::PreparedStatement *pstmt;
 		sql::ResultSet *res2 = nullptr;
 		sql::PreparedStatement *pstmt2 = nullptr;
-
 		/* Create a connection */
 		//tcp://138.197.148.75
 		//guest
 		//guestUser
 		driver = get_driver_instance();
-		con = driver->connect("tcp://192.168.2.96:3306", "guest", "cisc320");
-		//con = driver->connect("tcp://70.54.133.31:3306", "guest", "cisc320");
+		//con = driver->connect("tcp://192.168.2.96:3306", "guest", "cisc320");
+		con = driver->connect("tcp://70.54.133.31:3306", "guest", "cisc320");
 		/* Connect to the MySQL test database */
 		con->setSchema("CISC320");
-
-
 		/* Select in ascending order */
 		//pstmt = con->prepareStatement("SELECT * FROM card WHERE idcard IN(0,1,2)");
 		pstmt = con->prepareStatement("SELECT * FROM deck WHERE iddeck = " + std::to_string(get_deck_num()));

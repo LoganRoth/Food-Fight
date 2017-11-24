@@ -13,15 +13,16 @@ EnvironmentException::EnvironmentException(const string& message) : message(mess
 string& EnvironmentException::what() { return message; }
 
 // Constructor
+Environment::Environment() {
+
+}
 Environment::Environment(int num_of_players, vector<int> decks_chosen) {
 	game_on = true;
 	number_of_players = num_of_players;
-
 	for (int num = 0; num < number_of_players; num++) {
 		Player player(decks_chosen[num], num);
 		players.push_back(player);
 	}
-
 	random_device rd;
 	mt19937 eng(rd());
 	uniform_int_distribution<> distr(0, number_of_players-1);
@@ -52,4 +53,8 @@ void Environment::change_turn() {
 }
 void Environment::end_game() {
 	game_on = false;
+}
+
+vector<vector<Card>> Environment::getField() {
+	return field;
 }

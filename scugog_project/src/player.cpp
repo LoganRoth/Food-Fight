@@ -13,15 +13,21 @@ using namespace std;
 PlayerException::PlayerException(const string& message) : message(message) {}
 string& PlayerException::what() { return message; }
 
+// Default Constructor
+Player::Player() {
+	Deck deck_of_cards = NULL;
+	player_number = -1;
+
+}
 // Constructor
 Player::Player(int deck_number, int player_numb) {
 	Deck deck_of_cards(deck_number);
 	current_deck = deck_of_cards;
 	player_number = player_numb;
-
 	for (int i = 0; i < 6; i++) {
 		draw_card();
 	}
+	hitpoints = 1000;
 }
 
 // Accessors

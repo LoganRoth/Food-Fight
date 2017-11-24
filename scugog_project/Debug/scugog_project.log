@@ -1,6 +1,11 @@
 ﻿  PlayGame.cpp
-c:\users\ryan\documents\source\repos\scugogrepository\scugog_project\playgame.cpp(61): warning C4018: '<': signed/unsigned mismatch
-c:\users\ryan\documents\source\repos\scugogrepository\scugog_project\playgame.cpp(64): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ryan\documents\source\repos\scugogrepository\scugog_project\playgame.cpp(88): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-c:\users\ryan\documents\source\repos\scugogrepository\scugog_project\playgame.cpp(89): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-  scugog_project.vcxproj -> C:\Users\Ryan\Documents\Source\Repos\scugogrepository\scugog_project\Debug\scugog_project.exe
+c:\users\logan roth\documents\cmpe 320\320_project\scugogrepository\scugog_project\playgame.cpp(129): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\logan roth\documents\cmpe 320\320_project\scugogrepository\scugog_project\playgame.cpp(132): warning C4018: '<': signed/unsigned mismatch
+c:\users\logan roth\documents\cmpe 320\320_project\scugogrepository\scugog_project\playgame.cpp(133): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\logan roth\documents\cmpe 320\320_project\scugogrepository\scugog_project\playgame.cpp(134): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\logan roth\documents\cmpe 320\320_project\scugogrepository\scugog_project\playgame.cpp(156): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\logan roth\documents\cmpe 320\320_project\scugogrepository\scugog_project\playgame.cpp(157): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  Game.cpp
+  scugog_project.vcxproj -> C:\Users\Logan Roth\Documents\CMPE 320\320_Project\scugogrepository\scugog_project\Debug\scugog_project.exe
