@@ -75,7 +75,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\scugog_project_frontend\resources;..\SFML-2.4.2-windows-vc14-32-bit\SFML-2.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Ryan\Documents\Source\Repos\scugogrepository\;..\scugogrepository\;..\scugog_project_frontend\resources;..\SFML-2.4.2-windows-vc14-32-bit\SFML-2.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -135,6 +135,7 @@
     <Image Include="resources\images\cute_image.jpg" />
     <Image Include="resources\images\farm.jpg" />
     <Image Include="resources\images\icon.png" />
+    <Image Include="resources\images\mm.jpg" />
     <Image Include="resources\images\play.jpg" />
     <Image Include="resources\images\Splashscreen.png" />
   </ItemGroup>
@@ -159,6 +160,11 @@
   </ItemGroup>
   <ItemGroup>
     <Font Include="resources\fonts\sansation.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\scugog_project\scugog_project.vcxproj">
+      <Project>{d29c7706-6794-4a99-8a24-3cae46a373d7}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

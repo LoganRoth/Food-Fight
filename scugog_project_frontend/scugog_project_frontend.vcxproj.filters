@@ -71,6 +71,9 @@
     <Image Include="resources\images\Splashscreen.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="resources\images\mm.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ChooseDeck1.h">

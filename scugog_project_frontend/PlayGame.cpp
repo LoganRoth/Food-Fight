@@ -22,7 +22,7 @@ void PlayGame::Play(Player p1, Player p2, sf::RenderWindow & renderWindow)
 	// hand 1
 	sf::Sprite p1h1(card);
 	sf::Sprite p1h2(card);
-	sf::Sprite p1h2(card);
+	sf::Sprite p1h3(card);
 	sf::Sprite p1h4(card);
 	sf::Sprite p1h5(card);
 	// hand 2

@@ -19,6 +19,7 @@ public:
 	Deck get_deck();
 	int get_hp();
 	vector<Card> get_hand();
+	int Player::get_player_number();
 
 	// Set Functions
 	void set_hp(int hitpoints);

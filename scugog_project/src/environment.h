@@ -16,9 +16,11 @@ public:
 
 	// Accessor
 	bool get_game_on();
+	Player Environment::get_current_player();
+	vector<Player> Environment::get_players();
 
 	// Other Functions
-	void turn();
+	void change_turn();
 	void end_game();	// Ends game by setting game_on as false
 
 private:

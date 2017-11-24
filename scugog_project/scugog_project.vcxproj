@@ -75,7 +75,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\scugogrepository;..\SFML-2.4.2-windows-vc14-32-bit\SFML-2.4.2\include;C:\Users\Logan Roth\Downloads\boost_1_65_1\boost_1_65_1;..\MySQL Connector C++ 1.1.9\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\scugog_project\resources\;..\scugogrepository\;..\SFML-2.4.2-windows-vc14-32-bit\SFML-2.4.2\include;C:\Users\Ryan\Documents\Source\Repos\boost_1_65_1;..\MySQL Connector C++ 1.1.9\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
@@ -118,37 +118,73 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ChooseDeck1.cpp" />
+    <ClCompile Include="ChooseDeck2.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Instructions.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="PlayGame.cpp" />
+    <ClCompile Include="SplashScreen.cpp" />
     <ClCompile Include="src\card.cpp" />
     <ClCompile Include="src\deck.cpp" />
     <ClCompile Include="src\environment.cpp" />
     <ClCompile Include="src\graveyard.cpp" />
     <ClCompile Include="src\implementation.cpp" />
     <ClCompile Include="src\player.cpp" />
+    <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="verifications\verify_connection.cpp" />
     <ClCompile Include="verifications\verify_sfml.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ChooseDeck1.h" />
+    <ClInclude Include="ChooseDeck2.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="Instructions.h" />
+    <ClInclude Include="MainMenu.h" />
+    <ClInclude Include="PlayGame.h" />
+    <ClInclude Include="SplashScreen.h" />
     <ClInclude Include="src\card.h" />
     <ClInclude Include="src\deck.h" />
     <ClInclude Include="src\environment.h" />
     <ClInclude Include="src\graveyard.h" />
     <ClInclude Include="src\player.h" />
+    <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="dll\mysqlcppconn.dll" />
     <None Include="dll\openal32.dll" />
     <None Include="dll\sfml-audio-2.dll" />
     <None Include="dll\sfml-audio-d-2.dll" />
+    <None Include="openal32.dll" />
+    <None Include="resources\audio\nice_music.ogg" />
+    <None Include="sfml-audio-2.dll" />
     <None Include="sfml-graphics-2.dll" />
     <None Include="dll\sfml-graphics-d-2.dll" />
     <None Include="dll\sfml-network-2.dll" />
     <None Include="dll\sfml-network-d-2.dll" />
+    <None Include="sfml-network-2.dll" />
     <None Include="sfml-system-2.dll" />
     <None Include="dll\sfml-system-d-2.dll" />
     <None Include="sfml-window-2.dll" />
     <None Include="dll\sfml-window-d-2.dll" />
     <None Include="mysqlcppconn.dll" />
     <None Include="scugog_project.aps" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="resources\fonts\sansation.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="resources\images\bg.jpg" />
+    <Image Include="resources\images\black.png" />
+    <Image Include="resources\images\cardc.png" />
+    <Image Include="resources\images\carrot.png" />
+    <Image Include="resources\images\cute_image.jpg" />
+    <Image Include="resources\images\farm.jpg" />
+    <Image Include="resources\images\icon.png" />
+    <Image Include="resources\images\mm.jpg" />
+    <Image Include="resources\images\play.jpg" />
+    <Image Include="resources\images\Splashscreen.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -33,15 +33,22 @@ bool Environment::get_game_on() {
 	return game_on;
 }
 
-// Other Functions
-void Environment::turn() {
-	/*Player player = players[current_player];
-	bool player_turn = true;
-	player.draw_card();
-	while (player_turn) {
-		player_turn = false;
-	}*/
+Player Environment::get_current_player() {
+	return players[current_player];
+}
 
+vector<Player> Environment::get_players() {
+	return players;
+}
+
+// Other Functions
+void Environment::change_turn() {
+	if (current_player == 0) {
+		current_player = 1;
+	}
+	else if (current_player == 1) {
+		current_player = 0;
+	}
 }
 void Environment::end_game() {
 	game_on = false;

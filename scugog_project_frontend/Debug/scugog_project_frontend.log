@@ -1,11 +1,16 @@
-﻿  PlayGame.cpp
-c:\users\logan roth\documents\cmpe 320\320_project\scugogrepository\scugog_project_frontend\playgame.h(5): error C2061: syntax error: identifier 'Player'
-c:\users\logan roth\documents\cmpe 320\320_project\scugogrepository\scugog_project_frontend\playgame.cpp(4): error C2065: 'Player': undeclared identifier
-c:\users\logan roth\documents\cmpe 320\320_project\scugogrepository\scugog_project_frontend\playgame.cpp(4): error C2146: syntax error: missing ')' before identifier 'p1'
-c:\users\logan roth\documents\cmpe 320\320_project\scugogrepository\scugog_project_frontend\playgame.cpp(4): error C2143: syntax error: missing ';' before '{'
-c:\users\logan roth\documents\cmpe 320\320_project\scugogrepository\scugog_project_frontend\playgame.cpp(4): error C2447: '{': missing function header (old-style formal list?)
+﻿  stdafx.cpp
+  SplashScreen.cpp
+  PlayGame.cpp
+  MainMenu.cpp
   main.cpp
-c:\users\logan roth\documents\cmpe 320\320_project\scugogrepository\scugog_project\src\player.h(8): fatal error C1083: Cannot open include file: '..\scugog_project\src\deck.h': No such file or directory
+  Instructions.cpp
   Game.cpp
-c:\users\logan roth\documents\cmpe 320\320_project\scugogrepository\scugog_project\src\player.h(8): fatal error C1083: Cannot open include file: '..\scugog_project\src\deck.h': No such file or directory
+  ChooseDeck2.cpp
+c:\users\ryan\documents\source\repos\scugogrepository\scugog_project_frontend\choosedeck2.cpp(93): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\ryan\documents\source\repos\scugogrepository\scugog_project_frontend\choosedeck2.cpp(94): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  ChooseDeck1.cpp
+c:\users\ryan\documents\source\repos\scugogrepository\scugog_project_frontend\choosedeck1.cpp(94): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\ryan\documents\source\repos\scugogrepository\scugog_project_frontend\choosedeck1.cpp(95): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
   Generating Code...
+Game.obj : error LNK2019: unresolved external symbol "public: __thiscall Environment::Environment(int,class std::vector<int,class std::allocator<int> >)" (??0Environment@@QAE@HV?$vector@HV?$allocator@H@std@@@std@@@Z) referenced in function "private: static void __cdecl Game::GameLoop(void)" (?GameLoop@Game@@CAXXZ)
+C:\Users\Ryan\Documents\Source\Repos\scugogrepository\scugog_project\Debug\scugog_project_frontend.exe : fatal error LNK1120: 1 unresolved externals

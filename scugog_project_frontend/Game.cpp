@@ -42,6 +42,7 @@ void Game::GameLoop()
 {
 	int deck1 = 3;
 	int deck2 = 3;
+	vector<int> decks = { deck1, deck2 };
 	while (_gameState != Game::Exiting) {
 		switch (_gameState)
 		{
@@ -85,9 +86,8 @@ void Game::GameLoop()
 			case Game::Playing:
 			{
 				// TODO: Backend Integration gives a "cannot open source file error"
-				Player p1(deck1, 1);
-				Player p2(deck2, 2);
-				ActivateGame(p1, p2);
+				Environment env(2, decks);
+				//Game::ActivateGame(p1, p2);
 			}
 		}
 	}

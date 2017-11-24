@@ -18,6 +18,10 @@ Player::Player(int deck_number, int player_numb) {
 	Deck deck_of_cards(deck_number);
 	current_deck = deck_of_cards;
 	player_number = player_numb;
+
+	for (int i = 0; i < 6; i++) {
+		draw_card();
+	}
 }
 
 // Accessors
@@ -30,6 +34,9 @@ vector<Card> Player::get_hand() {
 int Player::get_hp() {
 	return hitpoints;
 }
+int Player::get_player_number() {
+	return player_number;
+}
 
 // Set Functions
 void Player::set_hp(int hp_value) {
@@ -41,11 +48,11 @@ void Player::set_current_resources(int resources) {
 
 // Other Functions
 void Player::draw_card() {
-	int size = current_deck.get_size()-1;
+	int size_of_deck = current_deck.get_size()-1;
 	random_device rd;
 	mt19937 eng(rd());
-	uniform_int_distribution<> distr(0, size);
-	if (size > 1) {
+	uniform_int_distribution<> distr(0, size_of_deck);
+	if (size_of_deck > 1) {
 		int card_num = distr(eng);
 		Card card_drew = current_deck.pop_card(card_num);
 		add_card_to_hand(card_drew);

@@ -39,6 +39,33 @@
     <ClCompile Include="verifications\verify_sfml.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SplashScreen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayGame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Instructions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ChooseDeck2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ChooseDeck1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\card.h">
@@ -54,6 +81,30 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\graveyard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SplashScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayGame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Instructions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ChooseDeck2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ChooseDeck1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -72,5 +123,44 @@
     <None Include="sfml-graphics-2.dll" />
     <None Include="sfml-system-2.dll" />
     <None Include="sfml-window-2.dll" />
+    <None Include="sfml-network-2.dll" />
+    <None Include="sfml-audio-2.dll" />
+    <None Include="openal32.dll" />
+    <None Include="resources\audio\nice_music.ogg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="resources\fonts\sansation.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="resources\images\bg.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\black.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\cardc.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\carrot.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\cute_image.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\farm.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\icon.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\mm.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\play.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\Splashscreen.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
