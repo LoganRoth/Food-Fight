@@ -1,11 +1,12 @@
 ﻿  PlayGame.cpp
-c:\users\logan roth\documents\cmpe 320\320_project\scugogrepository\scugog_project\playgame.cpp(129): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\logan roth\documents\cmpe 320\320_project\scugogrepository\scugog_project\playgame.cpp(132): warning C4018: '<': signed/unsigned mismatch
-c:\users\logan roth\documents\cmpe 320\320_project\scugogrepository\scugog_project\playgame.cpp(133): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\logan roth\documents\cmpe 320\320_project\scugogrepository\scugog_project\playgame.cpp(134): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\logan roth\documents\cmpe 320\320_project\scugogrepository\scugog_project\playgame.cpp(156): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-c:\users\logan roth\documents\cmpe 320\320_project\scugogrepository\scugog_project\playgame.cpp(157): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-  Generating Code...
-  Skipping... (no relevant changes detected)
-  Game.cpp
+c:\users\logan roth\documents\cmpe 320\320_project\scugogrepository\scugog_project\playgame.cpp(113): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\logan roth\documents\cmpe 320\320_project\scugogrepository\scugog_project\playgame.cpp(116): warning C4018: '<': signed/unsigned mismatch
+c:\users\logan roth\documents\cmpe 320\320_project\scugogrepository\scugog_project\playgame.cpp(117): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\logan roth\documents\cmpe 320\320_project\scugogrepository\scugog_project\playgame.cpp(118): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\logan roth\documents\cmpe 320\320_project\scugogrepository\scugog_project\playgame.cpp(140): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\logan roth\documents\cmpe 320\320_project\scugogrepository\scugog_project\playgame.cpp(141): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\logan roth\documents\cmpe 320\320_project\scugogrepository\scugog_project\playgame.cpp(148): warning C4018: '<': signed/unsigned mismatch
+c:\users\logan roth\documents\cmpe 320\320_project\scugogrepository\scugog_project\playgame.cpp(155): warning C4018: '<': signed/unsigned mismatch
+c:\users\logan roth\documents\cmpe 320\320_project\scugogrepository\scugog_project\playgame.cpp(171): warning C4018: '<': signed/unsigned mismatch
+c:\users\logan roth\documents\cmpe 320\320_project\scugogrepository\scugog_project\playgame.cpp(178): warning C4018: '<': signed/unsigned mismatch
   scugog_project.vcxproj -> C:\Users\Logan Roth\Documents\CMPE 320\320_Project\scugogrepository\scugog_project\Debug\scugog_project.exe

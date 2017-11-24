@@ -11,6 +11,8 @@ public:
 	Environment env; // may need to make this private and add getters
 	int cardType;
 	int secondClickType;
+	
+
 	PlayGame(Environment env);
 	PlayGame();
 	void Play(sf::RenderWindow& window);

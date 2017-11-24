@@ -155,7 +155,7 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 						for (int i = 0; i < size(f1);i++) {
 							if (inCard(f1[i], horz, vert) && f1Full[i]) {
 								clicks.push_back(f1[i]);
-								if (cPlayer.get_player_number == 0) {
+								if (cPlayer.get_player_number() == 0) {
 									cardClicks.push_back(env.getField()[0][i]);
 								}
 								else {
@@ -178,7 +178,7 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 							for (int i = 0; i < size(f2); i++) {
 								if (inCard(f2[i],horz,vert) && f2Full[i]){
 									clicks.push_back(f2[i]);
-									if (cPlayer.get_player_number == 0) {
+									if (cPlayer.get_player_number() == 0) {
 										cardClicks.push_back(env.getField()[0][i]);
 									}
 									else {
@@ -188,7 +188,7 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 								}
 								
 							}
-							if (cPlayer.get_player_number == 0) {
+							if (cPlayer.get_player_number() == 0) {
 								if (inText(p2Label, horz, vert)) {
 									secondClickType = player2Click;
 								}
