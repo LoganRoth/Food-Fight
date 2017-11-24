@@ -85,7 +85,6 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 
 	vector<sf::Sprite> clicks;
 	vector<Card> cardClicks;
-	//empty card
 	// need to change these to match indexes later
 	vector<Card> field1;
 	vector<Card> field2;
@@ -141,17 +140,11 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 					float horz = mousePos.x;
 					float vert = mousePos.y;
 					if (inText(endTurn, horz, vert)) {
-						// probably better to do this as a sprite rather then text
 						player_turn_on = false;
 						env.change_turn();
-						// set the cards to switch at the end of the turn after
-						// some waiting for another event, probably a key press?
-						// and blank the cards somehow during the switch
-						cout << env.get_current_player().get_player_number() << endl;
 					}
-					// should change this, was using this to get thought out
-					// could likely move all of this into some other function
 					if (clicks.empty()) {
+						// first "card click event", i.e. who to move to field or attack with
 						for (int i = 0; i < size(hand); i++) {
 							if (inCard(hand[i], horz, vert) && h1Full[i]) {
 								clicks.push_back(hand[0]);
@@ -173,7 +166,7 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 						}
 					}
 					else if (size(clicks) == 1) {
-						// this is the "second card click" events i.e. who to attack
+						// this is the second "card click events" i.e. who to attack
 						if (cardType == 1) {
 							for (int i = 0; i < size(f1); i++) {
 								if (inCard(f1[i], horz, vert) && !f1Full[i]) {
