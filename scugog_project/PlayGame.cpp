@@ -325,10 +325,16 @@ int PlayGame::handleClicks(vector<sf::Sprite> clicks, vector<Card> cardClicks, i
 	// -1 = no clic
 	sf::Texture card;
 
-	// load images needed
+	int toAttack(0);
+	//get amount to attack with
+	if (cardType == 4) {
+		toAttack = cardClicks[0].get_attack();
+	}
+
+	// load images needed for default
 	if (card.loadFromFile("../scugog_project/resources/images/cardc.png") != true)
 	{
-		return 1;
+		return;
 	}
 	// default 
 	sf::Sprite dflt(card);
@@ -338,9 +344,13 @@ int PlayGame::handleClicks(vector<sf::Sprite> clicks, vector<Card> cardClicks, i
 	dfltPair = make_pair(dflt, dText);
 
 	Card dfltCrd();
+
+	//if no valid click for second object exit
 	if (secondClickType == -1) {
 		return 0;
 	}
+
+	//if moving a card from hand to field
 	else if ((cardType == 3) && (secondClickType == 4)) {
 		if (env.get_current_player().get_player_number() == 0) {
 			if (f1Full[indexTwo] || !h1Full[indexOne]) {
@@ -362,9 +372,50 @@ int PlayGame::handleClicks(vector<sf::Sprite> clicks, vector<Card> cardClicks, i
 				return 1;
 			}
 		}
-
-
 	}
+	//if attacking another card
+	else if ((cardType == 4) && (secondClickType == 4)) {
+		//get attack and defense values
+		int opponent_defense = cardClicks[1].get_defense();
+		int opponent_attack = cardClicks[1].get_attack();
+		int player_defense = cardClicks[0].get_defense();
+		//if both cards kill each other
+		if ((opponent_defense - toAttack <= 0) && (player_defense - opponent_attack <= 0)) {
+			f2[indexTwo] = dfltPair;
+			f2Full[indexTwo] = false;
+			f1[indexOne] = dfltPair;
+			f1Full[indexOne] = false;
+		}
+		//if you kill the opponent card
+		else if (opponent_defense - toAttack <= 0) {
+			f2[indexTwo] = dfltPair;
+			f2Full[indexTwo] = false;
+			cardClicks[0].set_defense(player_defense - opponent_attack);
+		}
+		//if you kill your own card
+		else if (player_defense - opponent_attack <= 0) {
+			f1[indexOne] = dfltPair;
+			f1Full[indexOne] = false;
+			cardClicks[1].set_defense(opponent_defense - toAttack);
+		}
+		//you do damage to both cards
+		else
+		{
+			cardClicks[0].set_defense(player_defense - opponent_attack);
+			cardClicks[1].set_defense(opponent_defense - toAttack);
+		}
+	}
+	//if you attack the player
+	else if ((secondClickType == 1) || (secondClickType == 2)) {
+		int currenthp = env.get_current_opponent().get_hp();
+		env.get_current_opponent().set_hp(currenthp - toAttack);
+	}
+
+	//if you killed the opponent
+	if (env.get_current_opponent().get_hp() <= 0) {
+		env.end_game();
+	}
+
 	return 1;
 }
 
