@@ -12,20 +12,21 @@ void SplashScreen::Show(sf::RenderWindow & renderWindow)
         return;
     }
     
-    if(texture.loadFromFile("../scugog_project/resources/images/play.jpg") != true)
+    if(texture.loadFromFile("../scugog_project/resources/images/splash_screen.jpg") != true)
     {
        return;
     }
     
     sf::Text text;
     text.setFont(font);
-    text.setString("FARM BOUT");
+    text.setString("FOOD FIGHT");
     text.setCharacterSize(100);
-    text.setFillColor(sf::Color::Black);
+    text.setFillColor(sf::Color::Green);
+	text.setOutlineColor(sf::Color::White);
+	text.setOutlineThickness(5);
     text.setStyle(sf::Text::Style::Italic);
     sf::Rect<float> tsize = text.getGlobalBounds();
-    text.setOrigin(sf::Vector2f(tsize.width/2, tsize.height/2));
-    text.setPosition(sf::Vector2f(512, 300));
+    text.setPosition(sf::Vector2f(tsize.width / 2, tsize.height / 2));
     
     //texture.update(image);
     sf::Sprite sprite(texture);

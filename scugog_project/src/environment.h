@@ -16,7 +16,8 @@ public:
 	Environment();
 	// Accessor
 	bool get_game_on();
-	Player Environment::get_current_player();
+	Player get_current_player();
+	Player get_current_opponent();
 	vector<Player> Environment::get_players();
 	vector<vector<Card>> getField();
 	void putCardInPlace(Card card, int index);
@@ -24,6 +25,7 @@ public:
 	// Other Functions
 	void change_turn();
 	void end_game();	// Ends game by setting game_on as false
+
 
 private:
 	int number_of_players;

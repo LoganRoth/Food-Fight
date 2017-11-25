@@ -162,5 +162,11 @@
     <Image Include="resources\images\Splashscreen.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="..\..\..\..\..\Desktop\splash_screen.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\splash_screen.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

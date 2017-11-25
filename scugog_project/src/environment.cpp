@@ -62,3 +62,8 @@ void Environment::end_game() {
 vector<vector<Card>> Environment::getField() {
 	return field;
 }
+
+Player Environment::get_current_opponent() {
+	int opponent = (current_player + 1) % 2;
+	return players[opponent];
+}
