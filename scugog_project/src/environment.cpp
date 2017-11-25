@@ -42,6 +42,10 @@ vector<Player> Environment::get_players() {
 	return players;
 }
 
+void Environment::putCardInPlace(Card card, int index) {
+	field[current_player][index] = card;
+}
+
 // Other Functions
 void Environment::change_turn() {
 	if (current_player == 0) {

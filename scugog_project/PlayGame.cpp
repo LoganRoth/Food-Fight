@@ -74,10 +74,10 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 	f1 = { dflt ,dflt ,dflt ,dflt ,dflt };
 	f2 = { dflt ,dflt ,dflt ,dflt ,dflt };
 	vector<sf::Sprite> temp;
-	bool h1Full[7] = {true, true, true, true, true, true, false};
-	bool h2Full[7] = {true, true, true, true, true, true, false};
-	bool f1Full[5] = {false, false, false, false, false};
-	bool f2Full[5] = {false, false, false, false, false};
+	h1Full = {true, true, true, true, true, true, false};
+	h2Full = {true, true, true, true, true, true, false};
+	f1Full = {false, false, false, false, false};
+	f2Full = {false, false, false, false, false};
 	int player1Click = 1;
 	int player2Click = 2;
 	int handCard = 3;
@@ -98,6 +98,8 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 	// that you can click them to move cards and attack
 	while (gameover)
 	{
+		int toReset1;
+		int toReset2;
 		bool player_turn_on = true;
 		bool start = true; // used to indicate if it is the start of a players turn
 		cPlayer = env.get_current_player();
@@ -147,7 +149,9 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 						// first "card click event", i.e. who to move to field or attack with
 						for (int i = 0; i < size(hand); i++) {
 							if (inCard(hand[i], horz, vert) && h1Full[i]) {
-								clicks.push_back(hand[0]);
+								clicks.push_back(hand[i]);
+								hand[i].setColor(sf::Color(0, 255, 0));
+								toReset1 = i;
 								cardClicks.push_back(cPlayer.get_hand()[i]);
 								cardType = handCard;
 							}
@@ -155,6 +159,8 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 						for (int i = 0; i < size(f1);i++) {
 							if (inCard(f1[i], horz, vert) && f1Full[i]) {
 								clicks.push_back(f1[i]);
+								f1[i].setColor(sf::Color(0, 255, 0));
+								toReset1 = i;
 								if (cPlayer.get_player_number() == 0) {
 									cardClicks.push_back(env.getField()[0][i]);
 								}
@@ -167,10 +173,12 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 					}
 					else if (size(clicks) == 1) {
 						// this is the second "card click events" i.e. who to attack
-						if (cardType == 1) {
+						if (cardType == 3) { //hand card 
 							for (int i = 0; i < size(f1); i++) {
 								if (inCard(f1[i], horz, vert) && !f1Full[i]) {
 									secondClickType = fieldCard;
+									f1[i].setColor(sf::Color(0, 255, 0));
+									toReset2 = i;
 								}
 							}
 						}
@@ -178,6 +186,8 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 							for (int i = 0; i < size(f2); i++) {
 								if (inCard(f2[i],horz,vert) && f2Full[i]){
 									clicks.push_back(f2[i]);
+									f2[i].setColor(sf::Color(255, 0, 0));
+									toReset2 = i;
 									if (cPlayer.get_player_number() == 0) {
 										cardClicks.push_back(env.getField()[0][i]);
 									}
@@ -201,6 +211,11 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 						}
 						//handle the cards clicked
 						handleClicks(clicks, cardClicks);
+						//reset the colour of any clicked sprites
+						hand[toReset1].setColor(sf::Color(255, 255, 255));
+						f1[toReset1].setColor(sf::Color(255, 255, 255));
+						f1[toReset2].setColor(sf::Color(255, 255, 255));
+						f2[toReset2].setColor(sf::Color(255, 255, 255));
 						// and the end of this need to clear the "clicks" vector
 						clicks.clear();
 						cardClicks.clear();

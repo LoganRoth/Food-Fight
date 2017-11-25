@@ -24,6 +24,10 @@ private:
 	vector<sf::Sprite> hand;
 	vector<sf::Sprite> f1;
 	vector<sf::Sprite> f2;
+	vector<bool> h1Full;
+	vector<bool> h2Full;
+	vector<bool> f1Full;
+	vector<bool> f2Full;
 	int cardType;
 	int secondClickType;
 	//Environment env;

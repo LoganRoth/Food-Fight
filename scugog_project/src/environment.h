@@ -19,6 +19,7 @@ public:
 	Player Environment::get_current_player();
 	vector<Player> Environment::get_players();
 	vector<vector<Card>> getField();
+	void putCardInPlace(Card card, int index);
 
 	// Other Functions
 	void change_turn();
