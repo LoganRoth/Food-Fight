@@ -82,16 +82,16 @@ pair<sf::Sprite, sf::Text> Card::draw_card(int position_x, int position_y) {
 	card.setPosition(sf::Vector2f(position_x, position_y));
 
 	// Texts
-	if (!font.loadFromFile("../scugog_project/resources/fonts/sansation.ttf")) {
+	if (!font.loadFromFile("../scugog_project/resources/fonts/ARLRDBD.ttf")) {
 	}
 
 	sf::Text defense_text;
 	defense_text.setFont(font);
 	defense_text.setString(to_string(defense));
-	defense_text.setCharacterSize(50);
+	defense_text.setCharacterSize(24);
 	defense_text.setFillColor(sf::Color::Black);
 	defense_text.setStyle(sf::Text::Style::Italic);
-	defense_text.setPosition(sf::Vector2f(position_x, position_y));
+	defense_text.setPosition(sf::Vector2f(position_x + 34, position_y + 122));
 
 	pair <sf::Sprite, sf::Text> sprites = { card, defense_text };
 	return sprites;

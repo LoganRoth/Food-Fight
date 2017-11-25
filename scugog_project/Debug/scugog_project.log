@@ -1,15 +1,1 @@
-﻿  PlayGame.cpp
-c:\users\grace\documents\source\repos\scugogrepository\scugog_project\playgame.cpp(109): warning C4018: '<': signed/unsigned mismatch
-c:\users\grace\documents\source\repos\scugogrepository\scugog_project\playgame.cpp(131): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\grace\documents\source\repos\scugogrepository\scugog_project\playgame.cpp(135): warning C4018: '<': signed/unsigned mismatch
-c:\users\grace\documents\source\repos\scugogrepository\scugog_project\playgame.cpp(136): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\grace\documents\source\repos\scugogrepository\scugog_project\playgame.cpp(137): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\grace\documents\source\repos\scugogrepository\scugog_project\playgame.cpp(162): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-c:\users\grace\documents\source\repos\scugogrepository\scugog_project\playgame.cpp(163): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-c:\users\grace\documents\source\repos\scugogrepository\scugog_project\playgame.cpp(170): warning C4018: '<': signed/unsigned mismatch
-c:\users\grace\documents\source\repos\scugogrepository\scugog_project\playgame.cpp(180): warning C4018: '<': signed/unsigned mismatch
-c:\users\grace\documents\source\repos\scugogrepository\scugog_project\playgame.cpp(199): warning C4018: '<': signed/unsigned mismatch
-c:\users\grace\documents\source\repos\scugogrepository\scugog_project\playgame.cpp(209): warning C4018: '<': signed/unsigned mismatch
-c:\users\grace\documents\source\repos\scugogrepository\scugog_project\playgame.cpp(350): warning C4244: 'argument': conversion from 'const float' to 'int', possible loss of data
-c:\users\grace\documents\source\repos\scugogrepository\scugog_project\playgame.cpp(340): warning C4930: 'Card dfltCrd(void)': prototyped function not called (was a variable definition intended?)
-  scugog_project.vcxproj -> C:\Users\Grace\Documents\Source\Repos\scugogrepository\scugog_project\Debug\scugog_project.exe
+﻿  scugog_project.vcxproj -> C:\Users\Grace\Documents\Source\Repos\scugogrepository\scugog_project\Debug\scugog_project.exe
