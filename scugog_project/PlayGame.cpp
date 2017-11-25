@@ -98,8 +98,8 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 	// that you can click them to move cards and attack
 	while (gameover)
 	{
-		int toReset1;
-		int toReset2;
+		int toReset1(0);
+		int toReset2(0);
 		bool player_turn_on = true;
 		bool start = true; // used to indicate if it is the start of a players turn
 		cPlayer = env.get_current_player();
@@ -296,8 +296,20 @@ void PlayGame::handleClicks(vector<sf::Sprite> clicks, vector<Card> cardClicks) 
 	// 3 = hand card
 	// 4 = field card
 	// -1 = no click
-	
 
+	int toAttack(0);
+
+	//get amount to attack with
+	if (cardType == 4) {
+		toAttack = cardClicks[0].get_attack();
+	}
+
+	//if chose to attack player 1
+	if (secondClickType == 1 || secondClickType == 2) {
+		int currenthp = env.get_current_opponent().get_hp();
+		cout << "Current " << currenthp << " Attack " << toAttack << endl;
+		env.get_current_opponent().set_hp(currenthp - toAttack);
+	}
 	
 }
 

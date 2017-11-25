@@ -1,2 +1,12 @@
-﻿  SplashScreen.cpp
-  scugog_project.vcxproj -> C:\Users\Ryan\Documents\Source\Repos\scugogrepository\scugog_project\Debug\scugog_project.exe
+﻿  PlayGame.cpp
+c:\users\grace\documents\source\repos\scugogrepository\scugog_project\playgame.cpp(115): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\grace\documents\source\repos\scugogrepository\scugog_project\playgame.cpp(118): warning C4018: '<': signed/unsigned mismatch
+c:\users\grace\documents\source\repos\scugogrepository\scugog_project\playgame.cpp(119): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\grace\documents\source\repos\scugogrepository\scugog_project\playgame.cpp(120): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\grace\documents\source\repos\scugogrepository\scugog_project\playgame.cpp(142): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\grace\documents\source\repos\scugogrepository\scugog_project\playgame.cpp(143): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\grace\documents\source\repos\scugogrepository\scugog_project\playgame.cpp(150): warning C4018: '<': signed/unsigned mismatch
+c:\users\grace\documents\source\repos\scugogrepository\scugog_project\playgame.cpp(159): warning C4018: '<': signed/unsigned mismatch
+c:\users\grace\documents\source\repos\scugogrepository\scugog_project\playgame.cpp(177): warning C4018: '<': signed/unsigned mismatch
+c:\users\grace\documents\source\repos\scugogrepository\scugog_project\playgame.cpp(186): warning C4018: '<': signed/unsigned mismatch
+  scugog_project.vcxproj -> C:\Users\Grace\Documents\Source\Repos\scugogrepository\scugog_project\Debug\scugog_project.exe
