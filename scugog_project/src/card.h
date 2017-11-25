@@ -1,4 +1,5 @@
 #pragma once
+#include "../stdafx.h"
 #include <stdlib.h>
 #include <iostream>
 #include <exception>
@@ -29,6 +30,9 @@ public:
 	void set_power(int);
 	void set_cost(int);
 
+	// Draw Card Function
+	pair<sf::Sprite, sf::Text> draw_card(int position_x, int positiion_y);
+
 private:
 	int id;
 	int attack;
@@ -39,6 +43,9 @@ private:
 	string image;
 	string description;
 	string name;
+	sf::Texture picture, card;
+	sf::Font font;
+	sf::Text attack_text, defense_text, power_text, cost_text, description_text, name_text;
 
 	// Stream Overloading
 	friend ostream& operator<< (ostream& out, Card& card);

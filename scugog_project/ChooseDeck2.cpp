@@ -8,16 +8,16 @@ int ChooseDeck2::Show(sf::RenderWindow & renderWindow)
     
     sf::Texture texture, card;
     sf::Font font;
-    if (!font.loadFromFile("../scugog_project_frontend/resources/fonts/sansation.ttf")) {
+    if (!font.loadFromFile("../scugog_project/resources/fonts/sansation.ttf")) {
         return -1;
     }
     
-    if(texture.loadFromFile("../scugog_project_frontend/resources/images/bg.jpg") != true)
+    if(texture.loadFromFile("../scugog_project/resources/images/bg.jpg") != true)
     {
         return -1;
     }
     
-    if(card.loadFromFile("../scugog_project_frontend/resources/images/cardc.png") != true)
+    if(card.loadFromFile("../scugog_project/resources/images/cardc.png") != true)
     {
         return -1;
     }

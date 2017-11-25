@@ -1,9 +1,9 @@
 #pragma once
+#include "../stdafx.h"
 #include <stdlib.h>
 #include <iostream>
 
 #include <..\scugog_project\src\card.h>
-
 
 using namespace std;
 
@@ -24,7 +24,9 @@ Card::Card(int id_value, int attack_value, int defense_value, int power_value, i
 	image = image_value;
 	description = description_value;
 	name = name_value;
-	//  I think we should add the sprites for the cards in here
+
+	sf::Texture picture;
+	sf::Font font;
 }
 
 
@@ -70,6 +72,30 @@ void Card::set_power(int power_value) {
 }
 void Card::set_cost(int cost_value) {
 	cost = cost_value;
+}
+
+// Draw Card Function
+pair<sf::Sprite, sf::Text> Card::draw_card(int position_x, int position_y) {
+	if (!picture.loadFromFile("../scugog_project/resources/images/card_pictures/" + image)) {
+	}
+	sf::Sprite card(picture);
+	card.setPosition(sf::Vector2f(position_x, position_y));
+
+	// Texts
+	if (!font.loadFromFile("../scugog_project/resources/fonts/sansation.ttf")) {
+	}
+
+	sf::Text defense_text;
+	defense_text.setFont(font);
+	defense_text.setString(to_string(defense));
+	defense_text.setCharacterSize(50);
+	defense_text.setFillColor(sf::Color::Black);
+	defense_text.setStyle(sf::Text::Style::Italic);
+	defense_text.setPosition(sf::Vector2f(position_x, position_y));
+
+	pair <sf::Sprite, sf::Text> sprites = { card, defense_text };
+	return sprites;
+
 }
 
 // Stream Overloading

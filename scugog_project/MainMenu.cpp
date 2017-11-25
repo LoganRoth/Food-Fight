@@ -10,7 +10,7 @@ MainMenu::MenuResult MainMenu::Show(sf::RenderWindow& window)
 	sf::Vector2u WindowSize;
 	WindowSize = window.getSize();
     sf::Texture texture;
-    texture.loadFromFile("../scugog_project_frontend/resources/images/mm.jpg");
+    texture.loadFromFile("../scugog_project/resources/images/mm.jpg");
     sf::Sprite sprite(texture);
 	sf::Vector2u SpriteSize;
    
