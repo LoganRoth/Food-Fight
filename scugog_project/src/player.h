@@ -22,6 +22,7 @@ public:
 	int get_hp();
 	vector<Card> get_hand();
 	int Player::get_player_number();
+	int get_current_resources();
 
 	// Set Functions
 	void set_hp(int hitpoints);

@@ -43,6 +43,9 @@ int Player::get_hp() {
 int Player::get_player_number() {
 	return player_number;
 }
+int Player::get_current_resources() {
+	return current_resources;
+}
 
 // Set Functions
 void Player::set_hp(int hp_value) {
@@ -54,7 +57,7 @@ void Player::set_current_resources(int resources) {
 
 // Other Functions
 void Player::draw_card() {
-	int size_of_deck = current_deck.get_size()-1;
+	int size_of_deck = current_deck.get_size() - 1;
 	random_device rd;
 	mt19937 eng(rd());
 	uniform_int_distribution<> distr(0, size_of_deck);
@@ -67,3 +70,4 @@ void Player::draw_card() {
 void Player::add_card_to_hand(Card card_value) {
 	hand.push_back(card_value);
 }
+

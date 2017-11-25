@@ -10,7 +10,7 @@ PlayGame::PlayGame(Environment enviro) {
 	secondClickType = -1;
 }
 
-void PlayGame::Play(sf::RenderWindow & renderWindow) 
+void PlayGame::Play(sf::RenderWindow & renderWindow)
 {
 	sf::Texture texture, card;
 	sf::Font font;
@@ -30,6 +30,10 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 	}
 	// default 
 	sf::Sprite dflt(card);
+	sf::Text dText;
+	dText.setString("");
+	pair <sf::Sprite, sf::Text> dfltPair;
+	dfltPair = make_pair(dflt, dText);
 
 	vector<Player> players = env.get_players();
 	bool gameover = env.get_game_on();
@@ -43,12 +47,20 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 	endTurn.setStyle(sf::Text::Style::Italic);
 	endTurn.setPosition(sf::Vector2f(900, 25));
 
+	sf::Text error;
+	endTurn.setFont(font);
+	endTurn.setString("");
+	endTurn.setCharacterSize(50);
+	endTurn.setFillColor(sf::Color::Blue);
+	endTurn.setStyle(sf::Text::Style::Italic);
+	endTurn.setPosition(sf::Vector2f(200, 450));
+
 	sf::Text p1Label;
 	p1Label.setFont(font);
 	p1Label.setCharacterSize(50);
 	p1Label.setFillColor(sf::Color::Blue);
 	p1Label.setStyle(sf::Text::Style::Italic);
-	
+
 
 	sf::Text p2Label;
 	p2Label.setFont(font);
@@ -63,25 +75,27 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 	switchText.setFillColor(sf::Color::Blue);
 	switchText.setStyle(sf::Text::Style::Italic);
 	switchText.setPosition(sf::Vector2f(150, 300));
-	
+
 
 	sf::Sprite sprite(texture);
 
 	sf::Event event;
-	
 
-	hand = { dflt, dflt ,dflt ,dflt ,dflt ,dflt ,dflt };
-	f1 = { dflt ,dflt ,dflt ,dflt ,dflt };
-	f2 = { dflt ,dflt ,dflt ,dflt ,dflt };
-	vector<sf::Sprite> temp;
-	h1Full = {true, true, true, true, true, true, false};
-	h2Full = {true, true, true, true, true, true, false};
-	f1Full = {false, false, false, false, false};
-	f2Full = {false, false, false, false, false};
+
+	hand = { dfltPair, dfltPair , dfltPair , dfltPair , dfltPair , dfltPair , dfltPair };
+	f1 = { dfltPair , dfltPair , dfltPair , dfltPair , dfltPair };
+	f2 = { dfltPair , dfltPair , dfltPair , dfltPair , dfltPair };
+	vector<pair<sf::Sprite, sf::Text>> temp;
+	h1Full = { true, true, true, true, true, true, false };
+	h2Full = { true, true, true, true, true, true, false };
+	f1Full = { false, false, false, false, false };
+	f2Full = { false, false, false, false, false };
 	int player1Click = 1;
 	int player2Click = 2;
 	int handCard = 3;
 	int fieldCard = 4;
+	int indexOne = -1;
+	int indexTwo = -1;
 
 	vector<sf::Sprite> clicks;
 	vector<Card> cardClicks;
@@ -90,21 +104,23 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 	vector<Card> field2;
 	Player cPlayer;
 
-	// draw five cards for each hand
+	// draw 5 cards for each hand
 	// and put them onto the hand
+	for (int i = 0; i < size(env.get_current_player().get_hand()); i++) {
 
+	}
 	// essentially idea is to place cards as sprites
 	// even if they aren't a game card and then use that so
 	// that you can click them to move cards and attack
 	while (gameover)
 	{
-		int toReset1(0);
-		int toReset2(0);
+		int toReset1 = 0;
+		int toReset2 = 0;
 		bool player_turn_on = true;
 		bool start = true; // used to indicate if it is the start of a players turn
 		cPlayer = env.get_current_player();
 		while (player_turn_on)
-		{	
+		{
 			// intialize hand and field sprites as neccessary depending on who is playing
 			if (start) {
 				// draw cards at start of turn, how many?
@@ -112,14 +128,17 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 			}
 			renderWindow.draw(sprite);
 			for (int i = 0; i < 7 /*size(player_turn.get_hand())*/; i++) {
-				hand[i].setPosition(sf::Vector2f(300 + 200 * i, 700));
-				renderWindow.draw(hand[i]);
+				hand[i].first.setPosition(sf::Vector2f(300 + 200 * i, 700));
+				renderWindow.draw(hand[i].first);
+				renderWindow.draw(hand[i].second);
 			}
 			for (int i = 0; i < size(f1); i++) {
-				f1[i].setPosition(sf::Vector2f(500 + 200 * i, 400));
-				f2[i].setPosition(sf::Vector2f(500 + 200 * i, 100));
-				renderWindow.draw(f1[i]);
-				renderWindow.draw(f2[i]);
+				f1[i].first.setPosition(sf::Vector2f(500 + 200 * i, 400));
+				f2[i].first.setPosition(sf::Vector2f(500 + 200 * i, 100));
+				renderWindow.draw(f1[i].first);
+				renderWindow.draw(f2[i].first);
+				renderWindow.draw(f1[i].second);
+				renderWindow.draw(f2[i].second);
 			}
 			renderWindow.draw(endTurn);
 			p1Label.setString("Player 1\n" + to_string(players[0].get_hp()));
@@ -134,6 +153,7 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 			}
 			renderWindow.draw(p1Label);
 			renderWindow.draw(p2Label);
+			renderWindow.draw(error);
 			renderWindow.display();
 			while (renderWindow.pollEvent(event))
 			{
@@ -148,18 +168,19 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 					if (clicks.empty()) {
 						// first "card click event", i.e. who to move to field or attack with
 						for (int i = 0; i < size(hand); i++) {
-							if (inCard(hand[i], horz, vert) && h1Full[i]) {
-								clicks.push_back(hand[i]);
-								hand[i].setColor(sf::Color(0, 255, 0));
+							if (inCard(hand[i].first, horz, vert) && h1Full[i]) {
+								clicks.push_back(hand[i].first);
+								hand[i].first.setColor(sf::Color(0, 255, 0));
 								toReset1 = i;
 								cardClicks.push_back(cPlayer.get_hand()[i]);
 								cardType = handCard;
+								indexOne = i;
 							}
 						}
-						for (int i = 0; i < size(f1);i++) {
-							if (inCard(f1[i], horz, vert) && f1Full[i]) {
-								clicks.push_back(f1[i]);
-								f1[i].setColor(sf::Color(0, 255, 0));
+						for (int i = 0; i < size(f1); i++) {
+							if (inCard(f1[i].first, horz, vert) && f1Full[i]) {
+								clicks.push_back(f1[i].first);
+								f1[i].first.setColor(sf::Color(0, 255, 0));
 								toReset1 = i;
 								if (cPlayer.get_player_number() == 0) {
 									cardClicks.push_back(env.getField()[0][i]);
@@ -168,6 +189,7 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 									cardClicks.push_back(env.getField()[1][i]);
 								}
 								cardType = fieldCard;
+								indexOne = i;
 							}
 						}
 					}
@@ -175,18 +197,19 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 						// this is the second "card click events" i.e. who to attack
 						if (cardType == 3) { //hand card 
 							for (int i = 0; i < size(f1); i++) {
-								if (inCard(f1[i], horz, vert) && !f1Full[i]) {
+								if (inCard(f1[i].first, horz, vert) && !f1Full[i]) {
 									secondClickType = fieldCard;
-									f1[i].setColor(sf::Color(0, 255, 0));
+									f1[i].first.setColor(sf::Color(0, 255, 0));
 									toReset2 = i;
+									indexTwo = i;
 								}
 							}
 						}
 						else {
 							for (int i = 0; i < size(f2); i++) {
-								if (inCard(f2[i],horz,vert) && f2Full[i]){
-									clicks.push_back(f2[i]);
-									f2[i].setColor(sf::Color(255, 0, 0));
+								if (inCard(f2[i].first, horz, vert) && f2Full[i]) {
+									clicks.push_back(f2[i].first);
+									f2[i].first.setColor(sf::Color(255, 0, 0));
 									toReset2 = i;
 									if (cPlayer.get_player_number() == 0) {
 										cardClicks.push_back(env.getField()[0][i]);
@@ -195,8 +218,9 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 										cardClicks.push_back(env.getField()[1][i]);
 									}
 									secondClickType = fieldCard;
+									indexTwo = i;
 								}
-								
+
 							}
 							if (cPlayer.get_player_number() == 0) {
 								if (inText(p2Label, horz, vert)) {
@@ -210,27 +234,30 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 							}
 						}
 						//handle the cards clicked
-						handleClicks(clicks, cardClicks);
+						int worked = handleClicks(clicks, cardClicks, indexOne, indexTwo);
+						error.setString(handleError(worked));
 						//reset the colour of any clicked sprites
-						hand[toReset1].setColor(sf::Color(255, 255, 255));
-						f1[toReset1].setColor(sf::Color(255, 255, 255));
-						f1[toReset2].setColor(sf::Color(255, 255, 255));
-						f2[toReset2].setColor(sf::Color(255, 255, 255));
+						hand[toReset1].first.setColor(sf::Color(255, 255, 255));
+						f1[toReset1].first.setColor(sf::Color(255, 255, 255));
+						f1[toReset2].first.setColor(sf::Color(255, 255, 255));
+						f2[toReset2].first.setColor(sf::Color(255, 255, 255));
 						// and the end of this need to clear the "clicks" vector
 						clicks.clear();
 						cardClicks.clear();
 						// and set selectors back to -1 when done
 						cardType = -1;
 						secondClickType = -1;
+						indexOne = -1;
+						indexTwo = -1;
 					}
-					
+
 				}
 
 				if (event.type == sf::Event::Closed) {
 					return;
 				}
 			}
-			start++;
+			start = false;
 		}
 		// intiate waiting screen with switching of player sprites
 		bool switching = true;
@@ -254,7 +281,7 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 		// swap to new hand
 		// TODO: figure out how card sprites are working
 		//for (int i = 0; i < size(hand); i++) {
-			//hand[i] = env.get_current_player().get_hand()[i].;
+		//hand[i] = env.get_current_player().get_hand()[i].;
 		//}
 		if (players[0].get_hp() <= 0 || players[1].get_hp() <= 0) {
 			env.end_game();
@@ -290,29 +317,68 @@ bool PlayGame::inText(sf::Text text, float mpx, float mpy)
 	return false;
 }
 
-void PlayGame::handleClicks(vector<sf::Sprite> clicks, vector<Card> cardClicks) {
+int PlayGame::handleClicks(vector<sf::Sprite> clicks, vector<Card> cardClicks, int indexOne, int indexTwo) {
 	// 1 = player 1
 	// 2 = player 2
 	// 3 = hand card
 	// 4 = field card
-	// -1 = no click
+	// -1 = no clic
+	sf::Texture card;
 
-	int toAttack(0);
-
-	//get amount to attack with
-	if (cardType == 4) {
-		toAttack = cardClicks[0].get_attack();
+	// load images needed
+	if (card.loadFromFile("../scugog_project/resources/images/cardc.png") != true)
+	{
+		return 1;
 	}
+	// default 
+	sf::Sprite dflt(card);
+	sf::Text dText;
+	dText.setString("");
+	pair <sf::Sprite, sf::Text> dfltPair;
+	dfltPair = make_pair(dflt, dText);
 
-	//if chose to attack player 1
-	if (secondClickType == 1 || secondClickType == 2) {
-		int currenthp = env.get_current_opponent().get_hp();
-		cout << "Current " << currenthp << " Attack " << toAttack << endl;
-		env.get_current_opponent().set_hp(currenthp - toAttack);
+	Card dfltCrd();
+	if (secondClickType == -1) {
+		return 0;
 	}
-	
+	else if ((cardType == 3) && (secondClickType == 4)) {
+		if (env.get_current_player().get_player_number() == 0) {
+			if (f1Full[indexTwo] || !h1Full[indexOne]) {
+				return 1;
+			}
+			if (cardClicks[1].get_cost() <= env.get_current_player().get_current_resources()) {
+				pair<sf::Sprite, sf::Text> pair = cardClicks[1].draw_card(f1[indexTwo].first.getPosition().x, f1[indexTwo].first.getPosition().y);
+				f1[indexTwo] = pair;
+				f1Full[indexTwo] = true;
+				hand[indexOne] = dfltPair;
+				h1Full[indexOne] = false;
+			}
+			else {
+				return -1;
+			}
+		}
+		else {
+			if (f1Full[indexTwo] || !h2Full[indexOne]) {
+				return 1;
+			}
+		}
+
+
+	}
+	return 1;
+}
+
+string PlayGame::handleError(int worked) {
+	// -1 = not enough resources
+	// 0 = no second card clicked
+	// 1 = illegal move
+	// 2 =
+	if (worked = -1) {
+
+	}
+	return "test";
 }
 
 //Environment PlayGame::getEnvironment() {
-	//return env;
+//return env;
 //}

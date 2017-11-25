@@ -9,21 +9,18 @@ class PlayGame
 {
 public:
 	Environment env; // may need to make this private and add getters
-	
-	
-
-
 	PlayGame(Environment env);
 	PlayGame();
 	void Play(sf::RenderWindow& window);
 	bool inCard(sf::Sprite crd, float mpx, float mpy);
 	bool inText(sf::Text text, float mpx, float mpy);
-	void handleClicks(vector<sf::Sprite> clicks, vector<Card> cardClicks);
+	int handleClicks(vector<sf::Sprite> clicks, vector<Card> cardClicks, int indexOne, int indexTwo);
+	string handleError(int worked);
 	//Environment getEnvironment();
 private:
-	vector<sf::Sprite> hand;
-	vector<sf::Sprite> f1;
-	vector<sf::Sprite> f2;
+	vector<pair<sf::Sprite, sf::Text>> hand;
+	vector<pair<sf::Sprite, sf::Text>> f1;
+	vector<pair<sf::Sprite, sf::Text>> f2;
 	vector<bool> h1Full;
 	vector<bool> h2Full;
 	vector<bool> f1Full;
