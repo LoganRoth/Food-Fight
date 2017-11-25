@@ -388,15 +388,15 @@ int PlayGame::handleClicks(vector<sf::Sprite> clicks, vector<Card> cardClicks, i
 		}
 		//if you kill the opponent card
 		else if (opponent_defense - toAttack <= 0) {
+			cardClicks[0].set_defense(player_defense - opponent_attack);
 			f2[indexTwo] = dfltPair;
 			f2Full[indexTwo] = false;
-			cardClicks[0].set_defense(player_defense - opponent_attack);
 		}
 		//if you kill your own card
 		else if (player_defense - opponent_attack <= 0) {
+			cardClicks[1].set_defense(opponent_defense - toAttack);
 			f1[indexOne] = dfltPair;
 			f1Full[indexOne] = false;
-			cardClicks[1].set_defense(opponent_defense - toAttack);
 		}
 		//you do damage to both cards
 		else
