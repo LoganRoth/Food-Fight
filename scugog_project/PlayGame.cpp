@@ -286,6 +286,7 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 		if (players[0].get_hp() <= 0 || players[1].get_hp() <= 0) {
 			env.end_game();
 			gameover = env.get_game_on();
+
 		}
 	}
 
@@ -328,7 +329,7 @@ int PlayGame::handleClicks(vector<sf::Sprite> clicks, vector<Card> cardClicks, i
 	// load images needed for default
 	if (card.loadFromFile("../scugog_project/resources/images/cardc.png") != true)
 	{
-		return 1;
+		return -2;
 	}
 	// default 
 	sf::Sprite dflt(card);
@@ -413,14 +414,16 @@ int PlayGame::handleClicks(vector<sf::Sprite> clicks, vector<Card> cardClicks, i
 		env.end_game();
 	}
 
-	return 1;
+	return 3;
 }
 
 string PlayGame::handleError(int worked) {
+	// -2 = no default card
 	// -1 = not enough resources
 	// 0 = no second card clicked
 	// 1 = illegal move
 	// 2 =
+	// 3 = all good
 	if (worked = -1) {
 
 	}
