@@ -70,9 +70,9 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 	sf::Event event;
 	
 
-	vector<sf::Sprite> hand = { dflt, dflt ,dflt ,dflt ,dflt ,dflt ,dflt };
-	vector<sf::Sprite> f1 = { dflt ,dflt ,dflt ,dflt ,dflt };
-	vector<sf::Sprite> f2 = { dflt ,dflt ,dflt ,dflt ,dflt };
+	hand = { dflt, dflt ,dflt ,dflt ,dflt ,dflt ,dflt };
+	f1 = { dflt ,dflt ,dflt ,dflt ,dflt };
+	f2 = { dflt ,dflt ,dflt ,dflt ,dflt };
 	vector<sf::Sprite> temp;
 	bool h1Full[7] = {true, true, true, true, true, true, false};
 	bool h2Full[7] = {true, true, true, true, true, true, false};
@@ -227,6 +227,9 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 				if (event.type == sf::Event::EventType::KeyPressed) {
 					switching = false;
 				}
+				if (event.type == sf::Event::Closed) {
+					return;
+				}
 			}
 		}
 		// swapping fields
@@ -265,7 +268,7 @@ bool PlayGame::inText(sf::Text text, float mpx, float mpy)
 	float cd1L = tsize.left;
 	float cd1R = tsize.left + tsize.width;
 	float cd1T = tsize.top;
-	float cd1B = tsize.top + tsize.height + 20;
+	float cd1B = tsize.top + tsize.height + 70;
 	if ((mpx > cd1L) && (mpx < cd1R) && (mpy > cd1T) && (mpy < cd1B)) {
 		return true;
 	}

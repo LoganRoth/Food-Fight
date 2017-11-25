@@ -9,9 +9,9 @@ class PlayGame
 {
 public:
 	Environment env; // may need to make this private and add getters
-	int cardType;
-	int secondClickType;
 	
+	
+
 
 	PlayGame(Environment env);
 	PlayGame();
@@ -20,6 +20,11 @@ public:
 	bool inText(sf::Text text, float mpx, float mpy);
 	void handleClicks(vector<sf::Sprite> clicks, vector<Card> cardClicks);
 	//Environment getEnvironment();
-//private:
+private:
+	vector<sf::Sprite> hand;
+	vector<sf::Sprite> f1;
+	vector<sf::Sprite> f2;
+	int cardType;
+	int secondClickType;
 	//Environment env;
 };
