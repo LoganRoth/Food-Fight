@@ -325,16 +325,10 @@ int PlayGame::handleClicks(vector<sf::Sprite> clicks, vector<Card> cardClicks, i
 	// -1 = no clic
 	sf::Texture card;
 
-	int toAttack(0);
-	//get amount to attack with
-	if (cardType == 4) {
-		toAttack = cardClicks[0].get_attack();
-	}
-
 	// load images needed for default
 	if (card.loadFromFile("../scugog_project/resources/images/cardc.png") != true)
 	{
-		return;
+		return 1;
 	}
 	// default 
 	sf::Sprite dflt(card);
@@ -379,22 +373,24 @@ int PlayGame::handleClicks(vector<sf::Sprite> clicks, vector<Card> cardClicks, i
 		int opponent_defense = cardClicks[1].get_defense();
 		int opponent_attack = cardClicks[1].get_attack();
 		int player_defense = cardClicks[0].get_defense();
+		int player_attack = cardClicks[0].get_attack();
+
 		//if both cards kill each other
-		if ((opponent_defense - toAttack <= 0) && (player_defense - opponent_attack <= 0)) {
+		if ((opponent_defense - player_attack <= 0) && (player_defense - opponent_attack <= 0)) {
 			f2[indexTwo] = dfltPair;
 			f2Full[indexTwo] = false;
 			f1[indexOne] = dfltPair;
 			f1Full[indexOne] = false;
 		}
 		//if you kill the opponent card
-		else if (opponent_defense - toAttack <= 0) {
+		else if (opponent_defense - player_attack <= 0) {
 			cardClicks[0].set_defense(player_defense - opponent_attack);
 			f2[indexTwo] = dfltPair;
 			f2Full[indexTwo] = false;
 		}
 		//if you kill your own card
 		else if (player_defense - opponent_attack <= 0) {
-			cardClicks[1].set_defense(opponent_defense - toAttack);
+			cardClicks[1].set_defense(opponent_defense - player_attack);
 			f1[indexOne] = dfltPair;
 			f1Full[indexOne] = false;
 		}
@@ -402,11 +398,12 @@ int PlayGame::handleClicks(vector<sf::Sprite> clicks, vector<Card> cardClicks, i
 		else
 		{
 			cardClicks[0].set_defense(player_defense - opponent_attack);
-			cardClicks[1].set_defense(opponent_defense - toAttack);
+			cardClicks[1].set_defense(opponent_defense - player_attack);
 		}
 	}
 	//if you attack the player
 	else if ((secondClickType == 1) || (secondClickType == 2)) {
+		int toAttack = cardClicks[0].get_power();
 		int currenthp = env.get_current_opponent().get_hp();
 		env.get_current_opponent().set_hp(currenthp - toAttack);
 	}
