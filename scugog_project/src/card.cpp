@@ -77,6 +77,7 @@ void Card::set_cost(int cost_value) {
 // Draw Card Function
 pair<sf::Sprite, sf::Text> Card::draw_card(int position_x, int position_y) {
 	if (!picture.loadFromFile("../scugog_project/resources/images/card_pictures/" + image)) {
+		cout << "error loading file" << endl;
 	}
 	sf::Sprite card(picture);
 	card.setPosition(sf::Vector2f(position_x, position_y));
@@ -91,7 +92,7 @@ pair<sf::Sprite, sf::Text> Card::draw_card(int position_x, int position_y) {
 	defense_text.setCharacterSize(24);
 	defense_text.setFillColor(sf::Color::Black);
 	defense_text.setStyle(sf::Text::Style::Italic);
-	defense_text.setPosition(sf::Vector2f(position_x + 34, position_y + 122));
+	defense_text.setPosition(sf::Vector2f(position_x + 30, position_y + 122));
 
 	pair <sf::Sprite, sf::Text> sprites = { card, defense_text };
 	return sprites;

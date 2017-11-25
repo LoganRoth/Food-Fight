@@ -173,6 +173,7 @@
     <None Include="scugog_project.aps" />
   </ItemGroup>
   <ItemGroup>
+    <Font Include="resources\fonts\ARLRDBD.TTF" />
     <Font Include="resources\fonts\sansation.ttf" />
   </ItemGroup>
   <ItemGroup>
@@ -180,6 +181,27 @@
     <Image Include="resources\images\bg.jpg" />
     <Image Include="resources\images\black.png" />
     <Image Include="resources\images\cardc.png" />
+    <Image Include="resources\images\card_pictures\apple.png" />
+    <Image Include="resources\images\card_pictures\beet.png" />
+    <Image Include="resources\images\card_pictures\broccoli.png" />
+    <Image Include="resources\images\card_pictures\brusselsprout.png" />
+    <Image Include="resources\images\card_pictures\cabbage.png" />
+    <Image Include="resources\images\card_pictures\carrot.png" />
+    <Image Include="resources\images\card_pictures\cauliflower.png" />
+    <Image Include="resources\images\card_pictures\corn.png" />
+    <Image Include="resources\images\card_pictures\kale.png" />
+    <Image Include="resources\images\card_pictures\onion.png" />
+    <Image Include="resources\images\card_pictures\orange.png" />
+    <Image Include="resources\images\card_pictures\peach.png" />
+    <Image Include="resources\images\card_pictures\pear.png" />
+    <Image Include="resources\images\card_pictures\pepper.png" />
+    <Image Include="resources\images\card_pictures\pineapple.png" />
+    <Image Include="resources\images\card_pictures\pomegranate.png" />
+    <Image Include="resources\images\card_pictures\potato.png" />
+    <Image Include="resources\images\card_pictures\pumpkin.png" />
+    <Image Include="resources\images\card_pictures\radish.png" />
+    <Image Include="resources\images\card_pictures\spinach.png" />
+    <Image Include="resources\images\card_pictures\turnip.png" />
     <Image Include="resources\images\carrot.png" />
     <Image Include="resources\images\cute_image.jpg" />
     <Image Include="resources\images\farm.jpg" />
@@ -188,6 +210,7 @@
     <Image Include="resources\images\play.jpg" />
     <Image Include="resources\images\Splashscreen.png" />
     <Image Include="resources\images\splash_screen.jpg" />
+    <Image Include="resources\images\splash_screen.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

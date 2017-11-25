@@ -104,11 +104,6 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 	vector<Card> field2;
 	Player cPlayer;
 
-	// draw 5 cards for each hand
-	// and put them onto the hand
-	for (int i = 0; i < size(env.get_current_player().get_hand()); i++) {
-
-	}
 	// essentially idea is to place cards as sprites
 	// even if they aren't a game card and then use that so
 	// that you can click them to move cards and attack
@@ -127,8 +122,11 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 				start = false;
 			}
 			renderWindow.draw(sprite);
-			for (int i = 0; i < 7 /*size(player_turn.get_hand())*/; i++) {
-				hand[i].first.setPosition(sf::Vector2f(300 + 200 * i, 700));
+			for (int i = 0; i < size(player_turn.get_hand()); i++) {
+				Card card_from_hand = env.get_current_player().get_hand()[i];
+				pair <sf::Sprite, sf::Text> card_graphic_pair = card_from_hand.draw_card(300 + 200 * i, 700);
+				hand[i] = card_graphic_pair;
+				//cout << to_string(stuff.first.getPosition().x) << to_string(stuff.first.getPosition().y) << endl;
 				renderWindow.draw(hand[i].first);
 				renderWindow.draw(hand[i].second);
 			}

@@ -130,6 +130,7 @@
   </ItemGroup>
   <ItemGroup>
     <Font Include="resources\fonts\sansation.ttf" />
+    <Font Include="resources\fonts\ARLRDBD.TTF" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\images\bg.jpg">
@@ -166,6 +167,72 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="resources\images\splash_screen.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\splash_screen.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\card_pictures\apple.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\card_pictures\beet.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\card_pictures\broccoli.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\card_pictures\brusselsprout.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\card_pictures\cabbage.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\card_pictures\carrot.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\card_pictures\cauliflower.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\card_pictures\corn.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\card_pictures\kale.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\card_pictures\onion.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\card_pictures\orange.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\card_pictures\peach.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\card_pictures\pear.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\card_pictures\pepper.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\card_pictures\pineapple.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\card_pictures\pomegranate.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\card_pictures\potato.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\card_pictures\pumpkin.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\card_pictures\radish.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\card_pictures\spinach.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\card_pictures\turnip.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
