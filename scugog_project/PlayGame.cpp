@@ -92,7 +92,7 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 	error.setCharacterSize(30);
 	error.setFillColor(sf::Color::Blue);
 	error.setStyle(sf::Text::Style::Bold);
-	error.setPosition(sf::Vector2f(100, 450));
+	error.setPosition(sf::Vector2f(100, 430));
 
 	sf::Text p1Label;
 	p1Label.setFont(font);
@@ -389,12 +389,6 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 		tempFull = h1Full;
 		h1Full = h2Full;
 		h2Full = tempFull;
-		// swap to new hand
-		// TODO: figure out how card sprites are working
-		//for (int i = 0; i < size(hand); i++) {
-		//hand[i] = env.get_current_player().get_hand()[i].;
-		//}
-		
 	}
 
 }
@@ -532,18 +526,19 @@ int PlayGame::handleClicks(vector<sf::Sprite> clicks, vector<Card> cardClicks, i
 			f2Full[indexTwo] = true;
 		}
 		// making it so nothing happens to you when you attack
-		/*if (cardClicks[0].get_defense() <= 0) {
+		if (opponent_defense >= player_attack) {
 			// you died
 			fields[player_turn][indexOne] = dfltCard;
 			f1[indexOne] = dfltPair;
 			f1Full[indexOne] = false;
+			clickable[indexOne] = true;
 		}
 		else {
 			// you didn't die
 			fields[player_turn][indexOne] = cardClicks[0];
 			f1[indexOne] = fields[player_turn][indexOne].draw_card(0, 0);
 			f1Full[indexOne] = true;
-		}*/
+		}
 		//if both cards kill each other
 		/*if ((opponent_defense - player_attack <= 0) && (player_defense - opponent_attack <= 0)) {
 			cout << "both dead" << endl;
