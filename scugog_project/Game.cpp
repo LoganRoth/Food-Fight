@@ -18,12 +18,15 @@
 #include "LoadingScreen.h"
 #include "ErrorScreen.h"
 
+
+// The city is encroaching, stand your ground, redownload our game (you are missing files)
 void Game::Start(void)
 {
     if(_gameState != Uninitialized)
         return;
     
-    _mainWindow.create(sf::VideoMode(1920,1080,64),"The Game", sf::Style::Titlebar | sf::Style::Close);
+    _mainWindow.create(sf::VideoMode(1920,1080,64),"Food Fight", sf::Style::Titlebar | sf::Style::Close);
+	_mainWindow.setPosition(sf::Vector2i(0, 0));
     _gameState= Game::ShowingSplash;
 
 	GameLoop();
@@ -70,8 +73,20 @@ void Game::GameLoop()
 			}
 			case Game::ShowingInstructions:
 			{
-				ShowInstructions();
-				break;
+				int instruction_screen_return = ShowInstructions();
+				if (instruction_screen_return == -2) {
+					_gameState = Game::Exiting;
+					break;
+				}
+				else if (instruction_screen_return == -1) {
+					ShowErrorScreen();
+					_gameState = Game::Exiting;
+					break;
+				}
+				else if (instruction_screen_return == 0) {
+					_gameState = Game::ShowingMenu;
+					break;
+				}
 			}
 			case Game::ShowingCD1:
 			{
@@ -151,11 +166,11 @@ void Game::ShowMenu()
 }
 
 
-void Game::ShowInstructions()
+int Game::ShowInstructions()
 {
     Instructions instr;
-    instr.Show(_mainWindow);
-    _gameState = Game::ShowingMenu;
+    int instructions_screen_return = instr.Show(_mainWindow);
+	return instructions_screen_return;
 }
 
 int Game::ShowCD1()

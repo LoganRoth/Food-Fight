@@ -29,7 +29,7 @@ private:
     static int ShowSplashScreen();
     static void ShowMenu();
     //static void ChooseDeck();
-    static void ShowInstructions();
+    static int ShowInstructions();
     static int ShowCD1();
     static int ShowCD2();
 	// TODO: Backend Integration gives a "cannot open source file error"

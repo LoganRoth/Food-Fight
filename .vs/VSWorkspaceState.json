@@ -1,8 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\scugog_project"
+    "\\scugog_project\\dll",
+    "\\scugog_project\\resources\\audio",
+    "\\scugog_project\\resources\\fonts",
+    "\\scugog_project\\resources\\images",
+    "\\scugog_project\\src"
   ],
-  "SelectedNode": "\\scugog_project\\scugog_project.sln",
+  "SelectedNode": "\\scugog_project",
   "PreviewInSolutionExplorer": false
 }

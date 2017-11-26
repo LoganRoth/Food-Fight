@@ -145,10 +145,13 @@
     <None Include="sfml-audio-2.dll" />
     <None Include="openal32.dll" />
     <None Include="resources\audio\nice_music.ogg" />
+    <None Include="resources\images\player_one_wins.psd" />
+    <None Include="resources\images\player_two_wins.psd" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="resources\fonts\sansation.ttf" />
     <Font Include="resources\fonts\ARLRDBD.TTF" />
+    <Font Include="resources\fonts\BerlinSansFBDemiBold.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\images\bg.jpg">
@@ -314,6 +317,30 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="resources\images\bg2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\player_one_wins.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\player_two_wins.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\error_loading.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\farmer.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\farmer2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\loading_screen.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\bg3.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\splash_screen_with_click.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
