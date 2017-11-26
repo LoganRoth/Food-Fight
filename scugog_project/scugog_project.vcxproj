@@ -180,6 +180,7 @@
     <Image Include="..\..\..\..\..\Desktop\splash_screen.jpg" />
     <Image Include="..\..\..\..\..\Desktop\splash_screen2.png" />
     <Image Include="resources\images\bg.jpg" />
+    <Image Include="resources\images\bg2.png" />
     <Image Include="resources\images\black.png" />
     <Image Include="resources\images\cardcc.png" />
     <Image Include="resources\images\cardExample.png" />

@@ -14,14 +14,23 @@ PlayGame::PlayGame(Environment enviro) {
 
 void PlayGame::Play(sf::RenderWindow & renderWindow)
 {
-	sf::Texture texture, card, money;
+	sf::Texture texture, card, money, texture2, deck1, deck2;
+	int deck1Index = players[0].get_deck().get_deck_num();
+	int deck2Index = players[1].get_deck().get_deck_num();
+	cout << deck1Index << endl;
+	cout << deck2Index << endl;
 	sf::Font font;
 	// load images needed
 	if (!font.loadFromFile("../scugog_project/resources/fonts/sansation.ttf")) {
 		return;
 	}
 
-	if (texture.loadFromFile("../scugog_project/resources/images/bg.jpg") != true)
+	if (texture.loadFromFile("../scugog_project/resources/images/bg2.png") != true)
+	{
+		return;
+	}
+
+	if (texture2.loadFromFile("../scugog_project/resources/images/bg.jpg") != true)
 	{
 		return;
 	}
@@ -33,6 +42,31 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 	if (money.loadFromFile("../scugog_project/resources/images/money.png") != true)
 	{
 		return;
+	}
+	if (deck1Index == 0) {
+		if (deck1.loadFromFile("../scugog_project/resources/images/hardy_veggies.png") != true)
+		{
+			return;
+		}
+	}
+	else {
+		if (deck1.loadFromFile("../scugog_project/resources/images/sugar_rush_fruits.png") != true)
+		{
+			return;
+		}
+	}
+
+	if (deck2Index == 0) {
+		if (deck2.loadFromFile("../scugog_project/resources/images/hardy_veggies.png") != true)
+		{
+			return;
+		}
+	}
+	else {
+		if (deck2.loadFromFile("../scugog_project/resources/images/sugar_rush_fruits.png") != true)
+		{
+			return;
+		}
 	}
 	// default 
 	Card dfltCard(0, 0, 0, 0, 0, 0, "cardc.png", "", "");
@@ -47,18 +81,18 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 	sf::Text endTurn;
 	endTurn.setFont(font);
 	endTurn.setString("End Turn");
-	endTurn.setCharacterSize(50);
-	endTurn.setFillColor(sf::Color::Blue);
+	endTurn.setCharacterSize(40);
+	endTurn.setFillColor(sf::Color::Black);
 	endTurn.setStyle(sf::Text::Style::Italic);
-	endTurn.setPosition(sf::Vector2f(900, 25));
+	endTurn.setPosition(sf::Vector2f(1680, 355));
 
 	sf::Text error;
 	error.setFont(font);
 	error.setString("");
-	error.setCharacterSize(20);
+	error.setCharacterSize(30);
 	error.setFillColor(sf::Color::Blue);
-	error.setStyle(sf::Text::Style::Italic);
-	error.setPosition(sf::Vector2f(200, 450));
+	error.setStyle(sf::Text::Style::Bold);
+	error.setPosition(sf::Vector2f(100, 450));
 
 	sf::Text p1Label;
 	p1Label.setFont(font);
@@ -75,10 +109,10 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 	sf::Text switchText;
 	switchText.setFont(font);
 	switchText.setString("Click anywhere when next player is ready");
-	switchText.setCharacterSize(100);
+	switchText.setCharacterSize(85);
 	switchText.setFillColor(sf::Color::Blue);
 	switchText.setStyle(sf::Text::Style::Italic);
-	switchText.setPosition(sf::Vector2f(150, 300));
+	switchText.setPosition(sf::Vector2f(150, 350));
 
 	sf::Text moneyText;
 	moneyText.setFont(font);
@@ -89,14 +123,13 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 	sprite_money.setScale(0.15f, 0.15f);
 	sprite_money.setColor(sf::Color::Black);
 
-
-
-
+	sf::Sprite p1Deck(deck1);
+	sf::Sprite p2Deck(deck2);
 
 	sf::Sprite sprite(texture);
-
+	sf::Sprite sprite2(texture2);
+	
 	sf::Event event;
-
 
 	hand = { dfltPair, dfltPair , dfltPair , dfltPair , dfltPair , dfltPair , dfltPair };
 	f1 = { dfltPair , dfltPair , dfltPair , dfltPair , dfltPair };
@@ -148,7 +181,6 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 					}
 				}
 				if (full_deck == false) {
-					cout << "entered loop" << endl;
 					h1Full[tempIndex] = true;
 					players[player_turn].draw_card();
 				}
@@ -192,17 +224,26 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 			p1Label.setString("Player 1\n" + to_string(players[0].get_hp()));
 			p2Label.setString("Player 2\n" + to_string(players[1].get_hp()));
 			if (players[player_turn].get_player_number() == 0) { // p1 at bottom, p2 at top
-				p1Label.setPosition(sf::Vector2f(100, 900));
-				p2Label.setPosition(sf::Vector2f(100, 25));
+				p1Label.setPosition(sf::Vector2f(80, 470));
+				p2Label.setPosition(sf::Vector2f(80, 25));
 			}
 			else {
-				p2Label.setPosition(sf::Vector2f(100, 900));
-				p1Label.setPosition(sf::Vector2f(100, 25));
+				p2Label.setPosition(sf::Vector2f(80, 470));
+				p1Label.setPosition(sf::Vector2f(80, 25));
 			}
 
-			moneyText.setPosition(sf::Vector2f(120, 800));
+			moneyText.setPosition(sf::Vector2f(120, 600));
 			moneyText.setString(to_string(players[player_turn].get_current_resources()));
-			sprite_money.setPosition(sf::Vector2f(50, 800));
+			sprite_money.setPosition(sf::Vector2f(50, 600));
+			if (env.get_current_player().get_player_number() == 0) {
+				p1Deck.setPosition(sf::Vector2f(50, 700));
+				renderWindow.draw(p1Deck);
+			}
+			else {
+				p2Deck.setPosition(sf::Vector2f(50, 700));
+				renderWindow.draw(p2Deck);
+
+			}
 			renderWindow.draw(moneyText);
 			renderWindow.draw(sprite_money);
 			renderWindow.draw(p1Label);
@@ -257,6 +298,12 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 									indexTwo = i;
 								}
 							}
+							//*************************************************************************************************************************************************************************************//
+							if (inGrave(horz, vert)) {
+								secondClickType = 5;
+							}
+							//*************************************************************************************************************************************************************************************//
+
 						}
 						else {
 							for (int i = 0; i < size(f2); i++) {
@@ -269,6 +316,12 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 									indexTwo = i;
 								}
 							}
+							//*************************************************************************************************************************************************************************************//
+							if (inGrave(horz, vert)) {
+								secondClickType = 5;
+							}
+							//*************************************************************************************************************************************************************************************//
+							
 							if (players[player_turn].get_player_number() == 0) {
 								if (inText(p2Label, horz, vert)) {
 									secondClickType = player2Click;
@@ -314,7 +367,7 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 		// intiate waiting screen with switching of player sprites
 		bool switching = true;
 		while (switching) {
-			renderWindow.draw(sprite);
+			renderWindow.draw(sprite2);
 			renderWindow.draw(switchText);
 			renderWindow.display();
 			while (renderWindow.pollEvent(event)) {
@@ -372,11 +425,34 @@ bool PlayGame::inText(sf::Text text, float mpx, float mpy)
 	return false;
 }
 
+//*************************************************************************************************************************************************************************************//
+
+bool PlayGame::inGrave(float mpx, float mpy) {
+	cout << mpx << " " << mpy << endl;
+	if ((mpx < 1838) && (mpx > 1682) && (mpy < 671) && (mpy > 496)) {
+		return true;
+	}
+	return false;
+}
+//*************************************************************************************************************************************************************************************//
+
+
 int PlayGame::handleClicks(vector<sf::Sprite> clicks, vector<Card> cardClicks, int indexOne, int indexTwo) {
+	if (cardType == 4) {
+		if (!clickable[indexOne]) {
+			return 1;
+		}
+	}
+	if (secondClickType == 4) {
+		if (!clickable[indexTwo]) {
+			return 1;
+		}
+	}
 	// 1 = player 1
 	// 2 = player 2
 	// 3 = hand card
 	// 4 = field card
+	// 5 = clicked on grave
 	// -1 = no clic
 	sf::Texture card;
 	// load images needed for default
@@ -406,7 +482,6 @@ int PlayGame::handleClicks(vector<sf::Sprite> clicks, vector<Card> cardClicks, i
 			pair<sf::Sprite, sf::Text> pair = cardClicks[0].draw_card(0, 0);
 			f1[indexTwo] = pair;
 			f1Full[indexTwo] = true;
-			hand[indexOne] = dfltPair;
 			fields[player_turn][indexTwo] = cardClicks[0];
 			for (int i = 0; i < size(hand); i++) {
 				if (h1Full[i] == false) {
@@ -427,6 +502,7 @@ int PlayGame::handleClicks(vector<sf::Sprite> clicks, vector<Card> cardClicks, i
 	//if attacking another card
 	//if attacking another card
 	else if ((cardType == 4) && (secondClickType == 4)) {
+		clickable[indexOne] = false;
 		cout << "attacking card" << endl;
 		//get attack and defense values
 		int opponent_defense = cardClicks[1].get_defense();
@@ -439,7 +515,7 @@ int PlayGame::handleClicks(vector<sf::Sprite> clicks, vector<Card> cardClicks, i
 		cout << "Player Atk " << player_attack << endl;
 		cout << "Opponent Atk " << opponent_attack << endl;
 		cardClicks[1].set_defense(opponent_defense - player_attack);
-		cardClicks[0].set_defense(player_defense - opponent_attack);
+		//cardClicks[0].set_defense(player_defense - opponent_attack);
 
 		cout << "Player Def " << cardClicks[1].get_defense() << endl;
 		cout << "Opponent Def " << cardClicks[0].get_defense() << endl;
@@ -455,7 +531,8 @@ int PlayGame::handleClicks(vector<sf::Sprite> clicks, vector<Card> cardClicks, i
 			f2[indexTwo] = fields[(player_turn + 1) % 2][indexTwo].draw_card(0,0);
 			f2Full[indexTwo] = true;
 		}
-		if (cardClicks[0].get_defense() <= 0) {
+		// making it so nothing happens to you when you attack
+		/*if (cardClicks[0].get_defense() <= 0) {
 			// you died
 			fields[player_turn][indexOne] = dfltCard;
 			f1[indexOne] = dfltPair;
@@ -466,7 +543,7 @@ int PlayGame::handleClicks(vector<sf::Sprite> clicks, vector<Card> cardClicks, i
 			fields[player_turn][indexOne] = cardClicks[0];
 			f1[indexOne] = fields[player_turn][indexOne].draw_card(0, 0);
 			f1Full[indexOne] = true;
-		}
+		}*/
 		//if both cards kill each other
 		/*if ((opponent_defense - player_attack <= 0) && (player_defense - opponent_attack <= 0)) {
 			cout << "both dead" << endl;
@@ -517,6 +594,30 @@ int PlayGame::handleClicks(vector<sf::Sprite> clicks, vector<Card> cardClicks, i
 		players[(player_turn + 1) % 2].set_hp(currenthp - toAttack);
 		clickable[indexOne] = false;
 	}
+	//*************************************************************************************************************************************************************************************//
+	else if ((cardType == 4) && (secondClickType == 5) && clickable[indexOne]) {
+		fields[player_turn][indexOne] = dfltCard;
+		f1[indexOne] = dfltPair;
+		f1Full[indexOne] = false;
+		players[player_turn].set_current_resources(players[player_turn].get_current_resources() + 1);
+	}
+	//*************************************************************************************************************************************************************************************//
+	//*************************************************************************************************************************************************************************************//
+	else if ((cardType == 3) && (secondClickType == 5) && clickable[indexOne]) {
+		Card tempCard = players[player_turn].remove_card_from_hand(indexOne);
+		players[player_turn].set_current_resources(players[player_turn].get_current_resources() + 1);
+		f1Full[indexOne] = false;
+		for (int i = 0; i < size(hand); i++) {
+			if (h1Full[i] == false) {
+				h1Full[i - 1] = false;
+			}
+			else if (i == size(hand) - 1) {
+				h1Full[6] = false;
+			}
+		}
+	}
+	//*************************************************************************************************************************************************************************************//
+
 
 	//if you killed the opponent
 	if (players[(player_turn + 1) % 2].get_hp() <= 0) {
@@ -550,6 +651,9 @@ string PlayGame::handleError(int worked) {
 	}
 	else if (worked == 3) {
 		return "";
+	}
+	else if (worked == 4) {
+		return "double clicked card";
 	}
 	return "unknown error";
 }

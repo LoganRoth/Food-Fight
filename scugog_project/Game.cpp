@@ -88,6 +88,7 @@ void Game::GameLoop()
 				// TODO: Backend Integration gives a "cannot open source file error"
 				Environment env(2, decks);
 				Game::ActivateGame(env);
+
 			}
 		}
 	}

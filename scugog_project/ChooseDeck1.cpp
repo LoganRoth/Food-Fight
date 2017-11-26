@@ -104,7 +104,7 @@ int ChooseDeck1::Show(sf::RenderWindow & renderWindow)
 				}
 				else if ((horz > cd2L) && (horz < cd2R) && (vert > cd2T) && (vert < cd2B)) {
 					deckChoice = 1;
-					deckDone.setString("Sugar Rush Fruits Chosen!");
+					deckDone.setString("Sugar-Rush Fruits Chosen!");
 					deckDone.setPosition(sf::Vector2f(785, 550));
 				}
 				else {
