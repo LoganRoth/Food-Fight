@@ -21,6 +21,8 @@ private:
 	vector<pair<sf::Sprite, sf::Text>> hand;
 	vector<pair<sf::Sprite, sf::Text>> f1;
 	vector<pair<sf::Sprite, sf::Text>> f2;
+	vector<Player> players;
+	vector<vector<Card>> fields;
 	vector<bool> h1Full;
 	vector<bool> h2Full;
 	vector<bool> f1Full;

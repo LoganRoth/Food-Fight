@@ -68,7 +68,13 @@ void Player::draw_card() {
 		add_card_to_hand(card_drew);
 	}
 }
+
 void Player::add_card_to_hand(Card card_value) {
 	hand.push_back(card_value);
 }
 
+Card Player::remove_card_from_hand(int index) {
+	Card card_return = hand.at(index);
+	hand.erase(hand.begin()+index);
+	return card_return;
+}

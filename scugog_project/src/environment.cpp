@@ -27,6 +27,7 @@ Environment::Environment(int num_of_players, vector<int> decks_chosen) {
 	mt19937 eng(rd());
 	uniform_int_distribution<> distr(0, number_of_players-1);
 	current_player = distr(eng);
+	field = { {}, {} };
 }
 
 // Accessors

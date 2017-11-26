@@ -139,9 +139,6 @@
     <Image Include="resources\images\black.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="resources\images\cardc.png">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="resources\images\carrot.png">
       <Filter>Resource Files</Filter>
     </Image>
@@ -242,6 +239,60 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="resources\images\sugar_rush_fruits.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\..\..\..\Desktop\splash_screen2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\card_pictures\cardc.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\card_pictures\cherry.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\card_pictures\grapes.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\card_pictures\kiwi.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\card_pictures\mango.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\card_pictures\raspberry.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\card_pictures\strawberry.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\card_pictures\banana.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\card_pictures\blackberry.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\card_pictures\blueberry.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\cardcc.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\cardExample.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\splash_screen2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\icons\icon_attack.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\icons\icon_cost.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\icons\icon_defence.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\icons\icon_power.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

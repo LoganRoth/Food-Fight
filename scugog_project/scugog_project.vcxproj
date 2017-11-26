@@ -178,9 +178,15 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\..\Desktop\splash_screen.jpg" />
+    <Image Include="..\..\..\..\..\Desktop\splash_screen2.png" />
     <Image Include="resources\images\bg.jpg" />
     <Image Include="resources\images\black.png" />
-    <Image Include="resources\images\cardc.png" />
+    <Image Include="resources\images\cardcc.png" />
+    <Image Include="resources\images\cardExample.png" />
+    <Image Include="resources\images\card_pictures\banana.png" />
+    <Image Include="resources\images\card_pictures\blackberry.png" />
+    <Image Include="resources\images\card_pictures\blueberry.png" />
+    <Image Include="resources\images\card_pictures\cardc.png" />
     <Image Include="resources\images\card_pictures\apple.png" />
     <Image Include="resources\images\card_pictures\beet.png" />
     <Image Include="resources\images\card_pictures\broccoli.png" />
@@ -188,8 +194,12 @@
     <Image Include="resources\images\card_pictures\cabbage.png" />
     <Image Include="resources\images\card_pictures\carrot.png" />
     <Image Include="resources\images\card_pictures\cauliflower.png" />
+    <Image Include="resources\images\card_pictures\cherry.png" />
     <Image Include="resources\images\card_pictures\corn.png" />
+    <Image Include="resources\images\card_pictures\grapes.png" />
     <Image Include="resources\images\card_pictures\kale.png" />
+    <Image Include="resources\images\card_pictures\kiwi.png" />
+    <Image Include="resources\images\card_pictures\mango.png" />
     <Image Include="resources\images\card_pictures\onion.png" />
     <Image Include="resources\images\card_pictures\orange.png" />
     <Image Include="resources\images\card_pictures\peach.png" />
@@ -200,19 +210,26 @@
     <Image Include="resources\images\card_pictures\potato.png" />
     <Image Include="resources\images\card_pictures\pumpkin.png" />
     <Image Include="resources\images\card_pictures\radish.png" />
+    <Image Include="resources\images\card_pictures\raspberry.png" />
     <Image Include="resources\images\card_pictures\spinach.png" />
+    <Image Include="resources\images\card_pictures\strawberry.png" />
     <Image Include="resources\images\card_pictures\turnip.png" />
     <Image Include="resources\images\carrot.png" />
     <Image Include="resources\images\cute_image.jpg" />
     <Image Include="resources\images\farm.jpg" />
     <Image Include="resources\images\hardy_veggies.png" />
     <Image Include="resources\images\icon.png" />
+    <Image Include="resources\images\icons\icon_attack.png" />
+    <Image Include="resources\images\icons\icon_cost.png" />
+    <Image Include="resources\images\icons\icon_defence.png" />
+    <Image Include="resources\images\icons\icon_power.png" />
     <Image Include="resources\images\mm.jpg" />
     <Image Include="resources\images\money.png" />
     <Image Include="resources\images\play.jpg" />
     <Image Include="resources\images\Splashscreen.png" />
     <Image Include="resources\images\splash_screen.jpg" />
     <Image Include="resources\images\splash_screen.png" />
+    <Image Include="resources\images\splash_screen2.png" />
     <Image Include="resources\images\sugar_rush_fruits.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

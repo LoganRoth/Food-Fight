@@ -31,6 +31,7 @@ public:
 	// Other Functions
 	void draw_card(); // draws a random card from whatever cards are still in the deck
 	void add_card_to_hand(Card card); // adds a card to the player's hand
+	Card remove_card_from_hand(int index);
 
 private:
 	int hitpoints;
