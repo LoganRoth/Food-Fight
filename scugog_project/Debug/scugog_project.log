@@ -1,14 +1,1 @@
-﻿  PlayGame.cpp
-c:\users\ryan\documents\source\repos\scugogrepository\scugog_project\playgame.cpp(142): warning C4018: '<': signed/unsigned mismatch
-c:\users\ryan\documents\source\repos\scugogrepository\scugog_project\playgame.cpp(157): warning C4018: '<': signed/unsigned mismatch
-c:\users\ryan\documents\source\repos\scugogrepository\scugog_project\playgame.cpp(164): warning C4018: '<': signed/unsigned mismatch
-c:\users\ryan\documents\source\repos\scugogrepository\scugog_project\playgame.cpp(215): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-c:\users\ryan\documents\source\repos\scugogrepository\scugog_project\playgame.cpp(216): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-c:\users\ryan\documents\source\repos\scugogrepository\scugog_project\playgame.cpp(224): warning C4018: '<': signed/unsigned mismatch
-c:\users\ryan\documents\source\repos\scugogrepository\scugog_project\playgame.cpp(234): warning C4018: '<': signed/unsigned mismatch
-c:\users\ryan\documents\source\repos\scugogrepository\scugog_project\playgame.cpp(253): warning C4018: '<': signed/unsigned mismatch
-c:\users\ryan\documents\source\repos\scugogrepository\scugog_project\playgame.cpp(263): warning C4018: '<': signed/unsigned mismatch
-c:\users\ryan\documents\source\repos\scugogrepository\scugog_project\playgame.cpp(417): warning C4018: '<': signed/unsigned mismatch
-  Instructions.cpp
-  Generating Code...
-  scugog_project.vcxproj -> C:\Users\Ryan\Documents\Source\Repos\scugogrepository\scugog_project\Debug\scugog_project.exe
+﻿  scugog_project.vcxproj -> C:\Users\Logan Roth\Documents\CMPE_320\320_Project\scugogrepository\scugog_project\Debug\scugog_project.exe

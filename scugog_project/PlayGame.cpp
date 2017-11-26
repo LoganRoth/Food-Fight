@@ -74,7 +74,7 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 
 	sf::Text switchText;
 	switchText.setFont(font);
-	switchText.setString("Press a key when next player is ready");
+	switchText.setString("Click anywhere when next player is ready");
 	switchText.setCharacterSize(100);
 	switchText.setFillColor(sf::Color::Blue);
 	switchText.setStyle(sf::Text::Style::Italic);
@@ -132,6 +132,7 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 		bool player_turn_on = true;
 		bool full_deck = true;
 		bool start = true; // used to indicate if it is the start of a players turn
+		clickable = { true, true, true, true, true };
 		while (player_turn_on)
 		{
 
@@ -216,6 +217,7 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 					float vert = mousePos.y;
 					if (inText(endTurn, horz, vert)) {
 						player_turn_on = false;
+						players[player_turn].set_current_resources(players[player_turn].get_current_resources() + 2);
 						env.change_turn();
 					}
 					if (clicks.empty()) {
@@ -236,12 +238,9 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 								clicks.push_back(f1[i].first);
 								f1[i].first.setColor(sf::Color(0, 255, 0));
 								toReset1 = i;
-								if (players[player_turn].get_player_number() == 0) {
-									cardClicks.push_back(env.getField()[0][i]);
-								}
-								else {
-									cardClicks.push_back(env.getField()[1][i]);
-								}
+								cardClicks.push_back(fields[player_turn][i]);
+								
+								
 								cardType = fieldCard;
 								indexOne = i;
 							}
@@ -265,16 +264,10 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 									clicks.push_back(f2[i].first);
 									f2[i].first.setColor(sf::Color(255, 0, 0));
 									toReset2 = i;
-									if (players[player_turn].get_player_number() == 0) {
-										cardClicks.push_back(env.getField()[0][i]);
-									}
-									else {
-										cardClicks.push_back(env.getField()[1][i]);
-									}
+									cardClicks.push_back(fields[(player_turn + 1) % 2][i]);
 									secondClickType = fieldCard;
 									indexTwo = i;
 								}
-
 							}
 							if (players[player_turn].get_player_number() == 0) {
 								if (inText(p2Label, horz, vert)) {
@@ -312,6 +305,11 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 				}
 			}
 			start = false;
+			if (players[0].get_hp() <= 0 || players[1].get_hp() <= 0) {
+				env.end_game();
+				gameover = env.get_game_on();
+
+			}
 		}
 		// intiate waiting screen with switching of player sprites
 		bool switching = true;
@@ -320,7 +318,7 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 			renderWindow.draw(switchText);
 			renderWindow.display();
 			while (renderWindow.pollEvent(event)) {
-				if (event.type == sf::Event::EventType::KeyPressed) {
+				if (event.type == sf::Event::EventType::MouseButtonPressed) {
 					switching = false;
 				}
 				if (event.type == sf::Event::Closed) {
@@ -343,11 +341,7 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 		//for (int i = 0; i < size(hand); i++) {
 		//hand[i] = env.get_current_player().get_hand()[i].;
 		//}
-		if (players[0].get_hp() <= 0 || players[1].get_hp() <= 0) {
-			env.end_game();
-			gameover = env.get_game_on();
-
-		}
+		
 	}
 
 }
@@ -405,7 +399,7 @@ int PlayGame::handleClicks(vector<sf::Sprite> clicks, vector<Card> cardClicks, i
 
 	//if moving a card from hand to field
 	else if ((cardType == 3) && (secondClickType == 4)) {
-		if (f1Full[indexTwo] || !h1Full[indexOne]) {
+		if (f1Full[indexTwo] || !h1Full[indexOne] || !clickable[indexTwo]) {
 			return 1;
 		}
 		if (cardClicks[0].get_cost() <= players[player_turn].get_current_resources()) {
@@ -424,47 +418,104 @@ int PlayGame::handleClicks(vector<sf::Sprite> clicks, vector<Card> cardClicks, i
 			}
 			fields[player_turn][indexTwo] = players[player_turn].remove_card_from_hand(indexOne);
 			players[player_turn].set_current_resources(players[player_turn].get_current_resources() - cardClicks[0].get_cost());
+			clickable[indexTwo] = false;
+		}
+		else {
+			return -1;
 		}
 	}
 	//if attacking another card
+	//if attacking another card
 	else if ((cardType == 4) && (secondClickType == 4)) {
+		cout << "attacking card" << endl;
 		//get attack and defense values
 		int opponent_defense = cardClicks[1].get_defense();
 		int opponent_attack = cardClicks[1].get_attack();
 		int player_defense = cardClicks[0].get_defense();
 		int player_attack = cardClicks[0].get_attack();
+		cout << "cClicks size: " << size(cardClicks) << endl;
+		cout << "Player Def " << player_defense << endl;
+		cout << "Opponent Def " << opponent_defense << endl;
+		cout << "Player Atk " << player_attack << endl;
+		cout << "Opponent Atk " << opponent_attack << endl;
+		cardClicks[1].set_defense(opponent_defense - player_attack);
+		cardClicks[0].set_defense(player_defense - opponent_attack);
 
+		cout << "Player Def " << cardClicks[1].get_defense() << endl;
+		cout << "Opponent Def " << cardClicks[0].get_defense() << endl;
+		if (cardClicks[1].get_defense() <= 0) {
+			// enemy died
+			fields[(player_turn + 1) % 2][indexTwo] = dfltCard;
+			f2[indexTwo] = dfltPair;
+			f2Full[indexTwo] = false;
+		}
+		else {
+			//enemy didn't die
+			fields[(player_turn + 1) % 2][indexTwo] = cardClicks[1];
+			f2[indexTwo] = fields[(player_turn + 1) % 2][indexTwo].draw_card(0,0);
+			f2Full[indexTwo] = true;
+		}
+		if (cardClicks[0].get_defense() <= 0) {
+			// you died
+			fields[player_turn][indexOne] = dfltCard;
+			f1[indexOne] = dfltPair;
+			f1Full[indexOne] = false;
+		}
+		else {
+			// you didn't die
+			fields[player_turn][indexOne] = cardClicks[0];
+			f1[indexOne] = fields[player_turn][indexOne].draw_card(0, 0);
+			f1Full[indexOne] = true;
+		}
 		//if both cards kill each other
-		if ((opponent_defense - player_attack <= 0) && (player_defense - opponent_attack <= 0)) {
+		/*if ((opponent_defense - player_attack <= 0) && (player_defense - opponent_attack <= 0)) {
+			cout << "both dead" << endl;
 			f2[indexTwo] = dfltPair;
 			f2Full[indexTwo] = false;
 			f1[indexOne] = dfltPair;
 			f1Full[indexOne] = false;
+			fields[player_turn][indexOne] = dfltCard;
+			fields[(player_turn + 1) % 2][indexTwo] = dfltCard;
 		}
 		//if you kill the opponent card
 		else if (opponent_defense - player_attack <= 0) {
-			cardClicks[0].set_defense(player_defense - opponent_attack);
+			cout << "opponent dead" << endl;
+			//remove_card_from_field(((player_turn + 1) % 2), indexTwo);
+			cardClicks[1].set_defense(player_defense - opponent_attack);
 			f2[indexTwo] = dfltPair;
 			f2Full[indexTwo] = false;
+			fields[(player_turn + 1) % 2][indexTwo] = dfltCard;
+			fields[player_turn][indexOne] = cardClicks[1];
 		}
 		//if you kill your own card
 		else if (player_defense - opponent_attack <= 0) {
-			cardClicks[1].set_defense(opponent_defense - player_attack);
+			cout << "you dead" << endl;
+			//remove_card_from_field(player_turn, indexTwo);
+			cardClicks[0].set_defense(opponent_defense - player_attack);
 			f1[indexOne] = dfltPair;
 			f1Full[indexOne] = false;
+			fields[player_turn][indexOne] = dfltCard;
+			fields[(player_turn + 1) % 2][indexTwo] = cardClicks[0];
 		}
 		//you do damage to both cards
 		else
 		{
-			cardClicks[0].set_defense(player_defense - opponent_attack);
-			cardClicks[1].set_defense(opponent_defense - player_attack);
-		}
+			cardClicks[1].set_defense(player_defense - opponent_attack);
+			cardClicks[0].set_defense(opponent_defense - player_attack);
+			fields[player_turn][indexOne] = cardClicks[1];
+			fields[(player_turn + 1) % 2][indexTwo] = cardClicks[0];
+		}*/
+
 	}
 	//if you attack the player
 	else if ((secondClickType == 1) || (secondClickType == 2)) {
+		if (!clickable[indexOne]) {
+			return 1;
+		}
 		int toAttack = cardClicks[0].get_power();
 		int currenthp = players[(player_turn + 1) % 2].get_hp();
 		players[(player_turn + 1) % 2].set_hp(currenthp - toAttack);
+		clickable[indexOne] = false;
 	}
 
 	//if you killed the opponent

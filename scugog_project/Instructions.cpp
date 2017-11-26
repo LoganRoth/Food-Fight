@@ -57,7 +57,7 @@ void Instructions::Show(sf::RenderWindow & renderWindow)
 		Once in the game, each player will be given 5 randomly drawn cards from your decks.You will start out with X cost points.\n\
 		Place a card on the field by clicking on the card and then on the field.\n\
 		Attack an opponent's card by clicking on one of your cards on the field and then on one of the opponent's cards.\n\
-		Attack an opponent directly by clicking on one of your cards on the field and then on one of the opponent's cards.\n\
+		Attack an opponent directly by clicking on one of your cards on the field and then on the opponent's health.\n\
 		Cards have 4 attributes: Power, Attack, Defence, and Cost.\n\
 		Power determines how many life points your card can take away from the opponent.\n\
 		Attack determines how many defence points your card can take away from an oppenent's card.\n\

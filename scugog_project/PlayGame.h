@@ -27,6 +27,7 @@ private:
 	vector<bool> h2Full;
 	vector<bool> f1Full;
 	vector<bool> f2Full;
+	vector<bool> clickable;
 	int cardType;
 	int secondClickType;
 	//Environment env;
