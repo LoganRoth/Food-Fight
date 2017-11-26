@@ -6,24 +6,29 @@
 int ChooseDeck2::Show(sf::RenderWindow & renderWindow)
 {
     
-    sf::Texture texture, card;
-    sf::Font font;
-    if (!font.loadFromFile("../scugog_project/resources/fonts/sansation.ttf")) {
-        return -1;
-    }
-    
-    if(texture.loadFromFile("../scugog_project/resources/images/bg.jpg") != true)
-    {
-        return -1;
-    }
-    
-    if(card.loadFromFile("../scugog_project/resources/images/cardc.png") != true)
-    {
-        return -1;
-    }
-    
-    sf::Sprite cd1(card);
-    sf::Sprite cd2(card);
+	sf::Texture texture, card1, card2;
+	sf::Font font;
+	if (!font.loadFromFile("../scugog_project/resources/fonts/sansation.ttf")) {
+		return -1;
+	}
+
+	if (texture.loadFromFile("../scugog_project/resources/images/bg.jpg") != true)
+	{
+		return -1;
+	}
+
+	if (card1.loadFromFile("../scugog_project/resources/images/hardy_veggies.png") != true)
+	{
+		return -1;
+	}
+	if (card2.loadFromFile("../scugog_project/resources/images/sugar_rush_fruits.png") != true)
+	{
+		return -1;
+	}
+
+	sf::Sprite cd1(card1);
+	sf::Sprite cd2(card2);
+
     
     
     sf::Text text;

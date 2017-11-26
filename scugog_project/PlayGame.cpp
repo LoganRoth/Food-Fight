@@ -12,7 +12,7 @@ PlayGame::PlayGame(Environment enviro) {
 
 void PlayGame::Play(sf::RenderWindow & renderWindow)
 {
-	sf::Texture texture, card;
+	sf::Texture texture, card, money;
 	sf::Font font;
 	// load images needed
 	if (!font.loadFromFile("../scugog_project/resources/fonts/sansation.ttf")) {
@@ -25,6 +25,10 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 	}
 
 	if (card.loadFromFile("../scugog_project/resources/images/cardc.png") != true)
+	{
+		return;
+	}
+	if (money.loadFromFile("../scugog_project/resources/images/money.png") != true)
 	{
 		return;
 	}
@@ -48,19 +52,18 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 	endTurn.setPosition(sf::Vector2f(900, 25));
 
 	sf::Text error;
-	endTurn.setFont(font);
-	endTurn.setString("");
-	endTurn.setCharacterSize(50);
-	endTurn.setFillColor(sf::Color::Blue);
-	endTurn.setStyle(sf::Text::Style::Italic);
-	endTurn.setPosition(sf::Vector2f(200, 450));
+	error.setFont(font);
+	error.setString("");
+	error.setCharacterSize(50);
+	error.setFillColor(sf::Color::Blue);
+	error.setStyle(sf::Text::Style::Italic);
+	error.setPosition(sf::Vector2f(200, 450));
 
 	sf::Text p1Label;
 	p1Label.setFont(font);
 	p1Label.setCharacterSize(50);
 	p1Label.setFillColor(sf::Color::Blue);
 	p1Label.setStyle(sf::Text::Style::Italic);
-
 
 	sf::Text p2Label;
 	p2Label.setFont(font);
@@ -75,6 +78,16 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 	switchText.setFillColor(sf::Color::Blue);
 	switchText.setStyle(sf::Text::Style::Italic);
 	switchText.setPosition(sf::Vector2f(150, 300));
+
+	sf::Text moneyText;
+	moneyText.setFont(font);
+	moneyText.setCharacterSize(60);
+	moneyText.setFillColor(sf::Color::Black);
+	moneyText.setStyle(sf::Text::Style::Italic);
+	sf::Sprite sprite_money(money);
+	sprite_money.setScale(0.15f, 0.15f);
+	sprite_money.setColor(sf::Color::Black);
+
 
 
 	sf::Sprite sprite(texture);
@@ -131,6 +144,7 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 				renderWindow.draw(hand[i].second);
 			}
 			for (int i = 0; i < size(f1); i++) {
+
 				f1[i].first.setPosition(sf::Vector2f(500 + 200 * i, 400));
 				f2[i].first.setPosition(sf::Vector2f(500 + 200 * i, 100));
 				renderWindow.draw(f1[i].first);
@@ -149,6 +163,12 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 				p2Label.setPosition(sf::Vector2f(100, 900));
 				p1Label.setPosition(sf::Vector2f(100, 25));
 			}
+
+			moneyText.setPosition(sf::Vector2f(120, 800));
+			moneyText.setString(to_string(cPlayer.get_current_resources()));
+			sprite_money.setPosition(sf::Vector2f(50, 800));
+			renderWindow.draw(moneyText);
+			renderWindow.draw(sprite_money);
 			renderWindow.draw(p1Label);
 			renderWindow.draw(p2Label);
 			renderWindow.draw(error);

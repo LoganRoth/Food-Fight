@@ -205,12 +205,15 @@
     <Image Include="resources\images\carrot.png" />
     <Image Include="resources\images\cute_image.jpg" />
     <Image Include="resources\images\farm.jpg" />
+    <Image Include="resources\images\hardy_veggies.png" />
     <Image Include="resources\images\icon.png" />
     <Image Include="resources\images\mm.jpg" />
+    <Image Include="resources\images\money.png" />
     <Image Include="resources\images\play.jpg" />
     <Image Include="resources\images\Splashscreen.png" />
     <Image Include="resources\images\splash_screen.jpg" />
     <Image Include="resources\images\splash_screen.png" />
+    <Image Include="resources\images\sugar_rush_fruits.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

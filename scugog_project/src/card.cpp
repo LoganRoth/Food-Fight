@@ -84,6 +84,7 @@ pair<sf::Sprite, sf::Text> Card::draw_card(int position_x, int position_y) {
 
 	// Texts
 	if (!font.loadFromFile("../scugog_project/resources/fonts/ARLRDBD.ttf")) {
+		cout << "error loading file" << endl;
 	}
 
 	sf::Text defense_text;

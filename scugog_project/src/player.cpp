@@ -27,7 +27,8 @@ Player::Player(int deck_number, int player_numb) {
 	for (int i = 0; i < 6; i++) {
 		draw_card();
 	}
-	hitpoints = 1000;
+	hitpoints = 100;
+	current_resources = 3;
 }
 
 // Accessors

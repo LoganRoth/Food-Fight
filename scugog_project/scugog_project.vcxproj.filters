@@ -235,5 +235,14 @@
     <Image Include="resources\images\card_pictures\turnip.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="resources\images\hardy_veggies.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\money.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\sugar_rush_fruits.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
