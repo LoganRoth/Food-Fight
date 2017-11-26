@@ -12,7 +12,12 @@ PlayGame::PlayGame(Environment enviro) {
 	fields = enviro.getField();
 }
 
-void PlayGame::Play(sf::RenderWindow & renderWindow)
+
+// Return 0 for player 1 win
+// Return 1 for player 2 win
+// Return -1 for Resource error
+// Return -2 for closed window
+int PlayGame::Play(sf::RenderWindow & renderWindow)
 {
 	sf::Texture texture, card, money, texture2, deck1, deck2;
 	int deck1Index = players[0].get_deck().get_deck_num();
@@ -22,50 +27,50 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 	sf::Font font;
 	// load images needed
 	if (!font.loadFromFile("../scugog_project/resources/fonts/sansation.ttf")) {
-		return;
+		return -1;
 	}
 
 	if (texture.loadFromFile("../scugog_project/resources/images/bg2.png") != true)
 	{
-		return;
+		return -1;
 	}
 
 	if (texture2.loadFromFile("../scugog_project/resources/images/bg.jpg") != true)
 	{
-		return;
+		return -1;
 	}
 
 	if (card.loadFromFile("../scugog_project/resources/images/card_pictures/cardc.png") != true)
 	{
-		return;
+		return -1;
 	}
 	if (money.loadFromFile("../scugog_project/resources/images/money.png") != true)
 	{
-		return;
+		return -1;
 	}
 	if (deck1Index == 0) {
 		if (deck1.loadFromFile("../scugog_project/resources/images/hardy_veggies.png") != true)
 		{
-			return;
+			return -1;
 		}
 	}
 	else {
 		if (deck1.loadFromFile("../scugog_project/resources/images/sugar_rush_fruits.png") != true)
 		{
-			return;
+			return -1;
 		}
 	}
 
 	if (deck2Index == 0) {
 		if (deck2.loadFromFile("../scugog_project/resources/images/hardy_veggies.png") != true)
 		{
-			return;
+			return -1;
 		}
 	}
 	else {
 		if (deck2.loadFromFile("../scugog_project/resources/images/sugar_rush_fruits.png") != true)
 		{
-			return;
+			return -1;
 		}
 	}
 	// default 
@@ -221,8 +226,8 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 				}
 			}
 			renderWindow.draw(endTurn);
-			p1Label.setString("Player 1\n" + to_string(players[0].get_hp()));
-			p2Label.setString("Player 2\n" + to_string(players[1].get_hp()));
+			p1Label.setString("Farmer 1\n" + to_string(players[0].get_hp()));
+			p2Label.setString("Farmer 2\n" + to_string(players[1].get_hp()));
 			if (players[player_turn].get_player_number() == 0) { // p1 at bottom, p2 at top
 				p1Label.setPosition(sf::Vector2f(80, 470));
 				p2Label.setPosition(sf::Vector2f(80, 25));
@@ -354,14 +359,19 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 				}
 
 				if (event.type == sf::Event::Closed) {
-					return;
+					return -2;
 				}
 			}
 			start = false;
-			if (players[0].get_hp() <= 0 || players[1].get_hp() <= 0) {
+			if (players[0].get_hp() <= 0) {
 				env.end_game();
 				gameover = env.get_game_on();
-
+				return 0;
+			}
+			if (players[1].get_hp() <= 0) {
+				env.end_game();
+				gameover = env.get_game_on();
+				return 0;
 			}
 		}
 		// intiate waiting screen with switching of player sprites
@@ -375,7 +385,7 @@ void PlayGame::Play(sf::RenderWindow & renderWindow)
 					switching = false;
 				}
 				if (event.type == sf::Event::Closed) {
-					return;
+					return -2;
 				}
 			}
 		}
@@ -437,17 +447,12 @@ int PlayGame::handleClicks(vector<sf::Sprite> clicks, vector<Card> cardClicks, i
 			return 1;
 		}
 	}
-	if (secondClickType == 4) {
-		if (!clickable[indexTwo]) {
-			return 1;
-		}
-	}
 	// 1 = player 1
 	// 2 = player 2
 	// 3 = hand card
 	// 4 = field card
 	// 5 = clicked on grave
-	// -1 = no clic
+	// -1 = no click
 	sf::Texture card;
 	// load images needed for default
 	if (card.loadFromFile("../scugog_project/resources/images/cardcc.png") != true)
@@ -598,7 +603,7 @@ int PlayGame::handleClicks(vector<sf::Sprite> clicks, vector<Card> cardClicks, i
 	}
 	//*************************************************************************************************************************************************************************************//
 	//*************************************************************************************************************************************************************************************//
-	else if ((cardType == 3) && (secondClickType == 5) && clickable[indexOne]) {
+	else if ((cardType == 3) && (secondClickType == 5)) {
 		Card tempCard = players[player_turn].remove_card_from_hand(indexOne);
 		players[player_turn].set_current_resources(players[player_turn].get_current_resources() + 1);
 		f1Full[indexOne] = false;
@@ -617,6 +622,7 @@ int PlayGame::handleClicks(vector<sf::Sprite> clicks, vector<Card> cardClicks, i
 	//if you killed the opponent
 	if (players[(player_turn + 1) % 2].get_hp() <= 0) {
 		env.end_game();
+		cout << "this one" << endl;
 	}
 
 	return 3;

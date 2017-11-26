@@ -11,7 +11,7 @@ public:
 	Environment env; // may need to make this private and add getters
 	PlayGame(Environment env);
 	PlayGame();
-	void Play(sf::RenderWindow& window);
+	int Play(sf::RenderWindow& window);
 	bool inCard(sf::Sprite crd, float mpx, float mpy);
 	bool inText(sf::Text text, float mpx, float mpy);
 	//*************************************************************************************************************************************************************************************//

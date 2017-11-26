@@ -121,8 +121,11 @@
   <ItemGroup>
     <ClCompile Include="ChooseDeck1.cpp" />
     <ClCompile Include="ChooseDeck2.cpp" />
+    <ClCompile Include="EndGameScreen.cpp" />
+    <ClCompile Include="ErrorScreen.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Instructions.cpp" />
+    <ClCompile Include="LoadingScreen.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="PlayGame.cpp" />
@@ -140,8 +143,11 @@
   <ItemGroup>
     <ClInclude Include="ChooseDeck1.h" />
     <ClInclude Include="ChooseDeck2.h" />
+    <ClInclude Include="EndGameScreen.h" />
+    <ClInclude Include="ErrorScreen.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Instructions.h" />
+    <ClInclude Include="LoadingScreen.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="PlayGame.h" />
     <ClInclude Include="SplashScreen.h" />

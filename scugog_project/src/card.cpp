@@ -89,7 +89,10 @@ pair<sf::Sprite, sf::Text> Card::draw_card(int position_x, int position_y) {
 
 	sf::Text defense_text;
 	defense_text.setFont(font);
-	defense_text.setString(to_string(defense));
+	defense_text.setString("");
+	if (defense != 0) {
+		defense_text.setString(to_string(defense));
+	}
 	defense_text.setCharacterSize(24);
 	defense_text.setFillColor(sf::Color::Black);
 	defense_text.setStyle(sf::Text::Style::Italic);

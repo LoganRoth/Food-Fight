@@ -14,9 +14,9 @@
 #include "ChooseDeck1.h"
 #include "ChooseDeck2.h"
 #include "PlayGame.h"
-
-
-
+#include "EndGameScreen.h"
+#include "LoadingScreen.h"
+#include "ErrorScreen.h"
 
 void Game::Start(void)
 {
@@ -53,8 +53,20 @@ void Game::GameLoop()
 			}
 			case Game::ShowingSplash:
 			{
-				ShowSplashScreen();
-				break;
+				int splash_screen = ShowSplashScreen();
+				if (splash_screen == -2) {
+					_gameState = Game::Exiting;
+					break;
+				}
+				else if (splash_screen == -1) {
+					ShowErrorScreen();
+					_gameState = Game::Exiting;	
+					break;
+				}
+				else if (splash_screen == 0) {
+					_gameState = Game::ShowingMenu;
+					break;
+				}
 			}
 			case Game::ShowingInstructions:
 			{
@@ -85,20 +97,39 @@ void Game::GameLoop()
 			}
 			case Game::Playing:
 			{
-				// TODO: Backend Integration gives a "cannot open source file error"
+				int loading_screen_return = ShowLoadingScreen();
+				if (loading_screen_return == -2) {
+					_gameState = Game::Exiting;
+					break;
+				}
+				else if (loading_screen_return == -1) {
+					ShowErrorScreen();
+					_gameState = Game::Exiting;
+					break;
+				}
 				Environment env(2, decks);
-				Game::ActivateGame(env);
-
+				int player_won = Game::ActivateGame(env);
+				if (player_won == -2) {
+					_gameState = Game::Exiting;
+				}
+				else if (player_won == -1) {
+					ShowErrorScreen();
+					_gameState = Game::Exiting;
+				}
+				else {
+					ShowEndGame(player_won);
+					_gameState = Game::ShowingMenu;
+				}
 			}
 		}
 	}
 }
 
-void Game::ShowSplashScreen()
+int Game::ShowSplashScreen()
 {
     SplashScreen splashScreen;
-    splashScreen.Show(_mainWindow);
-    _gameState = Game::ShowingMenu;
+    int splash_screen_return = splashScreen.Show(_mainWindow);
+	return splash_screen_return;
 }
 
 void Game::ShowMenu()
@@ -141,12 +172,30 @@ int Game::ShowCD2()
 	return deckN;
 }
 // TODO: This function will have the actual "playing of the game"
-void Game::ActivateGame(Environment env) 
+int Game::ActivateGame(Environment env) 
 {
 	PlayGame gm(env);
-	gm.Play(_mainWindow);
-	// need to handle game exiting somehow
-	_gameState = Game::Exiting;
+	int player_won = gm.Play(_mainWindow);
+	return player_won;
+}
+
+void Game::ShowEndGame(int player_won)
+{
+	EndGameScreen endgamescreen;
+	endgamescreen.Show(_mainWindow, player_won);
+}
+
+int Game::ShowLoadingScreen()
+{
+	LoadingScreen loadingscreen;
+	int loading_screen_return = loadingscreen.Show(_mainWindow);
+	return loading_screen_return;
+}
+
+void Game::ShowErrorScreen()
+{
+	ErrorScreen errorscreen;
+	errorscreen.Show(_mainWindow);
 }
 
 Game::GameState Game::_gameState = Uninitialized;

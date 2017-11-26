@@ -26,19 +26,24 @@ private:
     static void GameLoop();
 	//static void PlayGame(Player,Player);
     
-    static void ShowSplashScreen();
+    static int ShowSplashScreen();
     static void ShowMenu();
     //static void ChooseDeck();
     static void ShowInstructions();
     static int ShowCD1();
     static int ShowCD2();
 	// TODO: Backend Integration gives a "cannot open source file error"
-	static void ActivateGame(Environment env);
+	static int ActivateGame(Environment env);
+	static void ShowEndGame(int player_won);
+	static int ShowLoadingScreen();
+	static void ShowErrorScreen();
+
+
     
     
     
     enum GameState { Uninitialized, ShowingSplash, Paused,
-        ShowingMenu, ShowingInstructions, Playing, Exiting, ShowingCD1, ShowingCD2};
+        ShowingMenu, ShowingInstructions, Playing, Exiting, ShowingCD1, ShowingCD2, ShowingEndGame};
     
     static GameState _gameState;
     static sf::RenderWindow _mainWindow;
