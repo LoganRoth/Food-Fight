@@ -7,8 +7,12 @@ int ChooseDeck2::Show(sf::RenderWindow & renderWindow)
 {
 
 	sf::Texture texture, card3, card4;
-	sf::Font font;
+	sf::Font font, font1;
 	if (!font.loadFromFile("../scugog_project/resources/fonts/sansation.ttf")) {
+		return -1;
+	}
+
+	if (!font1.loadFromFile("../scugog_project/resources/fonts/BerlinSansFBDemiBold.ttf")) {
 		return -1;
 	}
 
@@ -31,7 +35,7 @@ int ChooseDeck2::Show(sf::RenderWindow & renderWindow)
 	sf::Sprite cd2(card4);
 
 	sf::Text text;
-	text.setFont(font);
+	text.setFont(font1);
 	text.setString("Player Two Choose Your Farmer!");
 	text.setCharacterSize(50);
 	text.setFillColor(sf::Color::Black);
@@ -80,11 +84,11 @@ int ChooseDeck2::Show(sf::RenderWindow & renderWindow)
 	float cd1L = cd1Pos.left;
 	float cd1R = cd1Pos.left + cd1Pos.width;
 	float cd1T = cd1Pos.top;
-	float cd1B = cd1Pos.top + cd1Pos.height;
+	float cd1B = cd1Pos.top + cd1Pos.height+50;
 	float cd2L = cd2Pos.left;
 	float cd2R = cd2Pos.left + cd2Pos.width;
 	float cd2T = cd2Pos.top;
-	float cd2B = cd2Pos.top + cd2Pos.height;
+	float cd2B = cd2Pos.top + cd2Pos.height+50;
 
 	sf::Sprite sprite(texture);
 
@@ -125,7 +129,7 @@ int ChooseDeck2::Show(sf::RenderWindow & renderWindow)
 				}
 				else if ((horz > cd2L) && (horz < cd2R) && (vert > cd2T) && (vert < cd2B)) {
 					deckChoice = 1;
-					deckDone.setString("Francesca the Fruit Farmer\n\"NEEDQUOTE\"");
+					deckDone.setString("Franny the Fruit Farmer\n\"'Peel' the burn!\"");
 					tagLine.setString("\nSugar-Rush Fruit Deck");
 					deckDone.setPosition(sf::Vector2f(960, 400));
 					tagLine.setPosition(sf::Vector2f(960, 450));

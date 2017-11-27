@@ -14,11 +14,10 @@ public:
 	int Play(sf::RenderWindow& window);
 	bool inCard(sf::Sprite crd, float mpx, float mpy);
 	bool inText(sf::Text text, float mpx, float mpy);
-	//*************************************************************************************************************************************************************************************//
-	bool inGrave(float mpx, float mpy);
-	//*************************************************************************************************************************************************************************************//
+	bool inGrave(sf::Sprite crd, float mpx, float mpy);
 	int handleClicks(vector<sf::Sprite> clicks, vector<Card> cardClicks, int indexOne, int indexTwo);
 	string handleError(int worked);
+	bool inPerson(sf::Sprite crd, float mpx, float mpy);
 	//Environment getEnvironment();
 private:
 	vector<pair<sf::Sprite, sf::Text>> hand;

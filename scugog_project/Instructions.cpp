@@ -5,7 +5,7 @@
 
 int Instructions::Show(sf::RenderWindow & renderWindow)
 {
-	sf::Texture texture, card, attackIcon, defenceIcon, costIcon, powerIcon;
+	sf::Texture texture, card, attackIcon, defenceIcon, costIcon, powerIcon, cuttingBoard;
 	if (texture.loadFromFile("../scugog_project/resources/images/bg5.png") != true)
 	{
 		return -1;
@@ -61,27 +61,24 @@ int Instructions::Show(sf::RenderWindow & renderWindow)
 		At the start of the game, each player will be given 7 randomly drawn cards from their deck and 3 resource points.\n\
 		Play:\n\
 		Each card can only perform one of the following each turn.\n\
-		1. A player may move cards from their field or hand into the graveyard in exchange for one resource point.\n\
+		1. A player may discard cards from their field or hand onto the cutting board in exchange for one resource point.\n\
 		2. A player may place multiple cards on the field by clicking on any card in their hand and then on the field.\n\
 		The cards that can be moved to the field is limited by the number of resources the player has.\n\
 		3. A player may use any card on their field to attack their opponent directly.\n\
 		To attack an opposing player click on a card in your field and then on the opponent farmer icon.\n\
 		4. A player may use any card on their field to attack a card on the opponents field.\n\
-		To attack an opposing player click on a card in your field and then on a card in the opponents field.");
-	/*
-	Attacking:\n\
-	If the attacking card has more power than the opposing card has defense...\n\
-	The opposing card dies.\n\
-	If the attacking card has less power than the opposing card has defense...\n\
-	The attacking card dies and the opposing card loses corresponding defense points.\n\
-	If the attacking card has the same amount of power as the opposing card has defense...\n\
-	Both cards die.");*/
+		To attack an opposing player click on a card in your field and then on a card in the opponents field.\n\
+		Attacking:\n\
+		If the attacking card has more attack points than the opposing card has defense, the opposing card dies.\n\
+		If the attacking card has less attack points than the opposing card has defense, they survived the attack! Their defense loses corresponding defense points but...\n\
+		EITHER the opposing card has more attack points than the attacking card has defense points: the opposing card attacks back and the attacking card dies.\n\
+		OR the opposing card has less attack points than the attacking card has defense points: they attack back but the attacking card is safe and unaffected.\n");
 
-	instr.setCharacterSize(30);
+	instr.setCharacterSize(23);
 	instr.setFillColor(sf::Color(20, 20, 20));
 	instr.setStyle(sf::Text::Style::Bold);
 	sf::Rect<float> tsize4 = instr.getGlobalBounds();
-	instr.setPosition(sf::Vector2f(-40, 120));
+	instr.setPosition(sf::Vector2f(-40, 110));
 
 	// cost icon
 	if (costIcon.loadFromFile("../scugog_project/resources/images/icons/icon_cost.png") != true)
@@ -163,6 +160,27 @@ int Instructions::Show(sf::RenderWindow & renderWindow)
 	sf::Rect<float> tsize7 = attackText.getGlobalBounds();
 	attackText.setPosition(sf::Vector2f(580, 962));
 
+	// cutting board
+	if (cuttingBoard.loadFromFile("../scugog_project/resources/images/cuttingboard.png") != true)
+	{
+		return -1;
+	}
+	sf::Sprite boardSprite(cuttingBoard);
+	boardSprite.setPosition(sf::Vector2f(1500, 250));
+	renderWindow.draw(boardSprite);
+
+	sf::Text boardText;
+	boardText.setFont(font);
+	boardText.setString("\
+	\n\
+	The CUTTING BOARD");
+	boardText.setCharacterSize(30);
+	boardText.setFillColor(sf::Color(20, 20, 20));
+	boardText.setStyle(sf::Text::Style::Bold);
+	sf::Rect<float> tsize9 = boardText.getGlobalBounds();
+	boardText.setPosition(sf::Vector2f(1407, 340));
+
+	renderWindow.draw(boardText);
 	renderWindow.draw(costText);
 	renderWindow.draw(powerText);
 	renderWindow.draw(defenceText);

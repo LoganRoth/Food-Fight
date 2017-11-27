@@ -24,10 +24,20 @@ int LoadingScreen::Show(sf::RenderWindow & renderWindow)
 	sf::Rect<float> tsize = text.getGlobalBounds();
 	text.setPosition(sf::Vector2f(windowSize.x - tsize.width - 75, 100));
 
+	sf::Text text1;
+	text1.setFont(font);
+	text1.setString("Loading...");
+	text1.setCharacterSize(60);
+	text1.setFillColor(sf::Color::White);
+	text1.setStyle(sf::Text::Style::Italic);
+	sf::Rect<float> tsize_text1 = text1.getGlobalBounds();
+	text1.setPosition(sf::Vector2f(windowSize.x - tsize_text1.width - 65, windowSize.y - tsize_text1.height - 75));
+
 	//texture.update(image);
 	sf::Sprite sprite(texture);
 	renderWindow.draw(sprite);
 	renderWindow.draw(text);
+	renderWindow.draw(text1);
 	renderWindow.display();
 
 	sf::Event event;

@@ -5,8 +5,11 @@ int SplashScreen::Show(sf::RenderWindow & renderWindow)
 {
 	//sf::Image image;
 	sf::Texture texture;
-	sf::Font font;
+	sf::Font font, font1;
 	if (!font.loadFromFile("../scugog_project/resources/fonts/sansation.ttf")) {
+		return -1;
+	}
+	if (!font1.loadFromFile("../scugog_project/resources/fonts/BerlinSansFBDemiBold.ttf")) {
 		return -1;
 	}
 	if (texture.loadFromFile("../scugog_project/resources/images/splash_screen.png") != true)
@@ -15,6 +18,7 @@ int SplashScreen::Show(sf::RenderWindow & renderWindow)
 	}
 
 	sf::Vector2u windowSize = renderWindow.getSize();
+
 	sf::Text text;
 	text.setFont(font);
 	text.setString("Click anywhere to continue!");

@@ -85,16 +85,16 @@ int PlayGame::Play(sf::RenderWindow & renderWindow)
 	string p1Name = "";
 	string p2Name = "";
 	if (deck1Index == 0) {
-		p1Name = "Bert";
+		p1Name = "Bert 1";
 	}
 	else {
-		p1Name = "Franny";
+		p1Name = "Franny 1";
 	}
 	if (deck2Index == 0) {
-		p2Name = "Bert";
+		p2Name = "Bert 2";
 	}
 	else {
-		p2Name = "Franny";
+		p2Name = "Franny 2";
 	}
 	Card dfltCard(0, 0, 0, 0, 0, 0, "cardc.png", "", "");
 	sf::Sprite dflt(card);
@@ -105,13 +105,15 @@ int PlayGame::Play(sf::RenderWindow & renderWindow)
 
 	bool gameover = env.get_game_on();
 
+	sf::Vector2u windowSize = renderWindow.getSize();
 	sf::Text error;
 	error.setFont(font);
 	error.setString("");
 	error.setCharacterSize(30);
 	error.setFillColor(sf::Color::Blue);
 	error.setStyle(sf::Text::Style::Bold);
-	error.setPosition(sf::Vector2f(100, 430));
+	sf::Rect<float> error_size = error.getGlobalBounds();
+	error.setPosition(sf::Vector2f(windowSize.x / 2 - error_size.width / 2, 650));
 
 	sf::Text p1Label;
 	p1Label.setFont(font);
@@ -125,7 +127,6 @@ int PlayGame::Play(sf::RenderWindow & renderWindow)
 	p2Label.setFillColor(sf::Color::Black);
 	p2Label.setStyle(sf::Text::Style::Italic);
 
-	sf::Vector2u windowSize = renderWindow.getSize();
 	sf::Text switch_text;
 	switch_text.setFont(font);
 	switch_text.setString("Click anywhere when next player is ready");
@@ -222,10 +223,10 @@ int PlayGame::Play(sf::RenderWindow & renderWindow)
 			for (int i = 0; i < size(f1); i++) {
 				if (env.get_current_player().get_player_number() == 0) {
 					Card card_from_field1 = fields[0][i];
-					pair <sf::Sprite, sf::Text> card_graphic_pair_f1 = card_from_field1.draw_card(500 + 200 * i, 400);
+					pair <sf::Sprite, sf::Text> card_graphic_pair_f1 = card_from_field1.draw_card(500 + 200 * i, 350);
 					f1[i] = card_graphic_pair_f1;
 					Card card_from_field2 = fields[1][i];
-					pair <sf::Sprite, sf::Text> card_graphic_pair_f2 = card_from_field2.draw_card(500 + 200 * i, 100);
+					pair <sf::Sprite, sf::Text> card_graphic_pair_f2 = card_from_field2.draw_card(500 + 200 * i, 50);
 					f2[i] = card_graphic_pair_f2;
 					renderWindow.draw(f1[i].first);
 					renderWindow.draw(f2[i].first);
@@ -234,10 +235,10 @@ int PlayGame::Play(sf::RenderWindow & renderWindow)
 				}
 				else {
 					Card card_from_field1 = fields[1][i];
-					pair <sf::Sprite, sf::Text> card_graphic_pair_f1 = card_from_field1.draw_card(500 + 200 * i, 400);
+					pair <sf::Sprite, sf::Text> card_graphic_pair_f1 = card_from_field1.draw_card(500 + 200 * i, 350);
 					f1[i] = card_graphic_pair_f1;
 					Card card_from_field2 = fields[0][i];
-					pair <sf::Sprite, sf::Text> card_graphic_pair_f2 = card_from_field2.draw_card(500 + 200 * i, 100);
+					pair <sf::Sprite, sf::Text> card_graphic_pair_f2 = card_from_field2.draw_card(500 + 200 * i, 50);
 					f2[i] = card_graphic_pair_f2;
 					renderWindow.draw(f1[i].first);
 					renderWindow.draw(f2[i].first);
@@ -277,6 +278,8 @@ int PlayGame::Play(sf::RenderWindow & renderWindow)
 			renderWindow.draw(sprite_money);
 			renderWindow.draw(p1Label);
 			renderWindow.draw(p2Label);
+			sf::Rect<float> error_size = error.getGlobalBounds();
+			error.setPosition(sf::Vector2f(windowSize.x / 2 - error_size.width / 2 + 40, 650));
 			renderWindow.draw(error);
 			renderWindow.draw(cutBoard);
 			renderWindow.display();
@@ -328,12 +331,9 @@ int PlayGame::Play(sf::RenderWindow & renderWindow)
 									indexTwo = i;
 								}
 							}
-							//*************************************************************************************************************************************************************************************//
-							if (inCard(cutBoard, horz, vert)) {
+							if (inGrave(cutBoard, horz, vert)) {
 								secondClickType = 5;
 							}
-							//*************************************************************************************************************************************************************************************//
-
 						}
 						else {
 							for (int i = 0; i < size(f2); i++) {
@@ -346,19 +346,16 @@ int PlayGame::Play(sf::RenderWindow & renderWindow)
 									indexTwo = i;
 								}
 							}
-							//*************************************************************************************************************************************************************************************//
-							if (inCard(cutBoard, horz, vert)) {
+							if (inGrave(cutBoard, horz, vert)) {
 								secondClickType = 5;
 							}
-							//*************************************************************************************************************************************************************************************//
-
 							if (players[player_turn].get_player_number() == 0) {
-								if (inCard(p2Deck, horz, vert)) {
+								if (inPerson(p2Deck, horz, vert)) {
 									secondClickType = player2Click;
 								}
 							}
 							else {
-								if (inCard(p1Deck, horz, vert)) {
+								if (inPerson(p1Deck, horz, vert)) {
 									secondClickType = player1Click;
 								}
 							}
@@ -388,10 +385,15 @@ int PlayGame::Play(sf::RenderWindow & renderWindow)
 				}
 			}
 			start = false;
-			if (players[0].get_hp() <= 0 || players[1].get_hp() <= 0) {
+			if (players[0].get_hp() <= 0) {
 				env.end_game();
 				gameover = env.get_game_on();
-
+				return 1;
+			}
+			if (players[1].get_hp() <= 0) {
+				env.end_game();
+				gameover = env.get_game_on();
+				return 0;
 			}
 		}
 		// intiate waiting screen with switching of player sprites
@@ -449,17 +451,29 @@ bool PlayGame::inText(sf::Text text, float mpx, float mpy)
 	return false;
 }
 
-//*************************************************************************************************************************************************************************************//
-
-bool PlayGame::inGrave(float mpx, float mpy) {
-	cout << mpx << " " << mpy << endl;
-	if ((mpx < 1838) && (mpx > 1682) && (mpy < 671) && (mpy > 496)) {
+bool PlayGame::inGrave(sf::Sprite crd, float mpx, float mpy) {
+	sf::Rect<float> csize = crd.getGlobalBounds();
+	float cd1L = csize.left;
+	float cd1R = csize.left + csize.width;
+	float cd1T = csize.top;
+	float cd1B = csize.top + csize.height + 100;
+	if ((mpx > cd1L) && (mpx < cd1R) && (mpy > cd1T) && (mpy < cd1B)) {
 		return true;
 	}
 	return false;
 }
-//*************************************************************************************************************************************************************************************//
 
+bool PlayGame::inPerson(sf::Sprite crd, float mpx, float mpy) {
+	sf::Rect<float> csize = crd.getGlobalBounds();
+	float cd1L = csize.left;
+	float cd1R = csize.left + csize.width;
+	float cd1T = csize.top;
+	float cd1B = csize.top + csize.height + 50;
+	if ((mpx > cd1L) && (mpx < cd1R) && (mpy > cd1T) && (mpy < cd1B)) {
+		return true;
+	}
+	return false;
+}
 
 int PlayGame::handleClicks(vector<sf::Sprite> clicks, vector<Card> cardClicks, int indexOne, int indexTwo) {
 	if (cardType == 4) {
@@ -472,7 +486,7 @@ int PlayGame::handleClicks(vector<sf::Sprite> clicks, vector<Card> cardClicks, i
 	// 3 = hand card
 	// 4 = field card
 	// 5 = clicked on grave
-	// -1 = no clic
+	// -1 = no click
 	sf::Texture card;
 	// load images needed for default
 	if (card.loadFromFile("../scugog_project/resources/images/cardcc.png") != true)
@@ -534,7 +548,7 @@ int PlayGame::handleClicks(vector<sf::Sprite> clicks, vector<Card> cardClicks, i
 		cout << "Player Atk " << player_attack << endl;
 		cout << "Opponent Atk " << opponent_attack << endl;
 		cardClicks[1].set_defense(opponent_defense - player_attack);
-		//cardClicks[0].set_defense(player_defense - opponent_attack);
+
 
 		cout << "Player Def " << cardClicks[1].get_defense() << endl;
 		cout << "Opponent Def " << cardClicks[0].get_defense() << endl;
@@ -549,60 +563,31 @@ int PlayGame::handleClicks(vector<sf::Sprite> clicks, vector<Card> cardClicks, i
 			fields[(player_turn + 1) % 2][indexTwo] = cardClicks[1];
 			f2[indexTwo] = fields[(player_turn + 1) % 2][indexTwo].draw_card(0, 0);
 			f2Full[indexTwo] = true;
-		}
-		// making it so nothing happens to you when you attack
-		if (opponent_defense >= player_attack) {
-			// you died
-			fields[player_turn][indexOne] = dfltCard;
-			f1[indexOne] = dfltPair;
-			f1Full[indexOne] = false;
-			clickable[indexOne] = true;
-		}
-		else {
-			// you didn't die
-			fields[player_turn][indexOne] = cardClicks[0];
-			f1[indexOne] = fields[player_turn][indexOne].draw_card(0, 0);
-			f1Full[indexOne] = true;
-		}
-		//if both cards kill each other
-		/*if ((opponent_defense - player_attack <= 0) && (player_defense - opponent_attack <= 0)) {
-		cout << "both dead" << endl;
-		f2[indexTwo] = dfltPair;
-		f2Full[indexTwo] = false;
-		f1[indexOne] = dfltPair;
-		f1Full[indexOne] = false;
-		fields[player_turn][indexOne] = dfltCard;
-		fields[(player_turn + 1) % 2][indexTwo] = dfltCard;
-		}
-		//if you kill the opponent card
-		else if (opponent_defense - player_attack <= 0) {
-		cout << "opponent dead" << endl;
-		//remove_card_from_field(((player_turn + 1) % 2), indexTwo);
-		cardClicks[1].set_defense(player_defense - opponent_attack);
-		f2[indexTwo] = dfltPair;
-		f2Full[indexTwo] = false;
-		fields[(player_turn + 1) % 2][indexTwo] = dfltCard;
-		fields[player_turn][indexOne] = cardClicks[1];
-		}
-		//if you kill your own card
-		else if (player_defense - opponent_attack <= 0) {
-		cout << "you dead" << endl;
-		//remove_card_from_field(player_turn, indexTwo);
-		cardClicks[0].set_defense(opponent_defense - player_attack);
-		f1[indexOne] = dfltPair;
-		f1Full[indexOne] = false;
-		fields[player_turn][indexOne] = dfltCard;
-		fields[(player_turn + 1) % 2][indexTwo] = cardClicks[0];
-		}
-		//you do damage to both cards
-		else
-		{
-		cardClicks[1].set_defense(player_defense - opponent_attack);
-		cardClicks[0].set_defense(opponent_defense - player_attack);
-		fields[player_turn][indexOne] = cardClicks[1];
-		fields[(player_turn + 1) % 2][indexTwo] = cardClicks[0];
-		}*/
 
+			if (opponent_defense > player_attack) {
+				// you get attacked
+				cardClicks[0].set_defense(player_defense - opponent_attack);
+				if (cardClicks[0].get_defense() <= 0) {
+					// you died
+					fields[player_turn][indexOne] = dfltCard;
+					f1[indexOne] = dfltPair;
+					f1Full[indexOne] = false;
+					clickable[indexOne] = true;
+				}
+				else {
+					// you're hurt
+					fields[player_turn][indexOne] = cardClicks[0];
+					f1[indexOne] = fields[player_turn][indexOne].draw_card(0, 0);
+					f1Full[indexOne] = true;
+				}
+			}
+			else {
+				// you didn't get attacked
+				fields[player_turn][indexOne] = cardClicks[0];
+				f1[indexOne] = fields[player_turn][indexOne].draw_card(0, 0);
+				f1Full[indexOne] = true;
+			}
+		}
 	}
 	//if you attack the player
 	else if ((secondClickType == 1) || (secondClickType == 2)) {
@@ -614,16 +599,13 @@ int PlayGame::handleClicks(vector<sf::Sprite> clicks, vector<Card> cardClicks, i
 		players[(player_turn + 1) % 2].set_hp(currenthp - toAttack);
 		clickable[indexOne] = false;
 	}
-	//*************************************************************************************************************************************************************************************//
 	else if ((cardType == 4) && (secondClickType == 5) && clickable[indexOne]) {
 		fields[player_turn][indexOne] = dfltCard;
 		f1[indexOne] = dfltPair;
 		f1Full[indexOne] = false;
 		players[player_turn].set_current_resources(players[player_turn].get_current_resources() + 1);
 	}
-	//*************************************************************************************************************************************************************************************//
-	//*************************************************************************************************************************************************************************************//
-	else if ((cardType == 3) && (secondClickType == 5)) { // **********************************************//
+	else if ((cardType == 3) && (secondClickType == 5)) { 
 		Card tempCard = players[player_turn].remove_card_from_hand(indexOne);
 		players[player_turn].set_current_resources(players[player_turn].get_current_resources() + 1);
 		f1Full[indexOne] = false;
@@ -636,7 +618,6 @@ int PlayGame::handleClicks(vector<sf::Sprite> clicks, vector<Card> cardClicks, i
 			}
 		}
 	}
-	//*************************************************************************************************************************************************************************************//
 	//if you killed the opponent
 	if (players[(player_turn + 1) % 2].get_hp() <= 0) {
 		env.end_game();
