@@ -119,44 +119,44 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ChooseDeck1.cpp" />
-    <ClCompile Include="ChooseDeck2.cpp" />
-    <ClCompile Include="EndGameScreen.cpp" />
-    <ClCompile Include="ErrorScreen.cpp" />
-    <ClCompile Include="Game.cpp" />
-    <ClCompile Include="Instructions.cpp" />
-    <ClCompile Include="LoadingScreen.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="MainMenu.cpp" />
-    <ClCompile Include="PlayGame.cpp" />
-    <ClCompile Include="SplashScreen.cpp" />
+    <ClCompile Include="frontend_src\ChooseDeck1.cpp" />
+    <ClCompile Include="frontend_src\ChooseDeck2.cpp" />
+    <ClCompile Include="frontend_src\EndGameScreen.cpp" />
+    <ClCompile Include="frontend_src\ErrorScreen.cpp" />
+    <ClCompile Include="frontend_src\Game.cpp" />
+    <ClCompile Include="frontend_src\Instructions.cpp" />
+    <ClCompile Include="frontend_src\LoadingScreen.cpp" />
+    <ClCompile Include="frontend_src\main.cpp" />
+    <ClCompile Include="frontend_src\MainMenu.cpp" />
+    <ClCompile Include="frontend_src\PlayGame.cpp" />
+    <ClCompile Include="frontend_src\SplashScreen.cpp" />
     <ClCompile Include="src\card.cpp" />
     <ClCompile Include="src\deck.cpp" />
     <ClCompile Include="src\environment.cpp" />
     <ClCompile Include="src\graveyard.cpp" />
     <ClCompile Include="src\implementation.cpp" />
     <ClCompile Include="src\player.cpp" />
-    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="frontend_src\stdafx.cpp" />
     <ClCompile Include="verifications\verify_connection.cpp" />
     <ClCompile Include="verifications\verify_sfml.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ChooseDeck1.h" />
-    <ClInclude Include="ChooseDeck2.h" />
-    <ClInclude Include="EndGameScreen.h" />
-    <ClInclude Include="ErrorScreen.h" />
-    <ClInclude Include="Game.h" />
-    <ClInclude Include="Instructions.h" />
-    <ClInclude Include="LoadingScreen.h" />
-    <ClInclude Include="MainMenu.h" />
-    <ClInclude Include="PlayGame.h" />
-    <ClInclude Include="SplashScreen.h" />
+    <ClInclude Include="frontend_src\ChooseDeck1.h" />
+    <ClInclude Include="frontend_src\ChooseDeck2.h" />
+    <ClInclude Include="frontend_src\EndGameScreen.h" />
+    <ClInclude Include="frontend_src\ErrorScreen.h" />
+    <ClInclude Include="frontend_src\Game.h" />
+    <ClInclude Include="frontend_src\Instructions.h" />
+    <ClInclude Include="frontend_src\LoadingScreen.h" />
+    <ClInclude Include="frontend_src\MainMenu.h" />
+    <ClInclude Include="frontend_src\PlayGame.h" />
+    <ClInclude Include="frontend_src\SplashScreen.h" />
     <ClInclude Include="src\card.h" />
     <ClInclude Include="src\deck.h" />
     <ClInclude Include="src\environment.h" />
     <ClInclude Include="src\graveyard.h" />
     <ClInclude Include="src\player.h" />
-    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="frontend_src\stdafx.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="dll\mysqlcppconn.dll" />
@@ -186,8 +186,6 @@
     <Font Include="resources\fonts\sansation.ttf" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\..\..\..\Desktop\splash_screen.jpg" />
-    <Image Include="..\..\..\..\..\Desktop\splash_screen2.png" />
     <Image Include="resources\images\bg.jpg" />
     <Image Include="resources\images\bg2.png" />
     <Image Include="resources\images\bg3.jpg" />
@@ -230,7 +228,6 @@
     <Image Include="resources\images\carrot.png" />
     <Image Include="resources\images\cute_image.jpg" />
     <Image Include="resources\images\cuttingboard.png" />
-    <Image Include="resources\images\error_loading.png" />
     <Image Include="resources\images\error_screen.png" />
     <Image Include="resources\images\farm.jpg" />
     <Image Include="resources\images\farmer.png" />

@@ -39,40 +39,40 @@
     <ClCompile Include="verifications\verify_sfml.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SplashScreen.cpp">
+    <ClCompile Include="frontend_src\ChooseDeck1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="stdafx.cpp">
+    <ClCompile Include="frontend_src\ChooseDeck2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PlayGame.cpp">
+    <ClCompile Include="frontend_src\EndGameScreen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MainMenu.cpp">
+    <ClCompile Include="frontend_src\ErrorScreen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="frontend_src\Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Instructions.cpp">
+    <ClCompile Include="frontend_src\Instructions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
+    <ClCompile Include="frontend_src\LoadingScreen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ChooseDeck2.cpp">
+    <ClCompile Include="frontend_src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ChooseDeck1.cpp">
+    <ClCompile Include="frontend_src\MainMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="EndGameScreen.cpp">
+    <ClCompile Include="frontend_src\PlayGame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LoadingScreen.cpp">
+    <ClCompile Include="frontend_src\SplashScreen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ErrorScreen.cpp">
+    <ClCompile Include="frontend_src\stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -92,37 +92,37 @@
     <ClInclude Include="src\graveyard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SplashScreen.h">
+    <ClInclude Include="frontend_src\ChooseDeck1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="stdafx.h">
+    <ClInclude Include="frontend_src\ChooseDeck2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PlayGame.h">
+    <ClInclude Include="frontend_src\EndGameScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MainMenu.h">
+    <ClInclude Include="frontend_src\ErrorScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Instructions.h">
+    <ClInclude Include="frontend_src\Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Game.h">
+    <ClInclude Include="frontend_src\Instructions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ChooseDeck2.h">
+    <ClInclude Include="frontend_src\LoadingScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ChooseDeck1.h">
+    <ClInclude Include="frontend_src\MainMenu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="EndGameScreen.h">
+    <ClInclude Include="frontend_src\PlayGame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LoadingScreen.h">
+    <ClInclude Include="frontend_src\SplashScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ErrorScreen.h">
+    <ClInclude Include="frontend_src\stdafx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -179,9 +179,6 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="resources\images\Splashscreen.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="..\..\..\..\..\Desktop\splash_screen.jpg">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="resources\images\splash_screen.jpg">
@@ -262,9 +259,6 @@
     <Image Include="resources\images\sugar_rush_fruits.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="..\..\..\..\..\Desktop\splash_screen2.png">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="resources\images\card_pictures\cardc.png">
       <Filter>Resource Files</Filter>
     </Image>
@@ -323,9 +317,6 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="resources\images\player_two_wins.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="resources\images\error_loading.png">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="resources\images\farmer.png">

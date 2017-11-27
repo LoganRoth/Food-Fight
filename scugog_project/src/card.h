@@ -1,5 +1,5 @@
 #pragma once
-#include "../stdafx.h"
+#include "../frontend_src/stdafx.h"
 #include <stdlib.h>
 #include <iostream>
 #include <exception>
