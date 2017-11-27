@@ -1,1 +1,14 @@
-﻿  scugog_project.vcxproj -> C:\Users\Ryan\Documents\Source\Repos\scugogrepository\scugog_project\Debug\scugog_project.exe
+﻿  PlayGame.cpp
+c:\users\logan roth\documents\cmpe_320\320_project\scugogrepository\scugog_project\frontend_src\playgame.cpp(225): warning C4018: '<': signed/unsigned mismatch
+c:\users\logan roth\documents\cmpe_320\320_project\scugogrepository\scugog_project\frontend_src\playgame.cpp(239): warning C4018: '<': signed/unsigned mismatch
+c:\users\logan roth\documents\cmpe_320\320_project\scugogrepository\scugog_project\frontend_src\playgame.cpp(246): warning C4018: '<': signed/unsigned mismatch
+c:\users\logan roth\documents\cmpe_320\320_project\scugogrepository\scugog_project\frontend_src\playgame.cpp(316): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\logan roth\documents\cmpe_320\320_project\scugogrepository\scugog_project\frontend_src\playgame.cpp(317): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\logan roth\documents\cmpe_320\320_project\scugogrepository\scugog_project\frontend_src\playgame.cpp(326): warning C4018: '<': signed/unsigned mismatch
+c:\users\logan roth\documents\cmpe_320\320_project\scugogrepository\scugog_project\frontend_src\playgame.cpp(337): warning C4018: '<': signed/unsigned mismatch
+c:\users\logan roth\documents\cmpe_320\320_project\scugogrepository\scugog_project\frontend_src\playgame.cpp(352): warning C4018: '<': signed/unsigned mismatch
+c:\users\logan roth\documents\cmpe_320\320_project\scugogrepository\scugog_project\frontend_src\playgame.cpp(365): warning C4018: '<': signed/unsigned mismatch
+c:\users\logan roth\documents\cmpe_320\320_project\scugogrepository\scugog_project\frontend_src\playgame.cpp(546): warning C4018: '<': signed/unsigned mismatch
+c:\users\logan roth\documents\cmpe_320\320_project\scugogrepository\scugog_project\frontend_src\playgame.cpp(639): warning C4018: '<': signed/unsigned mismatch
+c:\users\logan roth\documents\cmpe_320\320_project\scugogrepository\scugog_project\frontend_src\playgame.cpp(453): warning C4715: 'PlayGame::Play': not all control paths return a value
+  scugog_project.vcxproj -> C:\Users\Logan Roth\Documents\CMPE_320\320_Project\scugogrepository\scugog_project\Debug\scugog_project.exe

@@ -349,5 +349,8 @@
     <Image Include="resources\images\main_menu.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="resources\images\outline.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

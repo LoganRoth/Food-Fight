@@ -242,6 +242,7 @@
     <Image Include="resources\images\main_menu.png" />
     <Image Include="resources\images\mm.jpg" />
     <Image Include="resources\images\money.png" />
+    <Image Include="resources\images\outline.png" />
     <Image Include="resources\images\play.jpg" />
     <Image Include="resources\images\player_one_wins.png" />
     <Image Include="resources\images\player_two_wins.png" />

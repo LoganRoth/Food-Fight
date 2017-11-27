@@ -18,7 +18,7 @@ PlayGame::PlayGame(Environment enviro) {
 // Return -2 for closed window
 int PlayGame::Play(sf::RenderWindow & renderWindow)
 {
-	sf::Texture texture, texture2, card, money, deck1, deck2, cBoard, button;
+	sf::Texture texture, texture2, card, money, deck1, deck2, cBoard, button, oLine;
 	int deck1Index = players[0].get_deck().get_deck_num();
 	int deck2Index = players[1].get_deck().get_deck_num();
 	cout << deck1Index << endl;
@@ -44,6 +44,11 @@ int PlayGame::Play(sf::RenderWindow & renderWindow)
 	}
 
 	if (button.loadFromFile("../scugog_project/resources/images/button.png") != true)
+	{
+		return -1;
+	}
+
+	if (oLine.loadFromFile("../scugog_project/resources/images/outline.png") != true)
 	{
 		return -1;
 	}
@@ -151,6 +156,7 @@ int PlayGame::Play(sf::RenderWindow & renderWindow)
 	cutBoard.setPosition(1650, 500);
 	sf::Sprite bbutton(button);
 	bbutton.setPosition(1600, 325);
+	sf::Sprite outline(oLine);
 
 	sf::Sprite sprite(texture);
 	sf::Sprite sprite2(texture2);
@@ -299,6 +305,9 @@ int PlayGame::Play(sf::RenderWindow & renderWindow)
 			error.setPosition(sf::Vector2f(windowSize.x / 2 - error_size.width / 2 + 40, 650));
 			renderWindow.draw(error);
 			renderWindow.draw(cutBoard);
+			if (!clicks.empty()) {
+				renderWindow.draw(outline);
+			}
 			renderWindow.display();
 			while (renderWindow.pollEvent(event))
 			{
@@ -322,6 +331,7 @@ int PlayGame::Play(sf::RenderWindow & renderWindow)
 								cardClicks.push_back(players[player_turn].get_hand()[i]);
 								cardType = handCard;
 								indexOne = i;
+								outline.setPosition(hand[i].first.getPosition().x-11, hand[i].first.getPosition().y-10);
 							}
 						}
 						for (int i = 0; i < size(f1); i++) {
@@ -330,8 +340,7 @@ int PlayGame::Play(sf::RenderWindow & renderWindow)
 								f1[i].first.setColor(sf::Color(0, 255, 0));
 								toReset1 = i;
 								cardClicks.push_back(fields[player_turn][i]);
-
-
+								outline.setPosition(f1[i].first.getPosition().x-11, f1[i].first.getPosition().y-10);
 								cardType = fieldCard;
 								indexOne = i;
 							}
