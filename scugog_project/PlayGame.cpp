@@ -129,7 +129,7 @@ int PlayGame::Play(sf::RenderWindow & renderWindow)
 
 	sf::Text switch_text;
 	switch_text.setFont(font);
-	switch_text.setString("Click anywhere when next player is ready");
+	switch_text.setString("Click anywhere when player is ready");
 	switch_text.setCharacterSize(60);
 	switch_text.setFillColor(sf::Color::Black);
 	switch_text.setStyle(sf::Text::Style::Italic);
@@ -179,6 +179,23 @@ int PlayGame::Play(sf::RenderWindow & renderWindow)
 	vector<Card> cardClicks;
 	// need to change these to match indexes later
 	int player_turn = env.get_current_player().get_player_number();
+
+	// intiate waiting screen with switching of player sprites
+	bool initial_screen = true;
+	while (initial_screen) {
+		renderWindow.draw(sprite2);
+		switch_text.setString("Click anywhere when player " + to_string(env.get_current_player().get_player_number() + 1) + " is ready");
+		renderWindow.draw(switch_text);
+		renderWindow.display();
+		while (renderWindow.pollEvent(event)) {
+			if (event.type == sf::Event::EventType::MouseButtonPressed) {
+				initial_screen = false;
+			}
+			if (event.type == sf::Event::Closed) {
+				return -2;
+			}
+		}
+	}
 
 	// essentially idea is to place cards as sprites
 	// even if they aren't a game card and then use that so
@@ -400,6 +417,7 @@ int PlayGame::Play(sf::RenderWindow & renderWindow)
 		bool switching = true;
 		while (switching) {
 			renderWindow.draw(sprite2);
+			switch_text.setString("Click anywhere when player " + to_string(env.get_current_player().get_player_number()+1) + " is ready");
 			renderWindow.draw(switch_text);
 			renderWindow.display();
 			while (renderWindow.pollEvent(event)) {

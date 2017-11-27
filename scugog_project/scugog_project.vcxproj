@@ -191,7 +191,9 @@
     <Image Include="resources\images\bg.jpg" />
     <Image Include="resources\images\bg2.png" />
     <Image Include="resources\images\bg3.jpg" />
+    <Image Include="resources\images\bg5.png" />
     <Image Include="resources\images\black.png" />
+    <Image Include="resources\images\button.png" />
     <Image Include="resources\images\cardcc.png" />
     <Image Include="resources\images\cardExample.png" />
     <Image Include="resources\images\card_pictures\banana.png" />
@@ -227,7 +229,9 @@
     <Image Include="resources\images\card_pictures\turnip.png" />
     <Image Include="resources\images\carrot.png" />
     <Image Include="resources\images\cute_image.jpg" />
+    <Image Include="resources\images\cuttingboard.png" />
     <Image Include="resources\images\error_loading.png" />
+    <Image Include="resources\images\error_screen.png" />
     <Image Include="resources\images\farm.jpg" />
     <Image Include="resources\images\farmer.png" />
     <Image Include="resources\images\farmer2.png" />
@@ -238,6 +242,7 @@
     <Image Include="resources\images\icons\icon_defence.png" />
     <Image Include="resources\images\icons\icon_power.png" />
     <Image Include="resources\images\loading_screen.jpg" />
+    <Image Include="resources\images\main_menu.png" />
     <Image Include="resources\images\mm.jpg" />
     <Image Include="resources\images\money.png" />
     <Image Include="resources\images\play.jpg" />

@@ -343,5 +343,20 @@
     <Image Include="resources\images\splash_screen_with_click.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="resources\images\bg5.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\button.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\cuttingboard.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\error_screen.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\main_menu.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
