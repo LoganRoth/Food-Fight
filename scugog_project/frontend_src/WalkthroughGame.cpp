@@ -18,7 +18,7 @@ WalkthroughGame::WalkthroughGame(Environment enviro) {
 // Return -2 for closed window
 int WalkthroughGame::Play(sf::RenderWindow & renderWindow)
 {
-	sf::Texture texture, texture2, card, money, deck1, deck2, cBoard, button, oLine;
+	sf::Texture texture, texture2, card, money, deck1, deck2, cBoard, button, oLine, button_oLine, cuttingboard_oLine, farmer2_oLine, farmer_oLine;
 	int deck1Index = players[0].get_deck().get_deck_num();
 	int deck2Index = players[1].get_deck().get_deck_num();
 	cout << deck1Index << endl;
@@ -49,6 +49,22 @@ int WalkthroughGame::Play(sf::RenderWindow & renderWindow)
 	}
 
 	if (oLine.loadFromFile("../scugog_project/resources/images/outline.png") != true)
+	{
+		return -1;
+	}
+	if (button_oLine.loadFromFile("../scugog_project/resources/images/button_outline.png") != true)
+	{
+		return -1;
+	}
+	if (cuttingboard_oLine.loadFromFile("../scugog_project/resources/images/cuttingboard_outline.png") != true)
+	{
+		return -1;
+	}
+	if (farmer_oLine.loadFromFile("../scugog_project/resources/images/farmer_outline.png") != true)
+	{
+		return -1;
+	}
+	if (farmer2_oLine.loadFromFile("../scugog_project/resources/images/farmer2_outline.png") != true)
 	{
 		return -1;
 	}
@@ -334,11 +350,11 @@ int WalkthroughGame::Play(sf::RenderWindow & renderWindow)
 			if (!clicks.empty()) {
 				renderWindow.draw(outline);
 			}
-			instructions.setString("Click on your player!");
+			instructions.setString("This is you, click on Franny!");
 			instructions.setPosition(sf::Vector2f(60, 600));
 			renderWindow.draw(instructions);
-			outline.setPosition(50, 800);
-			outline.setScale(sf::Vector2f(1, 0.5));
+			sf::Sprite outline(farmer2_oLine);
+			outline.setPosition(52, 805);
 			renderWindow.draw(outline);
 			renderWindow.display();
 			while (renderWindow.pollEvent(event))
@@ -480,17 +496,19 @@ int WalkthroughGame::Play(sf::RenderWindow & renderWindow)
 
 			if (clicks.empty()) {
 				if (clicked_through) {
-					instructions.setString("Click on the end turn!");
-					outline.setScale(sf::Vector2f(1, 0.5));
-					outline.setPosition(1600, 325);
+					instructions.setString("Now end your turn!");
+					outline.setTexture(button_oLine);
+					outline.setPosition(1553, 300);
+					outline.setScale(sf::Vector2f(1, 1));
 				}
 				else {
-					instructions.setString("Click on the card!");
+					instructions.setString("Move " + players[player_turn].get_hand()[index_min_cost].get_name() + " to the field!");
 					outline.setPosition(hand[index_min_cost].first.getPosition().x - 11, hand[index_min_cost].first.getPosition().y - 10);
 				}
 			}
 			else {
-				instructions.setString("Move the card to the field!");
+				sf::Sprite outline(oLine);
+				instructions.setString("This is the playing area!");
 			}
 			instructions.setPosition(sf::Vector2f(60, 600));
 			renderWindow.draw(instructions);
@@ -587,7 +605,7 @@ int WalkthroughGame::Play(sf::RenderWindow & renderWindow)
 	fields[1][2].set_defense(1);
 	cout << fields[1][2].get_defense() << endl;
 
-
+	outline.setTexture(oLine);
 	//==============================================================================================================================================
 	bool click_on_their_field = true;
 	while (click_on_their_field) {
@@ -706,17 +724,18 @@ int WalkthroughGame::Play(sf::RenderWindow & renderWindow)
 
 			if (clicks.empty()) {
 				if (clicked_through) {
-					instructions.setString("Click on the end turn!");
-					outline.setScale(sf::Vector2f(1, 0.5));
-					outline.setPosition(1600, 325);
+					instructions.setString("Now end your turn!");
+					outline.setTexture(button_oLine);
+					outline.setPosition(1553, 300);
+					outline.setScale(sf::Vector2f(1, 1));
 				}
 				else {
-					instructions.setString("Click on the " + fields[0][2].get_name() + "!");
+					instructions.setString("Click on " + fields[0][2].get_name() + "!");
 					outline.setPosition(f1[2].first.getPosition().x - 11, f1[2].first.getPosition().y - 10);
 				}
 			}
 			else {
-				instructions.setString("Attack the " + fields[1][2].get_name() + "!");
+				instructions.setString("Attack and kill " + fields[1][2].get_name() + "!");
 			}
 			instructions.setPosition(sf::Vector2f(60, 600));
 			renderWindow.draw(instructions);
@@ -802,6 +821,7 @@ int WalkthroughGame::Play(sf::RenderWindow & renderWindow)
 			}
 		}
 	}
+	outline.setTexture(oLine);
 	//==============================================================================================================================================
 	bool click_on_the_cutting_board = true;
 	while (click_on_the_cutting_board) {
@@ -921,24 +941,28 @@ int WalkthroughGame::Play(sf::RenderWindow & renderWindow)
 			if (clicks.empty()) {
 				if (clicked_through) {
 					instructions.setString("Click on your card!");
+					outline.setTexture(oLine);
 					outline.setScale(sf::Vector2f(1, 1));
 					outline.setPosition(f1[2].first.getPosition().x - 11, f1[2].first.getPosition().y - 10);
 				}
 				else {
-					instructions.setString("Click on the card!");
+					instructions.setString("Want more resources?");
+					outline.setTexture(oLine);
 					outline.setPosition(hand[0].first.getPosition().x - 11, hand[0].first.getPosition().y - 10);
 				}
 			}
 			else {
 				if (clicked_through) {
-					instructions.setString("Click on your opponent!");
-					outline.setScale(sf::Vector2f(1, 0.5));
-					outline.setPosition(50, 170);
+					outline.setTexture(farmer_oLine);
+					instructions.setString("Slay your opponent with your power!");
+					outline.setScale(sf::Vector2f(1, 1));
+					outline.setPosition(35, 153);
 				}
 				else {
-					instructions.setString("Click on the graveyard!");
-					outline.setScale(sf::Vector2f(1, 0.5));
-					outline.setPosition(1650, 500);
+					instructions.setString("Chop it for an extra resource!");
+					outline.setTexture(cuttingboard_oLine);
+					outline.setScale(sf::Vector2f(1, 1));
+					outline.setPosition(1627, 475);
 				}
 			}
 			instructions.setPosition(sf::Vector2f(60, 600));

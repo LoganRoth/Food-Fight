@@ -834,7 +834,7 @@ int PlayGame::handleAbility(Card card, int index) {
 		int kill = distr(eng);
 		if (size(players[(turn + 1) % 2].get_hand()) > 1) {
 			Card temp = players[(turn + 1) % 2].remove_card_from_hand(kill);
-			players[turn].add_card_to_hand(temp);
+			//players[turn].add_card_to_hand(temp);
 			abilities[turn][index] = true;
 			able.setString("Enemy killed a card in your hand!");
 			ableSet = turn;
