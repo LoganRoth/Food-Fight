@@ -12,10 +12,11 @@ int SplashScreen::Show(sf::RenderWindow & renderWindow)
 	if (!font1.loadFromFile("../scugog_project/resources/fonts/BerlinSansFBDemiBold.ttf")) {
 		return -1;
 	}
-	if (texture.loadFromFile("../scugog_project/resources/images/splash_screen.png") != true)
+	if (texture.loadFromFile("../scugog_project/resources/images//splash_screen.png") != true)
 	{
 		return -1;
 	}
+
 
 	sf::Vector2u windowSize = renderWindow.getSize();
 

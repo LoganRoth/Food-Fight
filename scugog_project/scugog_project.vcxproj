@@ -98,11 +98,13 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\Grace\Documents\Source\boost_1_65_1;..\SFML-2.4.2-windows-vc14-32-bit\SFML-2.4.2\include;..\scugogrepository;..\MySQL Connector C++ 1.1.9\include;C:\Users\Grace\Documents\Source\boost_1_65_1;..\SFML-2.4.2-windows-vc14-32-bit\SFML-2.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\scugogrepository;C:\Users\Grace\Documents\Source\boost_1_65_1;..\SFML-2.4.2-windows-vc14-32-bit\SFML-2.4.2\include;C:\Users\Ryan\Documents\Source\Repos\boost_1_65_1;..\MySQL Connector C++ 1.1.9\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>..\SFML-2.4.2-windows-vc14-32-bit\SFML-2.4.2\lib;..\MySQL Connector C++ 1.1.9\lib\opt;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-graphics.lib;sfml-window.lib;sfml-system.lib;mysqlcppconn.lib;kernel32.lib;user32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -130,6 +132,7 @@
     <ClCompile Include="frontend_src\MainMenu.cpp" />
     <ClCompile Include="frontend_src\PlayGame.cpp" />
     <ClCompile Include="frontend_src\SplashScreen.cpp" />
+    <ClCompile Include="frontend_src\WalkthroughGame.cpp" />
     <ClCompile Include="src\card.cpp" />
     <ClCompile Include="src\deck.cpp" />
     <ClCompile Include="src\environment.cpp" />
@@ -151,6 +154,7 @@
     <ClInclude Include="frontend_src\MainMenu.h" />
     <ClInclude Include="frontend_src\PlayGame.h" />
     <ClInclude Include="frontend_src\SplashScreen.h" />
+    <ClInclude Include="frontend_src\WalkthroughGame.h" />
     <ClInclude Include="src\card.h" />
     <ClInclude Include="src\deck.h" />
     <ClInclude Include="src\environment.h" />
@@ -225,6 +229,15 @@
     <Image Include="resources\images\card_pictures\spinach.png" />
     <Image Include="resources\images\card_pictures\strawberry.png" />
     <Image Include="resources\images\card_pictures\turnip.png" />
+    <Image Include="resources\images\card_pictures_no_abilities\banana.png" />
+    <Image Include="resources\images\card_pictures_no_abilities\beet.png" />
+    <Image Include="resources\images\card_pictures_no_abilities\blackberry.png" />
+    <Image Include="resources\images\card_pictures_no_abilities\blueberry.png" />
+    <Image Include="resources\images\card_pictures_no_abilities\brusselsprout.png" />
+    <Image Include="resources\images\card_pictures_no_abilities\kale.png" />
+    <Image Include="resources\images\card_pictures_no_abilities\pomegranate.png" />
+    <Image Include="resources\images\card_pictures_no_abilities\pumpkin.png" />
+    <Image Include="resources\images\card_pictures_no_abilities\raspberry.png" />
     <Image Include="resources\images\carrot.png" />
     <Image Include="resources\images\cute_image.jpg" />
     <Image Include="resources\images\cuttingboard.png" />

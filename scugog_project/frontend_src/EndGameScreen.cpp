@@ -3,20 +3,20 @@
 
 
 
-void EndGameScreen::Show(sf::RenderWindow & renderWindow, int player_won)
+int EndGameScreen::Show(sf::RenderWindow & renderWindow, int player_won)
 {
 	//sf::Image image;
 	sf::Texture texture;
 	if (player_won == 0) {
 		if (texture.loadFromFile("../scugog_project/resources/images/player_one_wins.png") != true)
 		{
-			return;
+			return -1;
 		}
 	}
 	else {
 		if (texture.loadFromFile("../scugog_project/resources/images/player_two_wins.png") != true)
 		{
-			return;
+			return -1;
 		}
 	}
 
@@ -30,10 +30,12 @@ void EndGameScreen::Show(sf::RenderWindow & renderWindow, int player_won)
 	{
 		while (renderWindow.pollEvent(event))
 		{
-			if (event.type == sf::Event::EventType::MouseButtonPressed
-				|| event.type == sf::Event::EventType::Closed)
+			if (event.type == sf::Event::EventType::Closed)
 			{
-				return;
+				return -2;
+			}
+			else if (event.type == sf::Event::EventType::MouseButtonPressed) {
+				return 0;
 			}
 		}
 	}

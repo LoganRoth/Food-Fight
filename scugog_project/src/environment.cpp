@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <iostream>
 #include <random>
-#include <random>
 
 #include <..\scugog_project\src\environment.h>
 

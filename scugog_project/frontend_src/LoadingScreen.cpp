@@ -1,7 +1,8 @@
 #include "stdafx.h"
 #include "LoadingScreen.h"
+#include <string>
 
-int LoadingScreen::Show(sf::RenderWindow & renderWindow)
+int LoadingScreen::Show(sf::RenderWindow & renderWindow, std::string string_input)
 {
 	//sf::Image image;
 	sf::Texture texture;
@@ -17,7 +18,7 @@ int LoadingScreen::Show(sf::RenderWindow & renderWindow)
 	sf::Vector2u windowSize = renderWindow.getSize();
 	sf::Text text;
 	text.setFont(font);
-	text.setString("It's early in the morning, We are still setting up your fields");
+	text.setString(string_input);
 	text.setCharacterSize(60);
 	text.setFillColor(sf::Color::Black);
 	text.setStyle(sf::Text::Style::Italic);

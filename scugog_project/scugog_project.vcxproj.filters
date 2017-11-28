@@ -75,6 +75,9 @@
     <ClCompile Include="frontend_src\stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="frontend_src\WalkthroughGame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\card.h">
@@ -123,6 +126,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="frontend_src\stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="frontend_src\WalkthroughGame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -350,6 +356,33 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="resources\images\outline.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\card_pictures_no_abilities\banana.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\card_pictures_no_abilities\beet.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\card_pictures_no_abilities\blackberry.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\card_pictures_no_abilities\blueberry.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\card_pictures_no_abilities\brusselsprout.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\card_pictures_no_abilities\kale.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\card_pictures_no_abilities\pomegranate.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\card_pictures_no_abilities\pumpkin.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\card_pictures_no_abilities\raspberry.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

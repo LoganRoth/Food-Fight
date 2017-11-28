@@ -14,6 +14,7 @@
 #include "ChooseDeck1.h"
 #include "ChooseDeck2.h"
 #include "PlayGame.h"
+#include "WalkthroughGame.h"
 #include "EndGameScreen.h"
 #include "LoadingScreen.h"
 #include "ErrorScreen.h"
@@ -88,11 +89,44 @@ void Game::GameLoop()
 					break;
 				}
 			}
+			case Game::WalkthroughGameScreen:
+			{
+				int loading_screen_return = ShowLoadingScreen("Rome wasn't built in a day, neither are walkthroughs");
+				if (loading_screen_return == -2) {
+					_gameState = Game::Exiting;
+					break;
+				}
+				else if (loading_screen_return == -1) {
+					ShowErrorScreen();
+					_gameState = Game::Exiting;
+					break;
+				}
+				Environment env(2, { 1,0 });
+				int walkthrough_game_return = Game::ShowWalkthroughGame(env);
+				if (walkthrough_game_return == -2) {
+					_gameState = Game::Exiting;
+				}
+				else if (walkthrough_game_return == -1) {
+					ShowErrorScreen();
+					_gameState = Game::Exiting;
+				}
+				else {
+					ShowEndGame(0);
+					_gameState = Game::ShowingMenu;
+				}
+				break;
+			}
 			case Game::ShowingCD1:
 			{
 				deck1 = ShowCD1();
 				if (deck1 == -1) {
+					ShowErrorScreen();
 					_gameState = Game::Exiting;
+					break;
+				}
+				else if (deck1 == -2) {
+					_gameState = Game::Exiting;
+					break;
 				}
 				else {
 					_gameState = Game::ShowingCD2;
@@ -103,7 +137,13 @@ void Game::GameLoop()
 			{
 				deck2 = ShowCD2();
 				if (deck2 == -1) {
+					ShowErrorScreen();
 					_gameState = Game::Exiting;
+					break;
+				}
+				else if (deck2 == -2) {
+					_gameState = Game::Exiting;
+					break;
 				}
 				else {
 					_gameState = Game::Playing;
@@ -112,7 +152,7 @@ void Game::GameLoop()
 			}
 			case Game::Playing:
 			{
-				int loading_screen_return = ShowLoadingScreen();
+				int loading_screen_return = ShowLoadingScreen("It's early in the morning, We are still setting up your fields");
 				if (loading_screen_return == -2) {
 					_gameState = Game::Exiting;
 					break;
@@ -126,14 +166,27 @@ void Game::GameLoop()
 				int player_won = Game::ActivateGame(env);
 				if (player_won == -2) {
 					_gameState = Game::Exiting;
+					break;
 				}
 				else if (player_won == -1) {
 					ShowErrorScreen();
 					_gameState = Game::Exiting;
+					break;
 				}
 				else {
-					ShowEndGame(player_won);
-					_gameState = Game::ShowingMenu;
+					int end_game_return = ShowEndGame(player_won);
+					if (end_game_return == -2) {
+						_gameState = Game::Exiting;
+						break;
+					}
+					else if (end_game_return == -1) {
+					ShowErrorScreen();
+					_gameState = Game::Exiting;
+					break;
+					}
+					else {
+						_gameState = Game::ShowingMenu;
+					}
 				}
 			}
 		}
@@ -153,12 +206,19 @@ void Game::ShowMenu()
     MainMenu::MenuResult result = mainMenu.Show(_mainWindow);
     switch(result)
     {
+		case MainMenu::Error:
+			ShowErrorScreen();
+			_gameState = Game::Exiting;
+			break;
         case MainMenu::Play:
             _gameState = Game::ShowingCD1;
             break;
         case MainMenu::Instruction:
             _gameState = Game::ShowingInstructions;
             break;
+		case MainMenu::Walkthrough:
+			_gameState = Game::WalkthroughGameScreen;
+			break;
         case MainMenu::Exit:
             _gameState = Game::Exiting;
             break;
@@ -171,6 +231,13 @@ int Game::ShowInstructions()
     Instructions instr;
     int instructions_screen_return = instr.Show(_mainWindow);
 	return instructions_screen_return;
+}
+
+int Game::ActivateGame(Environment env)
+{
+	PlayGame gm(env);
+	int player_won = gm.Play(_mainWindow);
+	return player_won;
 }
 
 int Game::ShowCD1()
@@ -186,24 +253,25 @@ int Game::ShowCD2()
     int deckN = cd2.Show(_mainWindow);
 	return deckN;
 }
-// TODO: This function will have the actual "playing of the game"
-int Game::ActivateGame(Environment env) 
+
+int Game::ShowWalkthroughGame(Environment env)
 {
-	PlayGame gm(env);
-	int player_won = gm.Play(_mainWindow);
+	WalkthroughGame walkthrough(env);
+	int player_won = walkthrough.Play(_mainWindow);
 	return player_won;
 }
 
-void Game::ShowEndGame(int player_won)
+int Game::ShowEndGame(int player_won)
 {
 	EndGameScreen endgamescreen;
-	endgamescreen.Show(_mainWindow, player_won);
+	int end_game_return = endgamescreen.Show(_mainWindow, player_won);
+	return end_game_return;
 }
 
-int Game::ShowLoadingScreen()
+int Game::ShowLoadingScreen(string string_input)
 {
 	LoadingScreen loadingscreen;
-	int loading_screen_return = loadingscreen.Show(_mainWindow);
+	int loading_screen_return = loadingscreen.Show(_mainWindow, string_input);
 	return loading_screen_return;
 }
 

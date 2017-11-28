@@ -34,8 +34,9 @@ private:
     static int ShowCD2();
 	// TODO: Backend Integration gives a "cannot open source file error"
 	static int ActivateGame(Environment env);
-	static void ShowEndGame(int player_won);
-	static int ShowLoadingScreen();
+	static int ShowWalkthroughGame(Environment env);
+	static int ShowEndGame(int player_won);
+	static int ShowLoadingScreen(string str);
 	static void ShowErrorScreen();
 
 
@@ -43,7 +44,7 @@ private:
     
     
     enum GameState { Uninitialized, ShowingSplash, Paused,
-        ShowingMenu, ShowingInstructions, Playing, Exiting, ShowingCD1, ShowingCD2, ShowingEndGame};
+        ShowingMenu, ShowingInstructions, WalkthroughGameScreen, Playing, Exiting, ShowingCD1, ShowingCD2, ShowingEndGame};
     
     static GameState _gameState;
     static sf::RenderWindow _mainWindow;

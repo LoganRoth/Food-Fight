@@ -142,7 +142,7 @@ int ChooseDeck1::Show(sf::RenderWindow & renderWindow)
 				}
 			}
 			if (event.type == sf::Event::Closed) {
-				return -1;
+				return -2;
 			}
 		}
 	}

@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "PlayGame.h"
+#include <random>
 
 PlayGame::PlayGame() {
 
@@ -10,6 +11,7 @@ PlayGame::PlayGame(Environment enviro) {
 	secondClickType = -1;
 	players = enviro.get_players();
 	fields = enviro.getField();
+	abilities = { {},{} };
 }
 
 // Return 0 for player 1 win		
@@ -120,6 +122,13 @@ int PlayGame::Play(sf::RenderWindow & renderWindow)
 	sf::Rect<float> error_size = error.getGlobalBounds();
 	error.setPosition(sf::Vector2f(windowSize.x / 2 - error_size.width / 2, 650));
 
+	able.setFont(font);
+	able.setCharacterSize(30);
+	able.setFillColor(sf::Color::Blue);
+	able.setStyle(sf::Text::Style::Bold);
+	sf::Rect<float> able_size = able.getGlobalBounds();
+	able.setPosition(sf::Vector2f(windowSize.x / 2 - able_size.width / 2, 650));
+
 	sf::Text p1Label;
 	p1Label.setFont(font);
 	p1Label.setCharacterSize(50);
@@ -180,7 +189,7 @@ int PlayGame::Play(sf::RenderWindow & renderWindow)
 	int fieldCard = 4;
 	int indexOne = -1;
 	int indexTwo = -1;
-
+	ableSet = -1;
 	vector<sf::Sprite> clicks;
 	vector<Card> cardClicks;
 	// need to change these to match indexes later
@@ -203,6 +212,8 @@ int PlayGame::Play(sf::RenderWindow & renderWindow)
 		}
 	}
 
+	abilities[0] = { false, false, false, false, false };
+	abilities[1] = { false, false, false, false, false };
 	// essentially idea is to place cards as sprites
 	// even if they aren't a game card and then use that so
 	// that you can click them to move cards and attack
@@ -215,12 +226,13 @@ int PlayGame::Play(sf::RenderWindow & renderWindow)
 		bool full_deck = true;
 		bool start = true; // used to indicate if it is the start of a players turn
 		clickable = { true, true, true, true, true };
+
 		while (player_turn_on)
 		{
-
 			// intialize hand and field sprites as neccessary depending on who is playing
 			if (start) {
 				// draw cards at start of turn
+
 				int tempIndex(0);
 				for (int i = 0; i < size(h1Full); i++) {
 					if (h1Full[i] == false) {
@@ -234,6 +246,7 @@ int PlayGame::Play(sf::RenderWindow & renderWindow)
 					players[player_turn].draw_card();
 				}
 				start = false;
+
 			}
 			renderWindow.draw(sprite);
 			for (int i = 0; i < size(players[player_turn].get_hand()); i++) {
@@ -308,10 +321,19 @@ int PlayGame::Play(sf::RenderWindow & renderWindow)
 			if (!clicks.empty()) {
 				renderWindow.draw(outline);
 			}
+			if (ableSet != player_turn) {
+				sf::Rect<float> able_size = able.getGlobalBounds();
+				able.setPosition(sf::Vector2f(windowSize.x / 2 - able_size.width / 2 + 60, 650));
+				renderWindow.draw(able);
+			}
 			renderWindow.display();
 			while (renderWindow.pollEvent(event))
 			{
+
 				if (event.type == sf::Event::EventType::MouseButtonPressed) {
+					if (ableSet != player_turn) {
+						able.setString("");
+					}
 					sf::Vector2i mousePos = sf::Mouse::getPosition();
 					float horz = mousePos.x;
 					float vert = mousePos.y;
@@ -331,7 +353,7 @@ int PlayGame::Play(sf::RenderWindow & renderWindow)
 								cardClicks.push_back(players[player_turn].get_hand()[i]);
 								cardType = handCard;
 								indexOne = i;
-								outline.setPosition(hand[i].first.getPosition().x-11, hand[i].first.getPosition().y-10);
+								outline.setPosition(hand[i].first.getPosition().x - 11, hand[i].first.getPosition().y - 10);
 							}
 						}
 						for (int i = 0; i < size(f1); i++) {
@@ -340,7 +362,7 @@ int PlayGame::Play(sf::RenderWindow & renderWindow)
 								f1[i].first.setColor(sf::Color(0, 255, 0));
 								toReset1 = i;
 								cardClicks.push_back(fields[player_turn][i]);
-								outline.setPosition(f1[i].first.getPosition().x-11, f1[i].first.getPosition().y-10);
+								outline.setPosition(f1[i].first.getPosition().x - 11, f1[i].first.getPosition().y - 10);
 								cardType = fieldCard;
 								indexOne = i;
 							}
@@ -385,6 +407,14 @@ int PlayGame::Play(sf::RenderWindow & renderWindow)
 									secondClickType = player1Click;
 								}
 							}
+							for (int i = 0; i < size(f1); i++) {
+								if (inCard(f1[i].first, horz, vert)) {
+									indexTwo = i;
+									if (indexOne == indexTwo) {
+										secondClickType = 6;
+									}
+								}
+							}
 						}
 						//handle the cards clicked
 						int worked = handleClicks(clicks, cardClicks, indexOne, indexTwo);
@@ -426,7 +456,7 @@ int PlayGame::Play(sf::RenderWindow & renderWindow)
 		bool switching = true;
 		while (switching) {
 			renderWindow.draw(sprite2);
-			switch_text.setString("Click anywhere when player " + to_string(env.get_current_player().get_player_number()+1) + " is ready");
+			switch_text.setString("Click anywhere when player " + to_string(env.get_current_player().get_player_number() + 1) + " is ready");
 			renderWindow.draw(switch_text);
 			renderWindow.display();
 			while (renderWindow.pollEvent(event)) {
@@ -503,6 +533,10 @@ bool PlayGame::inPerson(sf::Sprite crd, float mpx, float mpy) {
 }
 
 int PlayGame::handleClicks(vector<sf::Sprite> clicks, vector<Card> cardClicks, int indexOne, int indexTwo) {
+	if (secondClickType == 6) {
+		return handleAbility(cardClicks[0], indexOne);
+	}
+
 	if (cardType == 4) {
 		if (!clickable[indexOne]) {
 			return 1;
@@ -513,6 +547,7 @@ int PlayGame::handleClicks(vector<sf::Sprite> clicks, vector<Card> cardClicks, i
 	// 3 = hand card
 	// 4 = field card
 	// 5 = clicked on grave
+	// 6 = ability use
 	// -1 = no click
 	sf::Texture card;
 	// load images needed for default
@@ -554,6 +589,9 @@ int PlayGame::handleClicks(vector<sf::Sprite> clicks, vector<Card> cardClicks, i
 			fields[player_turn][indexTwo] = players[player_turn].remove_card_from_hand(indexOne);
 			players[player_turn].set_current_resources(players[player_turn].get_current_resources() - cardClicks[0].get_cost());
 			clickable[indexTwo] = false;
+			if (cardClicks[0].get_ability() == 3) {
+				clickable[indexTwo] = true;
+			}
 		}
 		else {
 			return -1;
@@ -584,13 +622,17 @@ int PlayGame::handleClicks(vector<sf::Sprite> clicks, vector<Card> cardClicks, i
 			fields[(player_turn + 1) % 2][indexTwo] = dfltCard;
 			f2[indexTwo] = dfltPair;
 			f2Full[indexTwo] = false;
+			abilities[(player_turn + 1) % 2][indexTwo] = false;
+			if (cardClicks[1].get_ability() == 5) {
+				int health = players[player_turn].get_hp();
+				players[player_turn].set_hp(health - 1);
+			}
 		}
 		else {
 			//enemy didn't die
 			fields[(player_turn + 1) % 2][indexTwo] = cardClicks[1];
 			f2[indexTwo] = fields[(player_turn + 1) % 2][indexTwo].draw_card(0, 0);
 			f2Full[indexTwo] = true;
-
 			if (opponent_defense > player_attack) {
 				// you get attacked
 				cardClicks[0].set_defense(player_defense - opponent_attack);
@@ -600,6 +642,11 @@ int PlayGame::handleClicks(vector<sf::Sprite> clicks, vector<Card> cardClicks, i
 					f1[indexOne] = dfltPair;
 					f1Full[indexOne] = false;
 					clickable[indexOne] = true;
+					abilities[player_turn][indexOne] = false;
+					if (cardClicks[0].get_ability() == 5) {
+						int health = players[(player_turn + 1) % 2].get_hp();
+						players[(player_turn + 1) % 2].set_hp(health - 1);
+					}
 				}
 				else {
 					// you're hurt
@@ -630,12 +677,12 @@ int PlayGame::handleClicks(vector<sf::Sprite> clicks, vector<Card> cardClicks, i
 		fields[player_turn][indexOne] = dfltCard;
 		f1[indexOne] = dfltPair;
 		f1Full[indexOne] = false;
+		abilities[player_turn][indexOne] = false;
 		players[player_turn].set_current_resources(players[player_turn].get_current_resources() + 1);
 	}
-	else if ((cardType == 3) && (secondClickType == 5)) { 
+	else if ((cardType == 3) && (secondClickType == 5)) {
 		Card tempCard = players[player_turn].remove_card_from_hand(indexOne);
 		players[player_turn].set_current_resources(players[player_turn].get_current_resources() + 1);
-		f1Full[indexOne] = false;
 		for (int i = 0; i < size(hand); i++) {
 			if (h1Full[i] == false) {
 				h1Full[i - 1] = false;
@@ -658,7 +705,7 @@ string PlayGame::handleError(int worked) {
 	// -1 = not enough resources
 	// 0 = no second card clicked
 	// 1 = illegal move
-	// 2 =
+	// 2 = no ability
 	// 3 = all good
 	if (worked == -2) {
 		return "no default card";
@@ -673,13 +720,166 @@ string PlayGame::handleError(int worked) {
 		return "illegal move";
 	}
 	else if (worked == 2) {
-		return "";
+		return "no ability available";
 	}
 	else if (worked == 3) {
 		return "";
 	}
 	else if (worked == 4) {
-		return "double clicked card";
+		return "ability failed";
+	}
+	else if (worked == 5) {
+		return "ability already used";
 	}
 	return "unknown error";
+}
+
+int PlayGame::handleAbility(Card card, int index) {
+	int turn = env.get_current_player().get_player_number();
+	if (abilities[turn][index]) {
+		return 5;
+	}
+	sf::Texture crd;
+	// load images needed for default
+	if (crd.loadFromFile("../scugog_project/resources/images/cardcc.png") != true)
+	{
+		return -2;
+	}
+	// default 
+	int player_turn = env.get_current_player().get_player_number();
+	Card dfltCard(0, 0, 0, 0, 0, 0, "cardc.png", "", "");
+	sf::Sprite dflt(crd);
+	sf::Text dText;
+	dText.setString("");
+	pair <sf::Sprite, sf::Text> dfltPair;
+	dfltPair = make_pair(dflt, dText);
+
+	int ability = card.get_ability();
+	if (ability == 0) {
+		return 2;
+	}
+	else if (ability == 1) {
+		clickable[index] = true;
+		abilities[turn][index] = true;
+	}
+	else if (ability == 2) {
+		for (int i = 0; i < size(hand); i++) {
+			if (players[turn].get_hand()[i].get_ability() == 2) {
+				for (int index2 = 0; index2 < size(f2Full); index2) {
+					if (!f1Full[index2]) {
+						pair<sf::Sprite, sf::Text> pair = players[turn].get_hand()[i].draw_card(0, 0);
+						f1[index2] = pair;
+						f1Full[index2] = true;
+						for (int i = 0; i < size(hand); i++) {
+							if (h1Full[i] == false) {
+								h1Full[i - 1] = false;
+							}
+							else if (i == size(hand) - 1) {
+								h1Full[6] = false;
+							}
+						}
+						fields[player_turn][index2] = players[player_turn].remove_card_from_hand(i);
+						clickable[index2] = false;
+						return 3;
+					}
+				}
+			}
+		}
+		return 4;
+	}
+	else if (ability == 3) {
+		return 2;
+	}
+	else if (ability == 4) {
+		clickable[index] = false;
+		abilities[turn][index] = true;
+		for (int i = 0; i < size(f2); i++) {
+			if (f2Full[i]) {
+				Card temp = fields[(turn + 1) % 2][i];
+				temp.set_defense(temp.get_defense() - 1);
+				fields[(turn + 1) % 2][i] = temp;
+				if (temp.get_defense() <= 0) {
+					// enemy died
+					fields[(player_turn + 1) % 2][i] = dfltCard;
+					f2[i] = dfltPair;
+					f2Full[i] = false;
+					abilities[(player_turn + 1) % 2][i] = false;
+					if (temp.get_ability() == 5) {
+						int health = players[turn].get_hp();
+						players[turn].set_hp(health - 1);
+					}
+				}
+			}
+		}
+	}
+	else if (ability == 5) {
+		return 2;
+	}
+	else if (ability == 6) {
+		int res = players[(turn + 1) % 2].get_current_resources();
+		if (res > 0) {
+			players[(turn + 1) % 2].set_current_resources(res - 1);
+			abilities[turn][index] = true;
+			able.setString("Enemy stole a resource!");
+			ableSet = turn;
+		}
+		else {
+			return 4;
+		}
+	}
+	else if (ability == 7) {
+		random_device rd;
+		mt19937 eng(rd());
+		uniform_int_distribution<> distr(0, size(players[(turn + 1) % 2].get_hand()) - 1);
+		int kill = distr(eng);
+		if (size(players[(turn + 1) % 2].get_hand()) > 1) {
+			Card temp = players[(turn + 1) % 2].remove_card_from_hand(kill);
+			players[turn].add_card_to_hand(temp);
+			abilities[turn][index] = true;
+			able.setString("Enemy killed a card in your hand!");
+			ableSet = turn;
+			for (int j = 0; j < size((h2Full)); j++) {
+				if (h2Full[j] == false) {
+					h2Full[j - 1] = false;
+				}
+				else if (j == size(hand) - 1) {
+					h2Full[6] = false;
+				}
+			}
+		}
+		else {
+			return 4;
+		}
+	}
+	else if (ability == 8) {
+		random_device rd;
+		mt19937 eng(rd());
+		uniform_int_distribution<> distr(0, size(players[(turn + 1) % 2].get_hand()) - 1);
+		int kill = distr(eng);
+		if ((size(players[(turn + 1) % 2].get_hand()) > 1) && (size(players[turn].get_hand()) < 7)) {
+			Card temp2 = players[(turn + 1) % 2].remove_card_from_hand(kill);
+			players[turn].add_card_to_hand(temp2);
+			abilities[turn][index] = true;
+			able.setString("Enemy stole a card from your hand!");
+			ableSet = turn;
+			for (int j = 0; j < size((h1Full)); j++) {
+				if (h1Full[j] == false) {
+					h1Full[j] = true;
+					break;
+				}
+			}
+			for (int j = 0; j < size((h2Full)); j++) {
+				if (h2Full[j] == false) {
+					h2Full[j - 1] = false;
+				}
+				else if (j == size(hand) - 1) {
+					h2Full[6] = false;
+				}
+			}
+		}
+		else {
+			return 4;
+		}
+	}
+	return 3;
 }

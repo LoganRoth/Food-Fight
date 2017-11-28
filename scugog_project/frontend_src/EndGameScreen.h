@@ -2,5 +2,5 @@
 class EndGameScreen
 {
 public:
-	void Show(sf::RenderWindow& window, int player_won);
+	int Show(sf::RenderWindow& window, int player_won);
 };

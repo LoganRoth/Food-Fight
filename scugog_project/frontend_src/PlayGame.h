@@ -16,6 +16,7 @@ public:
 	bool inText(sf::Text text, float mpx, float mpy);
 	bool inGrave(sf::Sprite crd, float mpx, float mpy);
 	int handleClicks(vector<sf::Sprite> clicks, vector<Card> cardClicks, int indexOne, int indexTwo);
+	int handleAbility(Card card, int index);
 	string handleError(int worked);
 	bool inPerson(sf::Sprite crd, float mpx, float mpy);
 	//Environment getEnvironment();
@@ -30,7 +31,10 @@ private:
 	vector<bool> f1Full;
 	vector<bool> f2Full;
 	vector<bool> clickable;
+	vector<vector<bool>> abilities;
 	int cardType;
 	int secondClickType;
+	sf::Text able;
+	int ableSet;
 	//Environment env;
 };
