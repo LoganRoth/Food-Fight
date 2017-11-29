@@ -374,7 +374,7 @@ int PlayGame::Play(sf::RenderWindow & renderWindow)
 						}
 					}
 					if (inText2(exit_text, horz, vert)) {
-						return -2;
+						return -3;
 					}
 					if (clicks.empty()) {
 						// first "card click event", i.e. who to move to field or attack with
@@ -812,8 +812,9 @@ int PlayGame::handleAbility(Card card, int index) {
 	else if (ability == 2) {
 		for (int i = 0; i < size(hand); i++) {
 			if (players[turn].get_hand()[i].get_ability() == 2) {
-				for (int index2 = 0; index2 < size(f2Full); index2) {
+				for (int index2 = 0; index2 < size(f1); index2++) {
 					if (!f1Full[index2]) {
+						clickable[index] = false;
 						pair<sf::Sprite, sf::Text> pair = players[turn].get_hand()[i].draw_card(0, 0);
 						f1[index2] = pair;
 						f1Full[index2] = true;
@@ -869,6 +870,7 @@ int PlayGame::handleAbility(Card card, int index) {
 			abilities[turn][index] = true;
 			able.setString("Enemy stole a resource!");
 			ableSet = turn;
+			clickable[index] = false;
 		}
 		else {
 			return 4;
@@ -893,6 +895,7 @@ int PlayGame::handleAbility(Card card, int index) {
 					h2Full[6] = false;
 				}
 			}
+			clickable[index] = false;
 		}
 		else {
 			return 4;
@@ -923,6 +926,7 @@ int PlayGame::handleAbility(Card card, int index) {
 					h2Full[6] = false;
 				}
 			}
+			clickable[index] = false;
 		}
 		else {
 			return 4;
