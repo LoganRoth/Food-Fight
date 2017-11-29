@@ -521,8 +521,8 @@ bool PlayGame::inText2(sf::Text text, float mpx, float mpy)
 	sf::Rect<float> tsize = text.getGlobalBounds();
 	float cd1L = tsize.left + 15;
 	float cd1R = tsize.left + tsize.width + 15;
-	float cd1T = tsize.top + 70;
-	float cd1B = tsize.top + tsize.height + 70;
+	float cd1T = tsize.top;
+	float cd1B = tsize.top + tsize.height;
 	if ((mpx > cd1L) && (mpx < cd1R) && (mpy > cd1T) && (mpy < cd1B)) {
 		return true;
 	}
