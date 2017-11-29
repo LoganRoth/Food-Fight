@@ -22,5 +22,27 @@ c:\users\ryan\documents\source\repos\scugogrepository\scugog_project\frontend_sr
 c:\users\ryan\documents\source\repos\scugogrepository\scugog_project\frontend_src\walkthroughgame.cpp(977): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
 c:\users\ryan\documents\source\repos\scugogrepository\scugog_project\frontend_src\walkthroughgame.cpp(1147): warning C4018: '<': signed/unsigned mismatch
 c:\users\ryan\documents\source\repos\scugogrepository\scugog_project\frontend_src\walkthroughgame.cpp(1240): warning C4018: '<': signed/unsigned mismatch
+  PlayGame.cpp
+c:\users\ryan\documents\source\repos\scugogrepository\scugog_project\frontend_src\playgame.cpp(259): warning C4018: '<': signed/unsigned mismatch
+c:\users\ryan\documents\source\repos\scugogrepository\scugog_project\frontend_src\playgame.cpp(274): warning C4018: '<': signed/unsigned mismatch
+c:\users\ryan\documents\source\repos\scugogrepository\scugog_project\frontend_src\playgame.cpp(281): warning C4018: '<': signed/unsigned mismatch
+c:\users\ryan\documents\source\repos\scugogrepository\scugog_project\frontend_src\playgame.cpp(362): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\ryan\documents\source\repos\scugogrepository\scugog_project\frontend_src\playgame.cpp(363): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\ryan\documents\source\repos\scugogrepository\scugog_project\frontend_src\playgame.cpp(382): warning C4018: '<': signed/unsigned mismatch
+c:\users\ryan\documents\source\repos\scugogrepository\scugog_project\frontend_src\playgame.cpp(393): warning C4018: '<': signed/unsigned mismatch
+c:\users\ryan\documents\source\repos\scugogrepository\scugog_project\frontend_src\playgame.cpp(408): warning C4018: '<': signed/unsigned mismatch
+c:\users\ryan\documents\source\repos\scugogrepository\scugog_project\frontend_src\playgame.cpp(421): warning C4018: '<': signed/unsigned mismatch
+c:\users\ryan\documents\source\repos\scugogrepository\scugog_project\frontend_src\playgame.cpp(444): warning C4018: '<': signed/unsigned mismatch
+c:\users\ryan\documents\source\repos\scugogrepository\scugog_project\frontend_src\playgame.cpp(628): warning C4018: '<': signed/unsigned mismatch
+c:\users\ryan\documents\source\repos\scugogrepository\scugog_project\frontend_src\playgame.cpp(733): warning C4018: '<': signed/unsigned mismatch
+c:\users\ryan\documents\source\repos\scugogrepository\scugog_project\frontend_src\playgame.cpp(813): warning C4018: '<': signed/unsigned mismatch
+c:\users\ryan\documents\source\repos\scugogrepository\scugog_project\frontend_src\playgame.cpp(815): warning C4018: '<': signed/unsigned mismatch
+c:\users\ryan\documents\source\repos\scugogrepository\scugog_project\frontend_src\playgame.cpp(820): warning C4018: '<': signed/unsigned mismatch
+c:\users\ryan\documents\source\repos\scugogrepository\scugog_project\frontend_src\playgame.cpp(843): warning C4018: '<': signed/unsigned mismatch
+c:\users\ryan\documents\source\repos\scugogrepository\scugog_project\frontend_src\playgame.cpp(888): warning C4018: '<': signed/unsigned mismatch
+c:\users\ryan\documents\source\repos\scugogrepository\scugog_project\frontend_src\playgame.cpp(912): warning C4018: '<': signed/unsigned mismatch
+c:\users\ryan\documents\source\repos\scugogrepository\scugog_project\frontend_src\playgame.cpp(918): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+c:\users\ryan\documents\source\repos\scugogrepository\scugog_project\frontend_src\playgame.cpp(517): warning C4715: 'PlayGame::Play': not all control paths return a value
 c:\users\ryan\documents\source\repos\scugogrepository\scugog_project\frontend_src\walkthroughgame.cpp(1053): warning C4715: 'WalkthroughGame::Play': not all control paths return a value
   scugog_project.vcxproj -> C:\Users\Ryan\Documents\Source\Repos\scugogrepository\scugog_project\Debug\scugog_project.exe

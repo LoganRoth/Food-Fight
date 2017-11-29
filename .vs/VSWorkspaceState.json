@@ -2,9 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\scugog_project",
-    "\\scugog_project\\dll",
-    "\\scugog_project\\src"
+    "\\scugog_project\\src",
+    "\\scugog_project\\verifications"
   ],
-  "SelectedNode": "\\scugog_project\\scugog_project.sln",
+  "SelectedNode": "\\scugog_project\\src\\card.cpp",
   "PreviewInSolutionExplorer": false
 }
