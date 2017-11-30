@@ -98,7 +98,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\scugogrepository;C:\Users\Grace\Documents\Source\boost_1_65_1;..\SFML-2.4.2-windows-vc14-32-bit\SFML-2.4.2\include;C:\Users\Ryan\Documents\Source\Repos\boost_1_65_1;..\MySQL Connector C++ 1.1.9\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\eric\Documents\Queens\CMPE320 - Software Development\set up\boost_1_65_1;..\scugogrepository;C:\Users\Grace\Documents\Source\boost_1_65_1;..\SFML-2.4.2-windows-vc14-32-bit\SFML-2.4.2\include;C:\Users\Ryan\Documents\Source\Repos\boost_1_65_1;..\MySQL Connector C++ 1.1.9\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>

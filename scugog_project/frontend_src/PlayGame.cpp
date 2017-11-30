@@ -373,7 +373,7 @@ int PlayGame::Play(sf::RenderWindow & renderWindow)
 							return -1;
 						}
 					}
-					if (inText2(exit_text, horz, vert)) {
+					if (inText(exit_text, horz, vert)) {
 						return -3;
 					}
 					if (clicks.empty()) {
@@ -515,15 +515,36 @@ int PlayGame::Play(sf::RenderWindow & renderWindow)
 	}
 
 }
-
+// exit
+bool PlayGame::inText(sf::Text text, float mpx, float mpy)
+{
+	sf::Rect<float> tsize = text.getGlobalBounds();
+	float cd1L = tsize.left;
+	float cd1R = tsize.left + tsize.width;
+	float cd1T = tsize.top;
+	float cd1B = tsize.top + tsize.height;
+	cout << cd1L << " " << cd1R << endl;
+	cout << mpx << endl;
+	cout << cd1T << " " << cd1B << endl;
+	cout << mpy << endl;
+	if ((mpx > cd1L) && (mpx < cd1R) && (mpy > 170) && (mpy < 210)) {
+		return true;
+	}
+	return false;
+}
+// inst
 bool PlayGame::inText2(sf::Text text, float mpx, float mpy)
 {
 	sf::Rect<float> tsize = text.getGlobalBounds();
-	float cd1L = tsize.left + 15;
-	float cd1R = tsize.left + tsize.width + 15;
+	float cd1L = tsize.left;
+	float cd1R = tsize.left + tsize.width;
 	float cd1T = tsize.top;
 	float cd1B = tsize.top + tsize.height;
-	if ((mpx > cd1L) && (mpx < cd1R) && (mpy > cd1T) && (mpy < cd1B)) {
+	cout << cd1L << " " << cd1R << endl;
+	cout << mpx << endl;
+	cout << cd1T << " " << cd1B << endl;
+	cout << mpy << endl;
+	if ((mpx > cd1L) && (mpx < cd1R) && (mpy > 130) && (mpy < 162)) {
 		return true;
 	}
 	return false;
@@ -536,19 +557,6 @@ bool PlayGame::inCard(sf::Sprite crd, float mpx, float mpy)
 	float cd1R = csize.left + csize.width;
 	float cd1T = csize.top;
 	float cd1B = csize.top + csize.height;
-	if ((mpx > cd1L) && (mpx < cd1R) && (mpy > cd1T) && (mpy < cd1B)) {
-		return true;
-	}
-	return false;
-}
-
-bool PlayGame::inText(sf::Text text, float mpx, float mpy)
-{
-	sf::Rect<float> tsize = text.getGlobalBounds();
-	float cd1L = tsize.left;
-	float cd1R = tsize.left + tsize.width;
-	float cd1T = tsize.top;
-	float cd1B = tsize.top + tsize.height + 70;
 	if ((mpx > cd1L) && (mpx < cd1R) && (mpy > cd1T) && (mpy < cd1B)) {
 		return true;
 	}
