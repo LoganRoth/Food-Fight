@@ -29,7 +29,7 @@ int WalkthroughGame::Play(sf::RenderWindow & renderWindow)
 		return -1;
 	}
 
-	if (texture.loadFromFile("../scugog_project/resources/images/bg3.jpg") != true)
+	if (texture.loadFromFile("../scugog_project/resources/images/background.png") != true)
 	{
 		return -1;
 	}

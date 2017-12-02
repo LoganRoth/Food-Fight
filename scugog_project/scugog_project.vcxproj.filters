@@ -388,5 +388,20 @@
     <Image Include="resources\images\new_instruction_page.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="resources\images\button_outline.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\cuttingboard_outline.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\farmer_outline.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\farmer2_outline.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\background.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

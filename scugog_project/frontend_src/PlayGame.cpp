@@ -53,7 +53,7 @@ int PlayGame::Play(sf::RenderWindow & renderWindow)
 	//==========================================================================================================================================================================================================
 		
 
-	if (texture.loadFromFile("../scugog_project/resources/images/bg3.jpg") != true)
+	if (texture.loadFromFile("../scugog_project/resources/images/background.png") != true)
 	{
 		return -1;
 	}
