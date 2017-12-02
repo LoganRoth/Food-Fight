@@ -29,8 +29,8 @@ Under scugog_project project properties go to C/C++, then go to general under th
 
 To check to see if both projects are running smoothly, right click on each project and set as startup project. Each project should not error out if configurations are set properly. To test individual configurations comment out all main functions other than those in verify_sfml.cpp and verify_connection.cpp individually to test each piece. These are located in scugog_project.
 
-// Might not be available since it is hosted on a raspberry pi that might not always be connected.
-// Ryan added all the data locally so you don't need the remote database. Both versions are in deck.cpp under src.
+Note: Might not be available since it is hosted on a raspberry pi that might not always be connected.
+Note: Ryan added all the data locally so you don't need the remote database. Both versions are in deck.cpp under src.
 If SQL is erroring out then you might need to go into deck.cpp and comment out line 79 and uncomment line 80. Sometimes Ryan forgets to swap comments in debug mode.
 
 ## Contributors
