@@ -1,2 +1,3 @@
-linguist-language=c++
+*.cpp linguist-language=C++
+*.h linguist-languages=C++
 /scugog_project/src/* linguist-vendored
